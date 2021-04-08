@@ -10,13 +10,15 @@ const WHATSAPP_ICON = require("../../assets/icons/contactUs/whatsapp.png");
 const GOBACK_ICON = require("../../assets/icons/utils/goBackIcon.png");
 const UNDERLINE_BLUE_ICON = require("../../assets/icons/utils/underlineBlue.png");
 const UNDERLINE_WHTIE_ICON = require("../../assets/icons/utils/underlineWhite.png");
-const DRAWER_BUTTON_ICON = require("../../assets/icons/utils/drawerButton.png");
 const NEXT_BUTTON = require("../../assets/icons/utils/nextButton.png");
 
 const logo = require("../../assets/icons/home/rateUs.png");
 const logo2 = require("../../assets/icons/home/rateUs2.png");
 
+const drawer = require("../../assets/icons/utils/drawerButton.png");
+
 export const icons = {
   logo,
   logo2,
+  drawer
 };

@@ -12,7 +12,7 @@ export default function auth(state = INITIAL_STATE, action) {
   
       case 'SUCCESS_LOGIN':
         return {
-          data: action.payload.data,
+          data: action.payload,
           logged: true,
           loading: false,
           error: false,

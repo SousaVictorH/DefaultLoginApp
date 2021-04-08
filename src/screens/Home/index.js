@@ -22,6 +22,6 @@ export default function Home({ navigation }) {
     );
 
     return (
-        <ScreenLayout content={renderContent()} scroll={true} />
+        <ScreenLayout content={renderContent()} navigation={navigation} />
     )
 };

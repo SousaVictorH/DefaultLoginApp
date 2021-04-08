@@ -18,7 +18,7 @@ export default Footer = ({ hideFooter }) => {
 const styles = StyleSheet.create({
     container: {
         display: 'flex',
-        justifyContent: 'center',
         alignItems: 'center',
+        padding: 20,
     }
 });

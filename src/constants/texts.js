@@ -1,6 +1,7 @@
 export const LOGIN = "Login";
 export const REGISTER = "Registre-se";
 export const ENTER = "Entrar";
+export const EXIT = "Sair";
 
 export const DO_YOU_HAVE_ACCOUNT = "Olá, ja possui um conta?";
 export const I_DONT_HAVE_ACCOUNT = "Não possuo uma conta";

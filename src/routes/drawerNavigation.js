@@ -15,6 +15,8 @@ import {
 
 import { transparent } from '../resources/colors';
 
+import CustomDrawer from '../components/layouts/CustomDrawer';
+
 import Home from '../screens/Home';
 import Login from '../screens/Login';
 import SignUp from '../screens/SignUp';
@@ -25,7 +27,8 @@ const DrawerNavigation = () => {
 
     return (
         <Drawer.Navigator
-          initialRouteName={auth.logged ? HOME_SCREEN : WELCOME_SCREEN}
+          initialRouteName={HOME_SCREEN/*auth.logged ? HOME_SCREEN : WELCOME_SCREEN*/}
+          drawerContent={CustomDrawer}
           drawerStyle={[{ backgroundColor: transparent }, styles.drawer]}
         >
 

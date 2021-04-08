@@ -18,6 +18,8 @@ import { darkBlue, white } from '../../../resources/colors';
 import {
   IOS_HEADER_HEIGHT,
   ANDROID_HEADER_HEIGHT,
+  IOS_FOOTER_HEIGHT,
+  ANDROID_FOOTER_HEIGHT
 } from '../../styles/constants';
 
 import Header from './HeaderTemplate';
@@ -29,6 +31,7 @@ const ScreenLayout = ({
   hideHeader,
   hideFooter,
   loading,
+  navigation
 }) => {
   const body = () => {
     if (scroll) {
@@ -49,7 +52,7 @@ const ScreenLayout = ({
 
       <SafeAreaView style={{ flex: 1 }}>
         <View style={[styles.headerContainer, { display: hideHeader ? 'none' : 'flex'}]}>
-          <Header hideHeader={hideHeader} />
+          <Header hideHeader={hideHeader} navigation={navigation} />
         </View>
 
         <View style={styles.container}>
@@ -74,8 +77,7 @@ const styles = StyleSheet.create({
 
   headerContainer: {
     flex: 1,
-    maxHeight:
-      Platform.OS === 'ios' ? IOS_HEADER_HEIGHT : ANDROID_HEADER_HEIGHT,
+    maxHeight: Platform.OS === 'ios' ? IOS_HEADER_HEIGHT : ANDROID_HEADER_HEIGHT,
   },
 
   header: {
@@ -84,6 +86,6 @@ const styles = StyleSheet.create({
 
   footerContainer: {
     flex: 1,
-    maxHeight: 80,
+    maxHeight: Platform.OS === 'ios' ? IOS_FOOTER_HEIGHT : ANDROID_FOOTER_HEIGHT,
   },
 });

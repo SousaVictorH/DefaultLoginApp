@@ -1,13 +1,24 @@
-export function requestLogin(email, password) {
+export function requestLogin() {
     return {
-      type: 'REQUEST_LOGIN',
-      payload: { email, password },
+        type: 'REQUEST_LOGIN',
     };
 };
+
+export function sucessLogin(userData = {}) {
+    return{
+        type: 'SUCCESS_LOGIN',
+        payload: { ...userData },
+    };
+};
+
+export function failureLogin() {
+    return {
+      type: 'REQUEST_LOGIN',
+    };
+}
   
 export function requestLogout() {
     return {
-    type: 'REQUEST_LOGOUT',
+        type: 'REQUEST_LOGOUT',
     };
 };
-  
