@@ -1,0 +1,12 @@
+{
+  "name": "LoginApp",
+  "displayName": "LoginApp",
+  "expo": {
+    "name": "LoginApp",
+    "slug": "LoginApp",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
