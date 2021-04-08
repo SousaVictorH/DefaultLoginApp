@@ -34,13 +34,13 @@ export default function Login({ navigation }) {
         try {
             const response = await requestLogin(email, password);
 
-            console.log(response);
-
-            if (!response.error) {
-                // envia para redux
+            if (response.error) {
+                throw response.error;
             }
+
+            console.log(response.data);
         } catch (error) {
-            Alert.alert('Erro ao realizar login!');
+            console.warn('Erro ao realizar login!');
         }
     };
 

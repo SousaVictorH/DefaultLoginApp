@@ -1,14 +1,12 @@
 import api from '../services/api';
 
-import { LOGIN, SIGN_UP } from '../services/url';
+import { LOGIN, SIGN_UP } from '../../core/url';
 
 export const requestLogin = async (email, password) => {
     try {
         const data = { email, password };
         
-        const response = await api.post(LOGIN, data);
-
-        return response;
+        return await api.post(LOGIN, data);
     } catch (error) {
         return { error };
     }
