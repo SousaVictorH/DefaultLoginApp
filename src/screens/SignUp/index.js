@@ -7,7 +7,7 @@ import {
     View,
 } from 'react-native';
 
-import ScreenLayout from '../../components/layouts/ScreenLayout/ScreenLayout';
+import BarBoxGradient from '../../components/boxes/BorderRadiusGradient';
 
 import { goToScreen } from '../../interfaces/navigations';
 
@@ -22,6 +22,6 @@ export default function SignUp({ navigation }) {
     );
 
     return (
-        <ScreenLayout content={renderContent()} scroll={true} />
+        <BarBoxGradient content={renderContent()} scroll={true} />
     )
 };

@@ -9,11 +9,14 @@ const ImageIcon = ({
   resizeMode = 'contain',
   alignSelf = 'center',
   style,
-}) => (
-  <Image
-    source={icon ? icon.path : { uri }}
-    style={[{ height: _height, width: _width, resizeMode, alignSelf }, style]}
-  />
-);
+}) => {
+
+  return(
+    <Image
+      source={icon ? icon : { uri }}
+      style={[{ height: _height, width: _width, resizeMode, alignSelf }, style]}
+    />
+  );
+};
 
 export default ImageIcon;

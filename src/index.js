@@ -28,7 +28,7 @@
              <StatusBar backgroundColor={STATUS_BAR} />
              <NavigationContainer>
                  <Provider store={store}>
-                     <Routes />
+                    <Routes />
                  </Provider>
              </NavigationContainer>
          </>

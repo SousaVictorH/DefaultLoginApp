@@ -3,7 +3,8 @@ import React from 'react';
 import {
     Image,
     StyleSheet,
-    Text
+    Text,
+    View,
 } from 'react-native';
 
 import ScreenLayout from '../../components/layouts/ScreenLayout/ScreenLayout';

@@ -25,8 +25,9 @@ const DrawerNavigation = () => {
 
     return (
         <Drawer.Navigator
-        initialRouteName={auth.logged ? HOME_SCREEN : WELCOME_SCREEN}
-        drawerStyle={[{ backgroundColor: transparent }, styles.drawer]}>
+          initialRouteName={auth.logged ? HOME_SCREEN : WELCOME_SCREEN}
+          drawerStyle={[{ backgroundColor: transparent }, styles.drawer]}
+        >
 
             <Drawer.Screen name={HOME_SCREEN} component={Home} />
             <Drawer.Screen name={LOGIN_SCREEN} component={Login} />

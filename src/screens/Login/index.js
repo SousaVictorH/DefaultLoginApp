@@ -17,11 +17,11 @@ import { goToScreen } from '../../interfaces/navigations';
 
 import { white, lightDarkBlue } from '../../resources/colors';
 
+import BarBoxGradient from '../../components/boxes/BorderRadiusGradient';
+
 import Button from '../../components/buttons/Button';
-import ScreenLayout from '../../components/layouts/ScreenLayout/ScreenLayout';
 import Logo from './components/Logo';
 import Form from '../../components/Forms/Formiks/FormLogin';
-
 
 export default function Login({ navigation }) {
     const auth = useSelector(state => state.auth);
@@ -33,6 +33,8 @@ export default function Login({ navigation }) {
     const handleLogin = async (email, password) => {
         try {
             const response = await requestLogin(email, password);
+
+            console.log(response);
 
             if (!response.error) {
                 // envia para redux
@@ -67,7 +69,7 @@ export default function Login({ navigation }) {
       }
 
     return (
-        <ScreenLayout content={renderContent()} scroll={true} />
+        <BarBoxGradient content={renderContent()} />
     )
 };
 
@@ -76,6 +78,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
+        marginTop: 150,
         backgroundColor: white,
     },
     formContainer: {

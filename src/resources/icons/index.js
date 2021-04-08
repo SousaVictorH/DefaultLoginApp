@@ -1,18 +1,22 @@
-// Home
-export const RATE_US_ICON = ("../../assets/icons/home/rateUs.png");
-export const RATE_US_ICON_2 = ("../../assets/icons/home/rateUs2.png");
-
 // ContactUs Icons
-export const FACEBOOK_ICON = ("../../assets/icons/contactUs/facebook.png");
-export const GEOLOCATION_ICON = ("../../assets/icons/contactUs/geolocation.png");
-export const INSTAGRAM_ICON = ("../../assets/icons/contactUs/instagram.png");
-export const MAIL_ICON = ("../../assets/icons/contactUs/mail.png");
-export const PHONE_ICON = ("../../assets/icons/contactUs/phone.png");
-export const WHATSAPP_ICON = ("../../assets/icons/contactUs/whatsapp.png");
+const FACEBOOK_ICON = require("../../assets/icons/contactUs/facebook.png");
+const GEOLOCATION_ICON = require("../../assets/icons/contactUs/geolocation.png");
+const INSTAGRAM_ICON = require("../../assets/icons/contactUs/instagram.png");
+const MAIL_ICON = require("../../assets/icons/contactUs/mail.png");
+const PHONE_ICON = require("../../assets/icons/contactUs/phone.png");
+const WHATSAPP_ICON = require("../../assets/icons/contactUs/whatsapp.png");
 
 // Utils
-export const GOBACK_ICON = ("../../assets/icons/utils/goBackIcon.png");
-export const UNDERLINE_BLUE_ICON = ("../../assets/icons/utils/underlineBlue.png");
-export const UNDERLINE_WHTIE_ICON = ("../../assets/icons/utils/underlineWhite.png");
-export const DRAWER_BUTTON_ICON = ("../../assets/icons/utils/drawerButton.png");
-export const NEXT_BUTTON = ("../../assets/icons/utils/nextButton.png");
+const GOBACK_ICON = require("../../assets/icons/utils/goBackIcon.png");
+const UNDERLINE_BLUE_ICON = require("../../assets/icons/utils/underlineBlue.png");
+const UNDERLINE_WHTIE_ICON = require("../../assets/icons/utils/underlineWhite.png");
+const DRAWER_BUTTON_ICON = require("../../assets/icons/utils/drawerButton.png");
+const NEXT_BUTTON = require("../../assets/icons/utils/nextButton.png");
+
+const logo = require("../../assets/icons/home/rateUs.png");
+const logo2 = require("../../assets/icons/home/rateUs2.png");
+
+export const icons = {
+  logo,
+  logo2,
+};
