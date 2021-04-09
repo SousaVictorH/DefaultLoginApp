@@ -1,11 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
  import React from 'react';
 
  import {
@@ -17,8 +9,9 @@
  import { NavigationContainer } from '@react-navigation/native'
  
  import { Provider } from 'react-redux';
+ import { PersistGate } from 'redux-persist/integration/react';
  
- import { store } from './store';
+ import { store, persistor } from './store';
  
  import Routes from './routes/routes';
  
@@ -28,7 +21,9 @@
              <StatusBar backgroundColor={STATUS_BAR} />
              <NavigationContainer>
                  <Provider store={store}>
-                    <Routes />
+                    <PersistGate loading={false} persistor={persistor} >
+                        <Routes />
+                    </PersistGate>
                  </Provider>
              </NavigationContainer>
          </>

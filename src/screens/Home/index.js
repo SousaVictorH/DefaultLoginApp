@@ -7,15 +7,21 @@ import {
     View,
 } from 'react-native';
 
+import { useSelector } from 'react-redux';
+
+import { darkBlue } from '../../resources/colors';
+
 import ScreenLayout from '../../components/layouts/ScreenLayout/ScreenLayout';
 
-import { goToScreen } from '../../interfaces/navigations';
-
 export default function Home({ navigation }) {
+    // AUTH
+    const auth = useSelector(state => state.auth);
+
+    console.log(auth);
 
     const renderContent = () => (
-        <View>
-            <Text>
+        <View style={styles.container}>
+            <Text style={styles.title}>
                 Home
             </Text>
         </View>
@@ -25,3 +31,17 @@ export default function Home({ navigation }) {
         <ScreenLayout content={renderContent()} navigation={navigation} />
     )
 };
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        marginTop: 250,
+    },
+    title: {
+        color: darkBlue,
+        fontSize: 32,
+        fontWeight: '500',
+        textAlign: 'center',
+        marginBottom: 25,
+    }
+});

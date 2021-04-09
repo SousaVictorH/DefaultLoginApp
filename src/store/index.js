@@ -1,7 +1,20 @@
 import { createStore } from 'redux';
 
+import { persistStore, persistReducer } from 'redux-persist';
+
+import AsyncStorage from '@react-native-community/async-storage';
+
 import combinedReducers from './reducers';
 
-const store = createStore(combinedReducers);
+const persistConfig = {
+    key: 'root',
+    storage: AsyncStorage,
+    blacklist: ['navigation'], // navigation will not be persisted
+};
 
-export { store };
+const persistedReducer = persistReducer(persistConfig, combinedReducers);
+
+const store = createStore(persistedReducer);
+const persistor = persistStore(store);
+
+export { store, persistor };
