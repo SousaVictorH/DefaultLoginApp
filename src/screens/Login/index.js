@@ -99,7 +99,7 @@ export default function Login({ navigation }) {
             <Loading />
           </View>
         );
-      }
+    }
 
     return (
         <BarBoxGradient content={renderContent()} />

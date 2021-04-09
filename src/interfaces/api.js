@@ -11,3 +11,15 @@ export const requestLogin = async (email, password) => {
         return { error };
     }
 };
+
+export const requestSignUp = async (values) => {
+    try {
+        const data = {
+            
+        };
+
+        return await api.post(SIGN_UP, data);
+    } catch (error) {
+        return { error };
+    }
+};
