@@ -135,5 +135,8 @@ const styles = StyleSheet.create({
     span: {
         fontSize: 12,
         color: lightDarkBlue,
+    },
+    loading: {
+        marginTop: 300,
     }
 });

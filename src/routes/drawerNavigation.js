@@ -27,7 +27,7 @@ const DrawerNavigation = () => {
 
     return (
         <Drawer.Navigator
-          initialRouteName={HOME_SCREEN/*auth.logged ? HOME_SCREEN : WELCOME_SCREEN*/}
+          initialRouteName={auth.logged ? HOME_SCREEN : WELCOME_SCREEN}
           drawerContent={CustomDrawer}
           drawerStyle={[{ backgroundColor: transparent }, styles.drawer]}
         >

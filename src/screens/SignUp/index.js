@@ -45,14 +45,6 @@ export default function SignUp({ navigation }) {
       }
     };
 
-    if (loading) {
-      return (
-        <View style={styles.loading}>
-          <Loading />
-        </View>
-      );
-  }
-
     const renderContent = () => (
         <View style={styles.container}>
           <StatusBar hidden={true} />
@@ -66,6 +58,14 @@ export default function SignUp({ navigation }) {
           </ScrollView>
         </View>
       );
+
+    if (loading) {
+        return (
+          <View style={styles.loading}>
+            <Loading />
+          </View>
+        );
+    }
 
     return (
         <BarBoxGradient content={renderContent()} scroll={true} />
@@ -92,5 +92,8 @@ const styles = StyleSheet.create({
       fontWeight: '500',
       textAlign: 'center',
       marginBottom: 25,
+    },
+    loading: {
+      marginTop: 300,
     }
 });
