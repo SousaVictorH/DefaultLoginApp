@@ -40,6 +40,8 @@ const FormLogin = ({ handleSignUp }) => {
                     values,
                     touched,
                     errors,
+                    setFieldError,
+                    setFieldValue
                 }) => (
                 <View>
                     <SignUp
@@ -48,6 +50,8 @@ const FormLogin = ({ handleSignUp }) => {
                         handleBlur={handleBlur}
                         touched={touched}
                         errors={errors}
+                        setFieldError={setFieldError}
+                        setFieldValue={setFieldValue}
                     />
 
                     <View style={styles.button}>
@@ -64,8 +68,8 @@ export default FormLogin;
 
 const styles = StyleSheet.create({
     button: {
-        // justifyContent: 'center',
-        // alignItems: 'center',
-        // marginVertical: 10,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginVertical: 25,
     }
 });

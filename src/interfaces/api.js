@@ -15,8 +15,22 @@ export const requestLogin = async (email, password) => {
 export const requestSignUp = async (values) => {
     try {
         const data = {
-            
-        };
+            name: values.name,
+            genre: values.genre,
+            dateOfBirth: values.dateOfBirth,
+            email: values.email,
+            password: values.password,
+            phone: values.phone,
+            address: {
+                street: values.street,
+                city: values.city,
+                zipCode: values.zipCode,
+                district: values.district,
+                complement: values.complement,
+                uf: values.uf,
+                number: values.number
+            }
+        }
 
         return await api.post(SIGN_UP, data);
     } catch (error) {
