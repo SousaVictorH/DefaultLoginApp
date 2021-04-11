@@ -5,7 +5,6 @@ import {
   green,
   darkBlue,
   darkGray,
-  pelorous,
   errorColor,
 } from '../../resources/colors';
 
@@ -99,7 +98,7 @@ const globalStyles = StyleSheet.create({
 
   inputLabel: {
     fontSize: 20,
-    color: pelorous,
+    color: darkBlue,
     fontFamily: 'Product Sans Regular',
     marginLeft: 18,
   },

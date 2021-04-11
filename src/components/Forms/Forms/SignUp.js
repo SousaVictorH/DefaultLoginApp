@@ -1,16 +1,24 @@
 import React from 'react';
-import { KeyboardAvoidingView } from 'react-native';
+
+
+import { 
+    KeyboardAvoidingView, 
+} from 'react-native';
 
 import Input from '../../layouts/Inputs/InputTextGradient';
+import GenreInput from '../../layouts/Inputs/InputGenre';
 
 import { white } from '../../../resources/colors';
 
 import { maskCep } from '../../../resources/zipCode';
+import { maskDate } from '../../../resources/date';
+import { maskPhone } from '../../../resources/phone';
+
 import viacep from '../../../services/zipcode';
 
 import {
     TYPE_YOUR_NAME,
-    TYPE_YOUR_GENRE,
+    SELECT_YOUR_GENRE,
     TYPE_YOUR_BIRTH,
     TYPE_YOUR_EMAIL,
     TYPE_YOUR_PASSWORD,
@@ -48,7 +56,7 @@ export default function SignUp({
             setFieldValue('uf', uf);
           }
         }
-      }
+    }
 
     return(
         <KeyboardAvoidingView>
@@ -64,16 +72,11 @@ export default function SignUp({
                 error={errors.name}
             />
     
-            <Input
-                backgroundColor={white}
-                placeholder={TYPE_YOUR_GENRE}
-                autoCapitalize={'none'}
-                allowFontScaling={true}
+            <GenreInput 
+                label={SELECT_YOUR_GENRE}
+                errors={errors}
+                setFieldValue={setFieldValue}
                 value={values.genre}
-                onChangeText={handleChange('genre')}
-                onBlur={handleBlur('genre')}
-                touched={touched.genre}
-                error={errors.genre}
             />
 
             <Input
@@ -82,7 +85,9 @@ export default function SignUp({
                 autoCapitalize={'none'}
                 allowFontScaling={true}
                 value={values.dateOfBirth}
-                onChangeText={handleChange('dateOfBirth')}
+                onChangeText={text => {
+                    setFieldValue('dateOfBirth', maskDate(text));
+                }}
                 onBlur={handleBlur('dateOfBirth')}
                 touched={touched.dateOfBirth}
                 error={errors.dateOfBirth}
@@ -119,7 +124,9 @@ export default function SignUp({
                 placeholder={TYPE_YOUR_PHONE}
                 autoCapitalize={'none'}
                 value={values.phone}
-                onChangeText={handleChange('phone')}
+                onChangeText={text => {
+                    setFieldValue('phone', maskPhone(text));
+                }}
                 onBlur={handleBlur('phone')}
                 touched={touched.phone}
                 error={errors.phone}

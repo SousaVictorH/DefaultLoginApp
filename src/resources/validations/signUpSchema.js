@@ -7,7 +7,7 @@ const signUpSchema = yup.object().shape({
 
   genre: yup.string().required(REQUIRED),
 
-  dateOfBirth: yup.date().required(REQUIRED),
+  dateOfBirth: yup.string().required(REQUIRED),
 
   email: yup.string().email(EMAIL_MALFORMED).required(REQUIRED),
 
