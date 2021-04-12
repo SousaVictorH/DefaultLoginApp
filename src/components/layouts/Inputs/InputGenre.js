@@ -19,10 +19,10 @@ const GenreInput = ({
     value
 }) => {
     const [options, setOptions] = useState([
-        { text: 'Homem', selected: false, value: 'Male' },
-        { text: 'Mulher', selected: false, value: 'Female'},
-        { text: 'Homem Tras', selected: false, value: 'Trans Male' },
-        { text: 'Mulher Tras', selected: false, value: 'Trans Female' },
+        { text: 'Homem Cis', selected: false },
+        { text: 'Mulher Cis', selected: false },
+        { text: 'Homem Tras', selected: false },
+        { text: 'Mulher Tras', selected: false },
     ]);
 
     function handleSelected(index) {
@@ -34,7 +34,7 @@ const GenreInput = ({
         newOptions[index] = { ...selected, selected: true };
     
         setOptions(newOptions);
-        setFieldValue('genre', selected.value);
+        setFieldValue('genre', selected.text);
     }
 
     return(
