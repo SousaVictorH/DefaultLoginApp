@@ -9,7 +9,7 @@ import {
 
 import { useSelector } from 'react-redux';
 
-import { darkBlue } from '../../resources/colors';
+import { black } from '../../resources/colors';
 
 import ScreenLayout from '../../components/layouts/ScreenLayout/ScreenLayout';
 
@@ -17,12 +17,12 @@ export default function Home({ navigation }) {
     // AUTH
     const auth = useSelector(state => state.auth);
 
-    console.log(auth);
+    console.log(auth);// 58027-190
 
     const renderContent = () => (
         <View style={styles.container}>
             <Text style={styles.title}>
-                Home
+                {`Hello, ${auth.data?.name}!`}
             </Text>
         </View>
     );
@@ -38,8 +38,8 @@ const styles = StyleSheet.create({
         marginTop: 250,
     },
     title: {
-        color: darkBlue,
-        fontSize: 32,
+        color: black,
+        fontSize: 28,
         fontWeight: '500',
         textAlign: 'center',
         marginBottom: 25,

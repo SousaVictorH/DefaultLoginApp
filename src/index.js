@@ -18,7 +18,7 @@
  const App = () => {
      return (
          <>
-             <StatusBar backgroundColor={STATUS_BAR} />
+             <StatusBar backgroundColor={STATUS_BAR} hidden={true} />
              <NavigationContainer>
                  <Provider store={store}>
                     <PersistGate loading={false} persistor={persistor} >
