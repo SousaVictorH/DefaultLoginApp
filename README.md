@@ -8,12 +8,12 @@ The main goal of this project is to improve my skills with React Native, Redux a
   
 <div>
   <h3>Login</h3>
-  <img src="https://github.com/SousaVictorH/React-Redux/blob/master/reactredux/public/videos/reactRedux.gif" alt="Default">
+  <img src="https://i.imgur.com/cJIbxiL.gif" width=170 height=343 alt="LoginApp" />
 </div>
 
 <div>
   <h3>Sign Up</h3>
-  <img src="https://github.com/SousaVictorH/React-Redux/blob/master/reactredux/public/videos/reactRedux.gif" alt="Default">
+  <img src="https://i.imgur.com/BPsvVxn.gif" width=170 height=343 alt="SignUpApp" />
 </div>
 
 ###  :hammer: Made with
