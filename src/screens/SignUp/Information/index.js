@@ -9,21 +9,21 @@ import {
     ScrollView    
 } from 'react-native';
 
-import { LOGIN_SCREEN } from '../../constants/screens';
+import { LOGIN_SCREEN } from '../../../constants/screens';
 
 import {
     REGISTER,
-} from '../../constants/texts';
+} from '../../../constants/texts';
 
-import { darkBlue } from '../../resources/colors';
+import { darkBlue } from '../../../resources/colors';
 
-import { requestSignUp } from '../../interfaces/api';
+import { requestSignUp } from '../../../interfaces/api';
 
-import Loading from '../../components/layouts/Loading';
-import BarBoxGradient from '../../components/boxes/BorderRadiusGradient';
-import Form from '../../components/Forms/Formiks/FormSignUp';
+import Loading from '../../../components/layouts/Loading';
+import BarBoxGradient from '../../../components/boxes/BorderRadiusGradient';
+import Form from '../../../components/Forms/Formiks/FormSignUp';
 
-import { goToScreen } from '../../interfaces/navigations';
+import { goToScreen } from '../../../interfaces/navigations';
 
 export default function SignUp({ navigation }) {
     const [loading, setLoading] = useState(false);

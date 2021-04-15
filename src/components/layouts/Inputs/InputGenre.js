@@ -11,7 +11,6 @@ import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import globalStyles from '../../styles/globalStyles';
 import Option from '../Option';
 
-
 const GenreInput = ({
     label,
     errors,

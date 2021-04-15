@@ -18,73 +18,81 @@ const Option = ({
   iconSize = 24,
   labelSize,
 }) => {
-  return (
-    <View style={styles.container}>
-      {selected ? (
-        <LinearGradient
-          colors={[darkBlue, lightBlue]}
+
+    const renderSelected = () => (
+      <LinearGradient
+        colors={[darkBlue, lightBlue]}
+        style={[
+          styles.circle,
+          {
+            width: size,
+            height: size,
+            borderRadius: size / 2,
+          },
+        ]}>
+        <View
           style={[
-            styles.circle,
+            styles.internal,
             {
-              width: size,
-              height: size,
-              borderRadius: size / 2,
+              width: size - 3,
+              height: size - 3,
+              borderRadius: (size - 3) / 2,
             },
           ]}>
-          <View
-            style={[
-              styles.internal,
-              {
-                width: size - 3,
-                height: size - 3,
-                borderRadius: (size - 3) / 2,
-              },
-            ]}>
-            <MaskedView
-              maskElement={
-                <View style={styles.maskedView}>
-                  <Icon name="check" size={iconSize} color={white} />
-                </View>
-              }>
-              <LinearGradient
-                colors={[darkBlue, lightBlue]}
-                style={[
-                  styles.circle,
-                  {
-                    width: size,
-                    height: size,
-                    borderRadius: size / 2,
-                  },
-                ]}
-              />
-            </MaskedView>
-          </View>
-        </LinearGradient>
-      ) : error ? (
-        <View
-          style={[
-            styles.circle,
-            {
-              width: size,
-              height: size,
-              borderRadius: size / 2,
-            },
-            styles.error,
-          ]}
-        />
-      ) : (
-        <View
-          style={[
-            styles.circle,
-            {
-              width: size,
-              height: size,
-              borderRadius: size / 2,
-            },
-            styles.neutral,
-          ]}
-        />
-      )}
+          <MaskedView
+            maskElement={
+              <View style={styles.maskedView}>
+                <Icon name="check" size={iconSize} color={white} />
+              </View>
+            }>
+            <LinearGradient
+              colors={[darkBlue, lightBlue]}
+              style={[
+                styles.circle,
+                {
+                  width: size,
+                  height: size,
+                  borderRadius: size / 2,
+                },
+              ]}
+            />
+          </MaskedView>
+        </View>
+      </LinearGradient>
+    );
+
+    const renderError = () => (
+      <View
+        style={[
+          styles.circle,
+          {
+            width: size,
+            height: size,
+            borderRadius: size / 2,
+          },
+          styles.error,
+        ]}
+      />
+    )
+
+    const renderDefault = () => (
+      <View
+        style={[
+          styles.circle,
+          {
+            width: size,
+            height: size,
+            borderRadius: size / 2,
+          },
+          styles.neutral,
+        ]}
+      />
+    )
+
+
+  return (
+    <View style={styles.container}>
+      {selected ? renderSelected() : error ? renderError() : renderDefault()}
       <Text
         style={[
           globalStyles.inputLabel,

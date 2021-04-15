@@ -18,3 +18,5 @@ export const weightBlue = '#1A56AD';
 
 export const darkBlue = '#2665c6';
 export const lightBlue = "#254E81";
+
+export const errorColor = '#EE2619';

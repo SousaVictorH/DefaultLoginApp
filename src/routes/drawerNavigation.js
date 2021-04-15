@@ -19,7 +19,10 @@ import CustomDrawer from '../components/layouts/CustomDrawer';
 
 import Home from '../screens/Home';
 import Login from '../screens/Login';
-import SignUp from '../screens/SignUp';
+
+import SignUp from '../screens/SignUp/Information';
+
+
 import Welcome from '../screens/Welcome';
 
 const DrawerNavigation = () => {
