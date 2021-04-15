@@ -6,6 +6,8 @@ import { Formik } from 'formik';
 import Button from '../../../buttons/ButtonGradient';
 import { validateInformations as validations } from '../../../../resources/validations/signUpSchema';
 
+import { objIsEmpty } from '../../../../utils/object';
+
 import { ADVANCE } from '../../../../constants/texts';
 
 import SignUpInformations from '../../Forms/SignUp/Informations';
@@ -32,7 +34,6 @@ const FormLogin = ({ handleSignUp }) => {
                     errors,
                     setFieldError,
                     setFieldValue,
-                    isValid,
                 }) => (
                 <View style={styles.container}>
                     <SignUpInformations
@@ -49,7 +50,7 @@ const FormLogin = ({ handleSignUp }) => {
                         <Button 
                             onPress={handleSubmit} 
                             title={ADVANCE}
-                            enabled={!isValid}
+                            enabled={objIsEmpty(errors)}
                         />
                     </View>
                 </View>

@@ -6,6 +6,8 @@ import { Formik } from 'formik';
 import Button from '../../../buttons/ButtonGradient';
 import { validateTerms as validations } from '../../../../resources/validations/signUpSchema';
 
+import { objIsEmpty } from '../../../../utils/object';
+
 import { SUBMIT } from '../../../../constants/texts';
 
 import SignUpTerms from '../../Forms/SignUp/Terms';
@@ -30,7 +32,6 @@ const FormLogin = ({ handleSignUp }) => {
                     errors,
                     setFieldError,
                     setFieldValue,
-                    isValid,
                 }) => (
                 <View style={styles.container}>
                     <SignUpTerms
@@ -47,7 +48,7 @@ const FormLogin = ({ handleSignUp }) => {
                         <Button
                             onPress={handleSubmit}
                             title={SUBMIT}
-                            enabled={!isValid}
+                            enabled={objIsEmpty(errors)}
                         />
                     </View>
                 </View>

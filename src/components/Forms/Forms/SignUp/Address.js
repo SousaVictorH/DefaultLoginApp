@@ -105,14 +105,14 @@ export default function SignUpInformations({
             />
 
             <Input
-                    backgroundColor={white}
-                    placeholder={TYPE_YOUR_NUMBER}
-                    allowFontScaling={true}
-                    value={values.number}
-                    onChangeText={handleChange('number')}
-                    onBlur={handleBlur('number')}
-                    touched={touched.number}
-                    error={errors.number}
+                backgroundColor={white}
+                placeholder={TYPE_YOUR_NUMBER}
+                allowFontScaling={true}
+                value={values.number}
+                onChangeText={handleChange('number')}
+                onBlur={handleBlur('number')}
+                touched={touched.number}
+                error={errors.number}
             />
             
             <View styles={styles.inLine}>
@@ -144,10 +144,7 @@ export default function SignUpInformations({
 
 const styles = StyleSheet.create({
     inLine: {
+        display: 'flex',
         flexDirection: 'row',
-        marginHorizontal: 20,
-        justifyContent: 'space-between',
-        marginBottom: 20,
-        backgroundColor: black,
     }
 })

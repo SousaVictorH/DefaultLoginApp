@@ -25,7 +25,7 @@ import { goToScreen } from '../../../interfaces/navigations';
 export default function SignUp({ navigation }) {
     const handleSignUp = async (values) => {
       try {
-          // PUT ON REDUX
+          // REQ SIGNUP
           console.log(values);
 
           goToScreen(navigation, LOGIN_SCREEN);
