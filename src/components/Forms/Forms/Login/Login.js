@@ -1,14 +1,14 @@
 import React from 'react';
 import { KeyboardAvoidingView } from 'react-native';
 
-import Input from '../../layouts/Inputs/InputTextGradient';
+import Input from '../../../layouts/Inputs/InputTextGradient';
 
-import { white } from '../../../resources/colors';
+import { white } from '../../../../resources/colors';
 
 import {
     TYPE_YOUR_EMAIL,
     TYPE_YOUR_PASSWORD
-} from '../../../constants/texts';
+} from '../../../../constants/texts';
 
 export default function Login({
     values,

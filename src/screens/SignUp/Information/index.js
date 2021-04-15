@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import {
     StyleSheet,
@@ -9,39 +9,28 @@ import {
     ScrollView    
 } from 'react-native';
 
-import { LOGIN_SCREEN } from '../../../constants/screens';
+import { SIGN_UP_CONTACT_SCREEN } from '../../../constants/screens';
 
 import {
-    REGISTER,
+    REGISTER_USER_INFORMATIONS,
 } from '../../../constants/texts';
 
 import { darkBlue } from '../../../resources/colors';
 
-import { requestSignUp } from '../../../interfaces/api';
-
-import Loading from '../../../components/layouts/Loading';
 import BarBoxGradient from '../../../components/boxes/BorderRadiusGradient';
-import Form from '../../../components/Forms/Formiks/FormSignUp';
+import Form from '../../../components/Forms/Formiks/SignUp/Informations';
 
 import { goToScreen } from '../../../interfaces/navigations';
 
 export default function SignUp({ navigation }) {
-    const [loading, setLoading] = useState(false);
-
     const handleSignUp = async (values) => {
       try {
+          // PUT ON REDUX
+          console.log(values);
 
-          setLoading(true);
-          const response = await requestSignUp(values);
-          setLoading(false);
-
-          if (response.error) {
-              throw response.error;
-          }
-
-          goToScreen(navigation, LOGIN_SCREEN);
+          goToScreen(navigation, SIGN_UP_CONTACT_SCREEN);
       } catch (error) {
-        console.warn(error);
+          console.warn(error);
       }
     };
 
@@ -51,21 +40,13 @@ export default function SignUp({ navigation }) {
 
           <ScrollView>
             <KeyboardAvoidingView style={styles.formContainer}>
-              <Text style={styles.title}>{REGISTER}</Text>
+              <Text style={styles.title}>{REGISTER_USER_INFORMATIONS}</Text>
 
               <Form handleSignUp={handleSignUp} />
             </KeyboardAvoidingView>
           </ScrollView>
         </View>
       );
-
-    if (loading) {
-        return (
-          <View style={styles.loading}>
-            <Loading />
-          </View>
-        );
-    }
 
     return (
         <BarBoxGradient content={renderContent()} scroll={true} />

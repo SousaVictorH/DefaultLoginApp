@@ -3,12 +3,12 @@ import { StyleSheet, View } from 'react-native';
 
 import { Formik } from 'formik';
 
-import Button from '../../buttons/ButtonGradient';
-import validations from '../../../resources/validations/signUpSchema';
+import Button from '../../../buttons/ButtonGradient';
+import { validateInformations as validations } from '../../../../resources/validations/signUpSchema';
 
-import { SUBMIT } from '../../../constants/texts';
+import { ADVANCE } from '../../../../constants/texts';
 
-import SignUp from '../Forms/SignUp';
+import SignUpInformations from '../../Forms/SignUp/Informations';
 
 const FormLogin = ({ handleSignUp }) => {
     return(
@@ -18,16 +18,6 @@ const FormLogin = ({ handleSignUp }) => {
                     name: '',
                     genre: '',
                     dateOfBirth: '',
-                    email: '',
-                    password: '',
-                    phone: '',
-                    zipCode: '',
-                    city: '',
-                    uf: '',
-                    street: '',
-                    district: '',
-                    number: '',
-                    complement: '',
                 }}
                 validationSchema={validations}
                 onSubmit={values => {
@@ -41,10 +31,11 @@ const FormLogin = ({ handleSignUp }) => {
                     touched,
                     errors,
                     setFieldError,
-                    setFieldValue
+                    setFieldValue,
+                    isValid,
                 }) => (
-                <View>
-                    <SignUp
+                <View style={styles.container}>
+                    <SignUpInformations
                         values={values}
                         handleChange={handleChange}
                         handleBlur={handleBlur}
@@ -55,7 +46,11 @@ const FormLogin = ({ handleSignUp }) => {
                     />
 
                     <View style={styles.button}>
-                        <Button onPress={handleSubmit} title={SUBMIT} />
+                        <Button 
+                            onPress={handleSubmit} 
+                            title={ADVANCE}
+                            enabled={!isValid}
+                        />
                     </View>
                 </View>
                 )}
@@ -67,6 +62,9 @@ const FormLogin = ({ handleSignUp }) => {
 export default FormLogin;
 
 const styles = StyleSheet.create({
+    container: {
+        width: 300,
+    },
     button: {
         justifyContent: 'center',
         alignItems: 'center',

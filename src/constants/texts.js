@@ -3,9 +3,17 @@ export const REGISTER = "Registre-se";
 export const ENTER = "Entrar";
 export const EXIT = "Sair";
 export const SUBMIT = "Enviar";
+export const ADVANCE = "Avançar";
 
 export const DO_YOU_HAVE_ACCOUNT = "Olá, ja possui um conta?";
 export const I_DONT_HAVE_ACCOUNT = "Não possuo uma conta";
+
+export const REGISTER_USER_INFORMATIONS = 'Register';
+export const REGISTER_USER_CONTACT = 'Register';
+export const REGISTER_USER_ADDRESS = 'Register';
+export const REGISTER_USER_TERMS = 'Register';
+
+export const ACCEPT_THE_TERMS = 'Aceite os termos de uso!';
 
 // Contact
 export const TYPE_YOUR_PASSWORD = 'Digite sua senha';

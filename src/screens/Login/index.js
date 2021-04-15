@@ -24,7 +24,7 @@ import Loading from '../../components/layouts/Loading';
 
 import Button from '../../components/buttons/Button';
 import Logo from '../../components/layouts/Logo';
-import Form from '../../components/Forms/Formiks/FormLogin';
+import Form from '../../components/Forms/Formiks/Login/FormLogin';
 
 // ACTIONS
 

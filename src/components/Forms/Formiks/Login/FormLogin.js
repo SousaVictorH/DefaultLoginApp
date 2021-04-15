@@ -3,12 +3,12 @@ import { StyleSheet, View } from 'react-native';
 
 import { Formik } from 'formik';
 
-import Button from '../../buttons/ButtonGradient';
-import validations from '../../../resources/validations/loginSchema';
+import Button from '../../../buttons/ButtonGradient';
+import validations from '../../../../resources/validations/loginSchema';
 
-import { ENTER } from '../../../constants/texts';
+import { ENTER } from '../../../../constants/texts';
 
-import Login from '../Forms/Login';
+import Login from '../../Forms/Login/Login';
 
 const FormLogin = ({ handleLogin }) => {
     return(
@@ -37,7 +37,10 @@ const FormLogin = ({ handleLogin }) => {
                     />
 
                     <View style={styles.button}>
-                        <Button onPress={handleSubmit} title={ENTER} />
+                        <Button 
+                            onPress={handleSubmit} 
+                            title={ENTER} 
+                        />
                     </View>
                 </View>
                 )}

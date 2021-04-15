@@ -17,12 +17,12 @@ import { transparent } from '../resources/colors';
 
 import CustomDrawer from '../components/layouts/CustomDrawer';
 
+import {
+    SignUpNavigation
+} from './stackNavigation';
+
 import Home from '../screens/Home';
 import Login from '../screens/Login';
-
-import SignUp from '../screens/SignUp/Information';
-
-
 import Welcome from '../screens/Welcome';
 
 const DrawerNavigation = () => {
@@ -37,8 +37,10 @@ const DrawerNavigation = () => {
 
             <Drawer.Screen name={HOME_SCREEN} component={Home} />
             <Drawer.Screen name={LOGIN_SCREEN} component={Login} />
-            <Drawer.Screen name={SIGN_UP_SCREEN} component={SignUp} />
             <Drawer.Screen name={WELCOME_SCREEN} component={Welcome} />
+
+            <Drawer.Screen name={SIGN_UP_SCREEN} component={SignUpNavigation} />
+
 
         </Drawer.Navigator>
     );
