@@ -77,11 +77,11 @@ export default FormLogin;
 const styles = StyleSheet.create({
     container: {
         width: 300,
-        marginTop: 80,
+        marginTop: 20,
     },
     title: {
         fontSize: 22,
-        marginBottom: 18,
+        marginBottom: 32,
         textAlign: 'center',
         color: weightBlue,
     },

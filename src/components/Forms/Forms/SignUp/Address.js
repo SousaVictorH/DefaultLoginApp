@@ -23,7 +23,14 @@ import {
     TYPE_YOUR_STREET,
     TYPE_YOUR_DISTRICT,
     TYPE_YOUR_NUMBER,
-    TYPE_YOUR_COMPLEMENT
+    TYPE_YOUR_COMPLEMENT,
+    ZIP_CODE_FIELD,
+    CITY_FIELD,
+    STREET_FIELD,
+    DISTRICT_FIELD,
+    UF_FIELD,
+    NUMBER_FIELD,
+    COMPLEMENT_FIELD
 } from '../../../../constants/texts';
 
 export default function SignUpInformations({
@@ -66,7 +73,7 @@ export default function SignUpInformations({
             </Modal>
 
             <Input
-                backgroundColor={white}
+                fieldName={ZIP_CODE_FIELD}
                 placeholder={TYPE_YOUR_ZIP_CODE}
                 value={values.zipCode}
                 onChangeText={text => {
@@ -82,7 +89,7 @@ export default function SignUpInformations({
             />
 
             <Input
-                backgroundColor={white}
+                fieldName={CITY_FIELD}
                 placeholder={TYPE_YOUR_CITY}
                 autoCapitalize={'none'}
                 allowFontScaling={true}
@@ -94,7 +101,7 @@ export default function SignUpInformations({
             />
 
             <Input
-                backgroundColor={white}
+                fieldName={STREET_FIELD}
                 placeholder={TYPE_YOUR_STREET}
                 autoCapitalize={'none'}
                 allowFontScaling={true}
@@ -106,7 +113,7 @@ export default function SignUpInformations({
             />
 
             <Input
-                backgroundColor={white}
+                fieldName={DISTRICT_FIELD}
                 placeholder={TYPE_YOUR_DISTRICT}
                 autoCapitalize={'none'}
                 allowFontScaling={true}
@@ -117,18 +124,20 @@ export default function SignUpInformations({
                 error={errors.district}
             />
             
-            <View>
+            <View style={styles.inLine}>
                 <Input
-                    backgroundColor={white}
+                    fieldName={UF_FIELD}
                     placeholder={TYPE_YOUR_UF}
                     value={values.uf}
                     onChangeText={handleChange('uf')}
                     onBlur={handleBlur('uf')}
                     touched={touched.uf}
                     error={errors.uf}
+                    maxLength={2}
+                    input50
                 />
                 <Input
-                    backgroundColor={white}
+                    fieldName={NUMBER_FIELD}
                     placeholder={TYPE_YOUR_NUMBER}
                     value={values.number}
                     onChangeText={handleChange('number')}
@@ -141,7 +150,7 @@ export default function SignUpInformations({
             </View>
 
             <Input
-                backgroundColor={white}
+                fieldName={COMPLEMENT_FIELD}
                 placeholder={TYPE_YOUR_COMPLEMENT}
                 autoCapitalize={'none'}
                 allowFontScaling={true}
@@ -157,8 +166,9 @@ export default function SignUpInformations({
 
 const styles = StyleSheet.create({
     inLine: {
+        marginVertical: 10,
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'space-around',
     },
     modal: {
         flex: 1,

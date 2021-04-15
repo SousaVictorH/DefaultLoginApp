@@ -14,7 +14,11 @@ import {
     TYPE_YOUR_EMAIL,
     TYPE_YOUR_PASSWORD,
     TYPE_YOUR_PHONE,
-    CONFIRM_YOUR_PASSWORD
+    CONFIRM_YOUR_PASSWORD,
+    EMAIL_FIELD,
+    PASSWORD_FIELD,
+    PASSWORD_CONFIRMATION_FIELD,
+    PHONE_FIELD
 } from '../../../../constants/texts';
 
 export default function SignUpInformations({
@@ -30,7 +34,20 @@ export default function SignUpInformations({
     return(
         <KeyboardAvoidingView>
             <Input
-                backgroundColor={white}
+                fieldName={PHONE_FIELD}
+                placeholder={TYPE_YOUR_PHONE}
+                autoCapitalize={'none'}
+                value={values.phone}
+                onChangeText={text => {
+                    setFieldValue('phone', maskPhone(text));
+                }}
+                onBlur={handleBlur('phone')}
+                touched={touched.phone}
+                error={errors.phone}
+            />
+
+            <Input
+                fieldName={EMAIL_FIELD}
                 placeholder={TYPE_YOUR_EMAIL}
                 keyboardType={'email-address'}
                 autoCapitalize={'none'}
@@ -43,9 +60,9 @@ export default function SignUpInformations({
             />
 
             <Input
-                backgroundColor={white}
+                fieldName={PASSWORD_FIELD}
                 placeholder={TYPE_YOUR_PASSWORD}
-                secureTextEntry={true}
+                isSecured={true}
                 autoCapitalize={'none'}
                 allowFontScaling={true}
                 value={values.password}
@@ -56,9 +73,9 @@ export default function SignUpInformations({
             />
 
             <Input
-                backgroundColor={white}
+                fieldName={PASSWORD_CONFIRMATION_FIELD}
                 placeholder={CONFIRM_YOUR_PASSWORD}
-                secureTextEntry={true}
+                isSecured={true}
                 autoCapitalize={'none'}
                 allowFontScaling={true}
                 value={values.confirmPassword}
@@ -66,19 +83,6 @@ export default function SignUpInformations({
                 onBlur={handleBlur('confirmPassword')}
                 touched={touched.confirmPassword}
                 error={errors.confirmPassword}
-            />
-    
-            <Input
-                backgroundColor={white}
-                placeholder={TYPE_YOUR_PHONE}
-                autoCapitalize={'none'}
-                value={values.phone}
-                onChangeText={text => {
-                    setFieldValue('phone', maskPhone(text));
-                }}
-                onBlur={handleBlur('phone')}
-                touched={touched.phone}
-                error={errors.phone}
             />
       </KeyboardAvoidingView>
     );

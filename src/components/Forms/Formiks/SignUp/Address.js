@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 22,
-        marginBottom: 15,
+        marginBottom: 28,
         textAlign: 'center',
         color: weightBlue,
     },

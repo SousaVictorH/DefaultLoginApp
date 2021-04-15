@@ -15,6 +15,8 @@ import {
     TYPE_YOUR_NAME,
     SELECT_YOUR_GENRE,
     TYPE_YOUR_BIRTH,
+    NAME_FIELD,
+    BIRTH_FIELD
 } from '../../../../constants/texts';
 
 export default function SignUpInformations({
@@ -30,7 +32,7 @@ export default function SignUpInformations({
     return(
         <KeyboardAvoidingView>
             <Input
-                backgroundColor={white}
+                fieldName={NAME_FIELD}
                 placeholder={TYPE_YOUR_NAME}
                 autoCapitalize={'none'}
                 allowFontScaling={true}
@@ -49,10 +51,8 @@ export default function SignUpInformations({
             />
 
             <Input
-                backgroundColor={white}
+                fieldName={BIRTH_FIELD}
                 placeholder={TYPE_YOUR_BIRTH}
-                autoCapitalize={'none'}
-                allowFontScaling={true}
                 value={values.dateOfBirth}
                 onChangeText={text => {
                     setFieldValue('dateOfBirth', maskDate(text));

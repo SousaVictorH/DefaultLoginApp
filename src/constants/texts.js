@@ -12,8 +12,23 @@ export const PERSONAL_DATA = 'Dados pessoais';
 export const CONTACT_DATA = 'Dados para contato';
 export const RESIDENTIAL_DATA = 'Dados residenciais';
 export const USE_TEMRS = 'Termos de uso';
-
 export const ACCEPT_THE_TERMS = 'Aceite os termos de uso!';
+
+// FIELDS
+
+export const NAME_FIELD = 'Nome';
+export const BIRTH_FIELD = 'Data de nascimento';
+export const EMAIL_FIELD = 'Email';
+export const PASSWORD_FIELD = 'Senha';
+export const PASSWORD_CONFIRMATION_FIELD = 'Confirmação da senha';
+export const PHONE_FIELD = 'Número de telefone';
+export const ZIP_CODE_FIELD = 'CEP';
+export const CITY_FIELD = 'Cidade';
+export const STREET_FIELD = 'Rua';
+export const DISTRICT_FIELD = 'Bairro';
+export const UF_FIELD = 'UF';
+export const NUMBER_FIELD = 'Número';
+export const COMPLEMENT_FIELD = 'Complemento';
 
 // Contact
 export const TYPE_YOUR_PASSWORD = 'Digite sua senha';

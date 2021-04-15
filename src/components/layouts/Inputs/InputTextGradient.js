@@ -1,72 +1,89 @@
 import React from 'react';
-import { View, TextInput, Image, StyleSheet } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  TextInput
+} from 'react-native';
 
-import BorderRadius from '../../boxes/BorderRadiusGradient';
+import {
+  errorColor,
+  heather,
+  midGray
+} from '../../../resources/colors';
+
 import globalStyles from '../../styles/globalStyles';
 import ShowMessageError from './components/ShowMessageError';
 
 const InputTextGradient = ({
+  icon,
+  fieldName,
   placeholder,
-  keyboardType,
-  secureTextEntry,
-  onChangeText,
-  onBlur,
+  errorMessage,
+  isSecured,
   value,
-  editable,
-  autoCapitalize,
-  multiline,
-  style,
-  label,
-  messageError,
-  onFocus,
+  onBlur,
+  onChangeText,
+  input50,
+  inputStyles,
+  labelStyles,
   error,
-  backgroundColor,
-  icon
+  ...inputProps
 }) => {
   return (
-    <View>
-      <View style={[globalStyles.input, style]}>
-        <BorderRadius style={styles.inputContainer} backgroundColor={backgroundColor}>
-          <View style={styles.container}>
-            {icon && <Image source={icon.path} style={styles.image} />}
-            <TextInput
-              onFocus={onFocus}
-              multiline={multiline}
-              autoCapitalize={autoCapitalize}
-              label={label}
-              editable={editable}
-              placeholder={placeholder}
-              keyboardType={keyboardType}
-              secureTextEntry={secureTextEntry}
-              allowFontScaling={true}
-              onChangeText={onChangeText}
-              onBlur={onBlur}
-              value={value}
-              inputContainerStyle={{}}
-              style={{ paddingLeft: icon ? 38 : 8 }}
-            />
-          </View>
-        </BorderRadius>
-      </View>
+    <View style={[input50 ? styles.input50 : styles.container]}>
+      <Text style={[globalStyles.inputLabel, labelStyles]}>{fieldName}</Text>
 
-      <ShowMessageError error={error} message={messageError} />
+      <View
+        style={[
+          styles.inputBox,
+          error ? { borderColor: errorColor } : {},
+        ]}>
+          <TextInput
+            placeholder={placeholder}
+            secureTextEntry={isSecured}
+            onBlur={onBlur}
+            onChangeText={onChangeText}
+            value={value}
+            placeholderTextColor={errorMessage ? errorColor : heather}
+            style={[styles.inputStyle, inputStyles]}
+            {...inputProps}
+          />
+          {icon}
+      </View>
+      
+      <ShowMessageError error={error}/>
     </View>
   );
 };
 
+export default InputTextGradient;
+
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
-    height: '100%',
+    marginHorizontal: 20,
+    marginVertical: 5,
   },
-  image: {
-    position: 'absolute',
-    top: 9,
-    left: 5,
-    height: 18,
-    width: 18,
-    resizeMode: 'contain',
-  }
-});
 
-export default InputTextGradient;
+  inputBox: {
+    borderColor: midGray,
+    borderWidth: 2,
+    marginVertical: 8,
+    borderRadius: 50,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+
+  inputStyle: {
+    fontFamily: 'Product Sans Regular',
+    fontSize: 16,
+    paddingHorizontal: 15,
+    width: '90%',
+  },
+
+  input50: {
+    width: '40%',
+    marginHorizontal: 6,
+    marginVertical: 5,
+  },
+});

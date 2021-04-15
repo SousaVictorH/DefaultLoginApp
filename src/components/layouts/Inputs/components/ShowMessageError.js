@@ -13,8 +13,7 @@ export default showMessageError;
 
 const styles = StyleSheet.create({
   message: {
-    width: 230,
+    width: 300,
     alignSelf: 'flex-start',
-    marginLeft: 35,
   },
 });

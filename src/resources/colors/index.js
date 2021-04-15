@@ -1,7 +1,5 @@
 export const transparent = '#00000000';
 
-export const loginBackground = 'rgba(0, 0, 0, 0.3)';
-
 export const primary = '#458B74';
 export const secondary = '#228B54'
 
@@ -22,3 +20,5 @@ export const darkBlue = '#2665c6';
 export const lightBlue = "#254E81";
 
 export const errorColor = '#EE2619';
+export const heather = '#BFC1C3';
+export const midGray = '#646C73';
