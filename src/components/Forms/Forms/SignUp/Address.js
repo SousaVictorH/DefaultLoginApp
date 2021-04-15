@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { 
     KeyboardAvoidingView,
     StyleSheet,
-    View
+    View,
+    Modal
 } from 'react-native';
 
 import Input from '../../../layouts/Inputs/InputTextGradient';
+import Loading from '../../../layouts/Loading';
 
-import { white, black } from '../../../../resources/colors';
+import { white } from '../../../../resources/colors';
 
 import { maskCep } from '../../../../resources/zipCode';
 
@@ -33,7 +35,10 @@ export default function SignUpInformations({
     setFieldError,
     setFieldValue
 }) {
+    const [loading, setLoading] = useState(false);
+
     async function searchCep(zipCode) {
+        setLoading(true);
         if (zipCode.trim().length === 9) {
           let response = await viacep.get(`${zipCode}/json/`);
     
@@ -48,10 +53,18 @@ export default function SignUpInformations({
             setFieldValue('uf', uf);
           }
         }
+        setLoading(false);
     }
 
     return(
         <KeyboardAvoidingView>
+
+            <Modal animationType="fade" visible={loading} transparent>
+                <View style={styles.modal}>
+                    <Loading />
+                </View>
+            </Modal>
+
             <Input
                 backgroundColor={white}
                 placeholder={TYPE_YOUR_ZIP_CODE}
@@ -103,19 +116,8 @@ export default function SignUpInformations({
                 touched={touched.district}
                 error={errors.district}
             />
-
-            <Input
-                backgroundColor={white}
-                placeholder={TYPE_YOUR_NUMBER}
-                allowFontScaling={true}
-                value={values.number}
-                onChangeText={handleChange('number')}
-                onBlur={handleBlur('number')}
-                touched={touched.number}
-                error={errors.number}
-            />
             
-            <View styles={styles.inLine}>
+            <View>
                 <Input
                     backgroundColor={white}
                     placeholder={TYPE_YOUR_UF}
@@ -125,26 +127,43 @@ export default function SignUpInformations({
                     touched={touched.uf}
                     error={errors.uf}
                 />
-
                 <Input
                     backgroundColor={white}
-                    placeholder={TYPE_YOUR_COMPLEMENT}
-                    autoCapitalize={'none'}
-                    allowFontScaling={true}
-                    value={values.complement}
-                    onChangeText={handleChange('complement')}
-                    onBlur={handleBlur('complement')}
-                    touched={touched.complement}
-                    error={errors.complement}
+                    placeholder={TYPE_YOUR_NUMBER}
+                    value={values.number}
+                    onChangeText={handleChange('number')}
+                    onBlur={handleBlur('number')}
+                    touched={touched.number}
+                    error={errors.number}
+                    input50
+                    keyboardType="numeric"
                 />
             </View>
+
+            <Input
+                backgroundColor={white}
+                placeholder={TYPE_YOUR_COMPLEMENT}
+                autoCapitalize={'none'}
+                allowFontScaling={true}
+                value={values.complement}
+                onChangeText={handleChange('complement')}
+                onBlur={handleBlur('complement')}
+                touched={touched.complement}
+                error={errors.complement}
+            />
       </KeyboardAvoidingView>
     );
 };
 
 const styles = StyleSheet.create({
     inLine: {
-        display: 'flex',
         flexDirection: 'row',
-    }
+        justifyContent: 'space-between',
+    },
+    modal: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+      },
 })

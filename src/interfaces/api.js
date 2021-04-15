@@ -32,7 +32,11 @@ export const requestSignUp = async (values) => {
             }
         }
 
-        return await api.post(SIGN_UP, data);
+        console.log(data);
+
+        return 'OK';
+
+        // return await api.post(SIGN_UP, data);
     } catch (error) {
         return { error };
     }

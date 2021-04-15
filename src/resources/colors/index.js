@@ -1,5 +1,7 @@
 export const transparent = '#00000000';
 
+export const loginBackground = 'rgba(0, 0, 0, 0.3)';
+
 export const primary = '#458B74';
 export const secondary = '#228B54'
 

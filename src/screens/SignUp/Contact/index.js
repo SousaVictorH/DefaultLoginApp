@@ -2,7 +2,6 @@ import React from 'react';
 
 import {
     StyleSheet,
-    Text,
     View,
     StatusBar,
     KeyboardAvoidingView,
@@ -22,11 +21,20 @@ import Form from '../../../components/Forms/Formiks/SignUp/Contact';
 
 import { goToScreen } from '../../../interfaces/navigations';
 
+import { useDispatch } from 'react-redux';
+import * as ReduxActions from '../../../store/actions/signUp';
+
+const actionDispatch = (dispatch) => ({
+  sendData: (data) => dispatch(ReduxActions.updateState(data))
+});
+
 export default function SignUp({ navigation }) {
+    // SEND DATA
+    const { sendData } = actionDispatch(useDispatch());
+
     const handleSignUp = async (values) => {
       try {
-          // PUT ON REDUX
-          console.log(values);
+          sendData(values);
 
           goToScreen(navigation, SIGN_UP_ADDRESS_SCREEN);
       } catch (error) {
@@ -40,8 +48,6 @@ export default function SignUp({ navigation }) {
 
           <ScrollView>
             <KeyboardAvoidingView style={styles.formContainer}>
-              <Text style={styles.title}>{REGISTER_USER_CONTACT}</Text>
-
               <Form handleSignUp={handleSignUp} />
             </KeyboardAvoidingView>
           </ScrollView>
@@ -74,7 +80,4 @@ const styles = StyleSheet.create({
       textAlign: 'center',
       marginBottom: 25,
     },
-    loading: {
-      marginTop: 300,
-    }
 });

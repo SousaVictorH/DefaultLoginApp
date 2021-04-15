@@ -2,7 +2,6 @@ import React from 'react';
 
 import {
     StyleSheet,
-    Text,
     View,
     StatusBar,
     KeyboardAvoidingView,
@@ -15,6 +14,10 @@ import {
     REGISTER_USER_TERMS,
 } from '../../../constants/texts';
 
+import {
+    requestSignUp
+} from '../../../interfaces/api';
+
 import { darkBlue } from '../../../resources/colors';
 
 import BarBoxGradient from '../../../components/boxes/BorderRadiusGradient';
@@ -22,11 +25,30 @@ import Form from '../../../components/Forms/Formiks/SignUp/Terms';
 
 import { goToScreen } from '../../../interfaces/navigations';
 
+import { useSelector, useDispatch } from 'react-redux';
+
+import {  } from 'react-redux';
+import * as ReduxActions from '../../../store/actions/signUp';
+
+const actionDispatch = (dispatch) => ({
+  reset: () => dispatch(ReduxActions.reset())
+});
+
 export default function SignUp({ navigation }) {
-    const handleSignUp = async (values) => {
+    // RESET DATA
+    const { reset } = actionDispatch(useDispatch());
+
+    const state = useSelector(state => state.signUp);
+
+    const handleSignUp = async () => {
       try {
-          // REQ SIGNUP
-          console.log(values);
+          const response = requestSignUp(state);
+
+          if (response?.error) {
+            throw response.error;
+          }
+
+          reset();
 
           goToScreen(navigation, LOGIN_SCREEN);
       } catch (error) {
@@ -40,8 +62,6 @@ export default function SignUp({ navigation }) {
 
           <ScrollView>
             <KeyboardAvoidingView style={styles.formContainer}>
-              <Text style={styles.title}>{REGISTER_USER_TERMS}</Text>
-
               <Form handleSignUp={handleSignUp} />
             </KeyboardAvoidingView>
           </ScrollView>

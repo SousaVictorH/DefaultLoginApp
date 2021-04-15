@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 
 import { Formik } from 'formik';
 
@@ -8,7 +8,14 @@ import { validateContact as validations } from '../../../../resources/validation
 
 import { objIsEmpty } from '../../../../utils/object';
 
-import { ADVANCE } from '../../../../constants/texts';
+import { 
+    ADVANCE,
+    CONTACT_DATA
+} from '../../../../constants/texts';
+
+import {
+    weightBlue
+} from '../../../../resources/colors';
 
 import SignUpContact from '../../Forms/SignUp/Contact';
 
@@ -38,6 +45,9 @@ const FormLogin = ({ handleSignUp }) => {
                     setFieldValue,
                 }) => (
                 <View style={styles.container}>
+
+                    <Text style={styles.title}>{CONTACT_DATA}</Text>
+
                     <SignUpContact
                         values={values}
                         handleChange={handleChange}
@@ -67,6 +77,13 @@ export default FormLogin;
 const styles = StyleSheet.create({
     container: {
         width: 300,
+        marginTop: 80,
+    },
+    title: {
+        fontSize: 22,
+        marginBottom: 18,
+        textAlign: 'center',
+        color: weightBlue,
     },
     button: {
         justifyContent: 'center',

@@ -50,6 +50,10 @@ export default function Login({ navigation }) {
 
     // AUTH
     const auth = useSelector(state => state.auth);
+    // State
+    const state = useSelector(state => state.signUp);
+
+    console.log(state);
 
     const goToSignUp = () => {
         goToScreen(navigation, SIGN_UP_SCREEN);

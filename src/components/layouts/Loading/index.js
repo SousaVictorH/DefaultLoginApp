@@ -3,7 +3,9 @@ import { ActivityIndicator } from 'react-native';
 
 import { lightBlue } from '../../../resources/colors';
 
-const Loading = () => {
+const Loading = ({
+  color = lightBlue,
+}) => {
   return <ActivityIndicator size="large" color={lightBlue} />;
 };
 

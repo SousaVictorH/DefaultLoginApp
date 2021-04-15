@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 
 import { Formik } from 'formik';
 
@@ -8,7 +8,14 @@ import { validateTerms as validations } from '../../../../resources/validations/
 
 import { objIsEmpty } from '../../../../utils/object';
 
-import { SUBMIT } from '../../../../constants/texts';
+import {
+    SUBMIT,
+    USE_TEMRS
+} from '../../../../constants/texts';
+
+import {
+    weightBlue
+} from '../../../../resources/colors';
 
 import SignUpTerms from '../../Forms/SignUp/Terms';
 
@@ -34,6 +41,9 @@ const FormLogin = ({ handleSignUp }) => {
                     setFieldValue,
                 }) => (
                 <View style={styles.container}>
+
+                    <Text style={styles.title}>{USE_TEMRS}</Text>
+
                     <SignUpTerms
                         values={values}
                         handleChange={handleChange}
@@ -48,7 +58,7 @@ const FormLogin = ({ handleSignUp }) => {
                         <Button
                             onPress={handleSubmit}
                             title={SUBMIT}
-                            enabled={objIsEmpty(errors)}
+                            enabled={values.confirmation}
                         />
                     </View>
                 </View>
@@ -63,6 +73,13 @@ export default FormLogin;
 const styles = StyleSheet.create({
     container: {
         width: 300,
+        marginTop: 50,
+    },
+    title: {
+        fontSize: 22,
+        marginBottom: 15,
+        textAlign: 'center',
+        color: weightBlue,
     },
     button: {
         justifyContent: 'center',
