@@ -18,7 +18,7 @@ export const ACCEPT_OUR_TERMS = 'Aceite nossos termos';
 
 export const INCORRECT_NAME = 'Digite seu nome corretamente!';
 export const INCORRECT_DATE_OF_BIRTH = 'Verifique sua data de nascimento!';
-export const FUTURE_DATE = 'A data de aniversário está no futuro!';
+export const FUTURE_DATE = 'A data de aniversário é inválida!';
 export const INCORRECT_GENRE = 'Selecione um gênero!';
 export const PASSWORD_REQUIRED = 'Digite uma senha!';
 export const INVALID_PASSWORD = 'A senha deve ter ao menos 7 caracteres';
