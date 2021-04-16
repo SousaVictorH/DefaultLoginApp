@@ -20,29 +20,29 @@ export default function Login({
     return(
         <KeyboardAvoidingView>
             <Input
-            backgroundColor={white}
-            placeholder={TYPE_YOUR_EMAIL}
-            keyboardType={'email-address'}
-            autoCapitalize={'none'}
-            allowFontScaling={true}
-            value={values.email}
-            onChangeText={handleChange('email')}
-            onBlur={handleBlur('email')}
-            touched={touched.email}
-            error={errors.email}
+                backgroundColor={white}
+                placeholder={TYPE_YOUR_EMAIL}
+                keyboardType={'email-address'}
+                autoCapitalize={'none'}
+                allowFontScaling={true}
+                value={values.email}
+                onChangeText={handleChange('email')}
+                onBlur={handleBlur('email')}
+                touched={touched.email}
+                error={errors.email}
             />
     
             <Input
-            backgroundColor={white}
-            placeholder={TYPE_YOUR_PASSWORD}
-            secureTextEntry={true}
-            autoCapitalize={'none'}
-            allowFontScaling={true}
-            value={values.password}
-            onChangeText={handleChange('password')}
-            onBlur={handleBlur('password')}
-            touched={touched.password}
-            error={errors.password}
+                backgroundColor={white}
+                placeholder={TYPE_YOUR_PASSWORD}
+                secureTextEntry={true}
+                autoCapitalize={'none'}
+                allowFontScaling={true}
+                value={values.password}
+                onChangeText={handleChange('password')}
+                onBlur={handleBlur('password')}
+                touched={touched.password}
+                error={errors.password}
             />
       </KeyboardAvoidingView>
     );

@@ -1,58 +1,53 @@
 import React from 'react';
-import {
-  StyleSheet,
-  View,
-  Text,
-  TextInput
-} from 'react-native';
+import { View, TextInput, Image, StyleSheet } from 'react-native';
 
-import {
-  errorColor,
-  heather,
-  midGray
-} from '../../../resources/colors';
-
+import BorderRadius from '../../boxes/BorderRadiusGradient';
 import globalStyles from '../../styles/globalStyles';
 import ShowMessageError from './components/ShowMessageError';
 
 const InputTextGradient = ({
-  icon,
-  fieldName,
   placeholder,
-  errorMessage,
-  isSecured,
-  value,
-  onBlur,
+  keyboardType,
+  secureTextEntry,
   onChangeText,
-  input50,
-  inputStyles,
-  labelStyles,
+  onBlur,
+  value,
+  editable,
+  autoCapitalize,
+  multiline,
+  style,
+  label,
+  messageError,
+  onFocus,
   error,
-  ...inputProps
+  backgroundColor,
 }) => {
   return (
-    <View style={[input50 ? styles.input50 : styles.container]}>
-      <Text style={[globalStyles.inputLabel, labelStyles]}>{fieldName}</Text>
-
-      <View
-        style={[
-          styles.inputBox,
-          error ? { borderColor: errorColor } : {},
-        ]}>
-          <TextInput
-            placeholder={placeholder}
-            secureTextEntry={isSecured}
-            onBlur={onBlur}
-            onChangeText={onChangeText}
-            value={value}
-            placeholderTextColor={errorMessage ? errorColor : heather}
-            style={[styles.inputStyle, inputStyles]}
-            {...inputProps}
-          />
-          {icon}
+    <View>
+      <View style={[globalStyles.input, style]}>
+        <BorderRadius backgroundColor={backgroundColor}>
+          <View style={styles.container}>
+            <TextInput
+              onFocus={onFocus}
+              multiline={multiline}
+              autoCapitalize={autoCapitalize}
+              label={label}
+              editable={editable}
+              placeholder={placeholder}
+              keyboardType={keyboardType}
+              secureTextEntry={secureTextEntry}
+              allowFontScaling={true}
+              onChangeText={onChangeText}
+              onBlur={onBlur}
+              value={value}
+              inputContainerStyle={{}}
+              style={styles.input}
+            />
+          </View>
+        </BorderRadius>
       </View>
-      
-      <ShowMessageError error={error}/>
+
+      <ShowMessageError error={error} message={messageError} />
     </View>
   );
 };
@@ -61,29 +56,18 @@ export default InputTextGradient;
 
 const styles = StyleSheet.create({
   container: {
-    marginHorizontal: 20,
-    marginVertical: 5,
+    width: '100%',
+    height: '100%',
   },
-
-  inputBox: {
-    borderColor: midGray,
-    borderWidth: 2,
-    marginVertical: 8,
-    borderRadius: 50,
-    flexDirection: 'row',
-    alignItems: 'center',
+  input: {
+    paddingLeft: 8
   },
-
-  inputStyle: {
-    fontFamily: 'Product Sans Regular',
-    fontSize: 16,
-    paddingHorizontal: 15,
-    width: '90%',
-  },
-
-  input50: {
-    width: '40%',
-    marginHorizontal: 6,
-    marginVertical: 5,
+  image: {
+    position: 'absolute',
+    top: 9,
+    left: 5,
+    height: 18,
+    width: 18,
+    resizeMode: 'contain',
   },
 });

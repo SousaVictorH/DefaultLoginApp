@@ -7,7 +7,7 @@ import {
     Modal
 } from 'react-native';
 
-import Input from '../../../layouts/Inputs/InputTextGradient';
+import Input from '../../../layouts/Inputs/RoundedInput';
 import Loading from '../../../layouts/Loading';
 
 import { white } from '../../../../resources/colors';

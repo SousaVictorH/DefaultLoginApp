@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
 
 import globalStyles from '../../../styles/globalStyles';
 
@@ -13,7 +13,9 @@ export default showMessageError;
 
 const styles = StyleSheet.create({
   message: {
-    width: 300,
     alignSelf: 'flex-start',
+    textAlign: 'left',
+    marginVertical: 5,
+    marginLeft: 8,
   },
 });

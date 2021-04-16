@@ -4,7 +4,7 @@ import {
     KeyboardAvoidingView, 
 } from 'react-native';
 
-import Input from '../../../layouts/Inputs/InputTextGradient';
+import Input from '../../../layouts/Inputs/RoundedInput';
 import GenreInput from '../../../layouts/Inputs/InputGenre';
 
 import { white } from '../../../../resources/colors';

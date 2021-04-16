@@ -11,6 +11,8 @@ import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import globalStyles from '../../styles/globalStyles';
 import Option from '../Option';
 
+import ShowMessageError from '../Inputs/components/ShowMessageError';
+
 const GenreInput = ({
     label,
     errors,
@@ -57,7 +59,7 @@ const GenreInput = ({
 
             </View>
 
-            <Text style={globalStyles.errorMessage}>{errors?.genre}</Text>
+            <ShowMessageError error={errors?.genre} />
         </View>
     );
 };
@@ -72,6 +74,6 @@ const styles = StyleSheet.create({
       height: 40,
     },
     genre: {
-      marginTop: 20,
+      marginVertical: 20,
     },
 });
