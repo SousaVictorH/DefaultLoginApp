@@ -11,7 +11,7 @@ import { useSelector } from 'react-redux';
 
 import { black } from '../../resources/colors';
 
-import ScreenLayout from '../../components/layouts/ScreenLayout/ScreenLayout';
+import ScreenLayout from '../../components/layouts/ScreenLayout';
 
 export default function Home({ navigation }) {
     // AUTH

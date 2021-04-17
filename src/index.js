@@ -1,10 +1,8 @@
  import React from 'react';
 
  import {
-     StatusBar,
+    StatusBar,
  } from 'react-native';
- 
- import { STATUS_BAR } from './resources/colors';
  
  import { NavigationContainer } from '@react-navigation/native'
  
@@ -18,7 +16,7 @@
  const App = () => {
      return (
          <>
-             <StatusBar backgroundColor={STATUS_BAR} hidden={true} />
+             <StatusBar hidden={true} />
              <NavigationContainer>
                  <Provider store={store}>
                     <PersistGate loading={false} persistor={persistor} >

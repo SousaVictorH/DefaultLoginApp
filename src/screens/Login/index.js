@@ -4,9 +4,23 @@ import {
     Text,
     View,
     StyleSheet,
-    StatusBar,
     KeyboardAvoidingView
 } from 'react-native';
+
+import BarBoxGradient from '../../components/boxes/BorderRadiusGradient';
+
+import FormLayout from '../../components/layouts/FormLayout';
+
+import Loading from '../../components/layouts/Loading';
+
+import Button from '../../components/buttons/Button';
+import Logo from '../../components/layouts/Logo';
+import Form from '../../components/Forms/Formiks/Login/FormLogin';
+
+import {
+    NEW_HERE,
+    FORGOT_PASSWORD
+} from '../../constants/texts';
 
 import { useSelector, useDispatch } from 'react-redux';
 import * as ReduxActions from '../../store/actions/auth';
@@ -16,15 +30,7 @@ import { requestLogin } from '../../interfaces/api';
 import { SIGN_UP_SCREEN, HOME_SCREEN } from '../../constants/screens';
 import { goToScreen } from '../../interfaces/navigations';
 
-import { white, lightDarkBlue } from '../../resources/colors';
-
-import BarBoxGradient from '../../components/boxes/BorderRadiusGradient';
-
-import Loading from '../../components/layouts/Loading';
-
-import Button from '../../components/buttons/Button';
-import Logo from '../../components/layouts/Logo';
-import Form from '../../components/Forms/Formiks/Login/FormLogin';
+import { white, lightDarkBlue, darkGray, gray } from '../../resources/colors';
 
 // ACTIONS
 
@@ -63,6 +69,10 @@ export default function Login({ navigation }) {
         goToScreen(navigation, HOME_SCREEN);
     };
 
+    const goToPasswordRecovery = () => {
+        console.log('GO TO RECOVER');
+    };
+
     const handleLogin = async (email, password) => {
         try {
             loadingLogin();
@@ -83,17 +93,23 @@ export default function Login({ navigation }) {
 
     const renderContent = () => (
         <View style={styles.container}>
-          <StatusBar hidden={true} />
-  
+
           <KeyboardAvoidingView style={styles.formContainer}>
-            <Logo />
+            <View style={styles.logoContainer}>
+                <Logo />
+            </View>
   
-            <Form handleLogin={handleLogin} />
+            <Form handleLogin={handleLogin} navigation={navigation} />
+
+            <Button style={styles.forgotPassword} action={goToPasswordRecovery}>
+                <Text style={styles.forgotPasswordText}>{FORGOT_PASSWORD}</Text>
+            </Button>
   
-            <Button style={styles.footer} action={goToSignUp}>
-                <Text style={styles.span}>Novo aqui?</Text>
+            <Button style={styles.newHere} action={goToSignUp}>
+                <Text style={styles.newHereText}>{NEW_HERE}</Text>
             </Button>
           </KeyboardAvoidingView>
+
         </View>
       );
 
@@ -106,7 +122,12 @@ export default function Login({ navigation }) {
     }
 
     return (
-        <BarBoxGradient content={renderContent()} />
+        <BarBoxGradient>
+            <FormLayout
+                content={renderContent()}
+                navigation={navigation}
+            />
+        </BarBoxGradient>
     )
 };
 
@@ -115,8 +136,11 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: 150,
+        marginTop: 120,
         backgroundColor: white,
+    },
+    logoContainer: {
+        marginBottom: 10,
     },
     formContainer: {
         display: 'flex',
@@ -126,9 +150,21 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         marginBottom: 100,
     },
-    footer: {
-        display: 'flex',
-        flexDirection: 'row',
+    forgotPassword: {
+        width: 150,
+        alignSelf: 'center',
+        marginTop: 12,
+        paddingBottom: 3,
+
+        borderBottomWidth: 1,
+        borderBottomColor: gray,
+    },
+    forgotPasswordText: {
+        textAlign: 'center',
+        fontSize: 14,
+        color: darkGray,
+    },
+    newHere: {
         height: 50,
         width: 150,
         alignSelf: 'center',
@@ -136,7 +172,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         marginTop: 25,
     },
-    span: {
+    newHereText: {
         fontSize: 12,
         color: lightDarkBlue,
     },

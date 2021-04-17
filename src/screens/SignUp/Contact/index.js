@@ -2,17 +2,12 @@ import React from 'react';
 
 import {
     StyleSheet,
-    View,
-    StatusBar,
-    KeyboardAvoidingView,
-    ScrollView    
+    View, 
 } from 'react-native';
 
 import { SIGN_UP_ADDRESS_SCREEN } from '../../../constants/screens';
 
-import {
-    REGISTER_USER_CONTACT,
-} from '../../../constants/texts';
+import FormLayout from '../../../components/layouts/FormLayout';
 
 import { darkBlue } from '../../../resources/colors';
 
@@ -42,15 +37,18 @@ export default function SignUp({ navigation }) {
       }
     };
 
+    const renderForm = () => (
+      <Form handleSignUp={handleSignUp} navigation={navigation} />
+    );
+
     const renderContent = () => (
         <View style={styles.container}>
-          <StatusBar hidden={true} />
 
-          <ScrollView>
-            <KeyboardAvoidingView style={styles.formContainer}>
-              <Form handleSignUp={handleSignUp} />
-            </KeyboardAvoidingView>
-          </ScrollView>
+            <FormLayout 
+                content={renderForm()}
+                scroll
+                navigation={navigation}
+            />
         </View>
       );
 
@@ -64,7 +62,6 @@ const styles = StyleSheet.create({
       flex: 1,
       alignItems: 'center',
       justifyContent: 'center',
-      marginVertical: 50,
       height: '100%',
       width: '100%',
       

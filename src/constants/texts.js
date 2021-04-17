@@ -14,8 +14,10 @@ export const RESIDENTIAL_DATA = 'Dados residenciais';
 export const USE_TEMRS = 'Termos de uso';
 export const ACCEPT_THE_TERMS = 'Aceite os termos de uso!';
 
-// FIELDS
+export const NEW_HERE = 'Novo aqui?';
+export const FORGOT_PASSWORD = 'Esqueceu sua senha?'
 
+// FIELDS
 export const NAME_FIELD = 'Nome';
 export const BIRTH_FIELD = 'Data de nascimento';
 export const EMAIL_FIELD = 'Email';

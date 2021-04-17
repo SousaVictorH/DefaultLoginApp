@@ -10,8 +10,6 @@ import {
 import Input from '../../../layouts/Inputs/RoundedInput';
 import Loading from '../../../layouts/Loading';
 
-import { white } from '../../../../resources/colors';
-
 import { maskCep } from '../../../../resources/zipCode';
 
 import viacep from '../../../../services/zipcode';

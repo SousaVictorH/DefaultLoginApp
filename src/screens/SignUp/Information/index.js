@@ -3,18 +3,13 @@ import React from 'react';
 import {
     StyleSheet,
     View,
-    StatusBar,
-    KeyboardAvoidingView,
-    ScrollView    
 } from 'react-native';
 
 import { SIGN_UP_CONTACT_SCREEN } from '../../../constants/screens';
 
-import {
-    REGISTER_USER_INFORMATIONS,
-} from '../../../constants/texts';
-
 import { darkBlue } from '../../../resources/colors';
+
+import FormLayout from '../../../components/layouts/FormLayout';
 
 import BarBoxGradient from '../../../components/boxes/BorderRadiusGradient';
 import Form from '../../../components/Forms/Formiks/SignUp/Informations';
@@ -42,15 +37,19 @@ export default function SignUp({ navigation }) {
       }
     };
 
+    const renderForm = () => (
+      <Form handleSignUp={handleSignUp} navigation={navigation} />
+    )
+
     const renderContent = () => (
         <View style={styles.container}>
-          <StatusBar hidden={true} />
 
-          <ScrollView>
-            <KeyboardAvoidingView style={styles.formContainer}>
-              <Form handleSignUp={handleSignUp} />
-            </KeyboardAvoidingView>
-          </ScrollView>
+          <FormLayout 
+            content={renderForm()}
+            scroll
+            navigation={navigation}
+          />
+
         </View>
       );
 
@@ -61,17 +60,8 @@ export default function SignUp({ navigation }) {
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
-      marginVertical: 50,
-      height: '100%',
-      width: '100%',
-      
-    },
-    formContainer: {
-      display: 'flex',
-      alignItems: 'center',
+      minHeight: '100%',
+      minWidth: '100%',
     },
     title: {
       color: darkBlue,

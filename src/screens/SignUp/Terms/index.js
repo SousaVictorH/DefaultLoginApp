@@ -3,16 +3,11 @@ import React from 'react';
 import {
     StyleSheet,
     View,
-    StatusBar,
-    KeyboardAvoidingView,
-    ScrollView    
 } from 'react-native';
 
 import { LOGIN_SCREEN } from '../../../constants/screens';
 
-import {
-    REGISTER_USER_TERMS,
-} from '../../../constants/texts';
+import FormLayout from '../../../components/layouts/FormLayout';
 
 import {
     requestSignUp
@@ -56,15 +51,19 @@ export default function SignUp({ navigation }) {
       }
     };
 
+    const renderForm = () => (
+      <Form handleSignUp={handleSignUp} navigation={navigation} />
+    )
+
     const renderContent = () => (
         <View style={styles.container}>
-          <StatusBar hidden={true} />
+          
+          <FormLayout 
+            content={renderForm()}
+            scroll
+            navigation={navigation}
+          />
 
-          <ScrollView>
-            <KeyboardAvoidingView style={styles.formContainer}>
-              <Form handleSignUp={handleSignUp} />
-            </KeyboardAvoidingView>
-          </ScrollView>
         </View>
       );
 
@@ -78,7 +77,6 @@ const styles = StyleSheet.create({
       flex: 1,
       alignItems: 'center',
       justifyContent: 'center',
-      marginVertical: 50,
       height: '100%',
       width: '100%',
       

@@ -4,8 +4,6 @@ import {
     SafeAreaView,
     Text,
     StyleSheet,
-    StatusBar,
-    ScrollView,
     View
 } from 'react-native';
 
@@ -23,7 +21,6 @@ import { goToScreen } from '../../interfaces/navigations';
 
 import {
   LOGIN,
-  REGISTER,
   DO_YOU_HAVE_ACCOUNT,
   I_DONT_HAVE_ACCOUNT
 } from '../../constants/texts';
@@ -41,21 +38,17 @@ export default function Welcome({ navigation }) {
 
     const renderContent = () => (
         <SafeAreaView style={styles.container}>
-            <StatusBar barStyle="light-content" backgroundColor={darkBlue} />
+            <View style={styles.content}>
+                <Text style={styles.title} >{DO_YOU_HAVE_ACCOUNT}</Text>
 
-            <ScrollView>
-                <View style={styles.content}>
-                    <Text style={styles.title} >{DO_YOU_HAVE_ACCOUNT}</Text>
-
-                    <View style={styles.buttonLogin}>
-                        <BorderLineButton text={LOGIN} textStyle={styles.textStyle} action={goToLogin} />
-                    </View>
-
-                    <Button style={styles.buttonRegister} action={goToSignUp} >
-                        <Text style={styles.buttonText} >{I_DONT_HAVE_ACCOUNT}</Text>
-                    </Button>
+                <View style={styles.buttonLogin}>
+                    <BorderLineButton text={LOGIN} textStyle={styles.textStyle} action={goToLogin} />
                 </View>
-            </ScrollView>
+
+                <Button style={styles.buttonRegister} action={goToSignUp} >
+                    <Text style={styles.buttonText} >{I_DONT_HAVE_ACCOUNT}</Text>
+                </Button>
+            </View>
         </SafeAreaView>
     );
 
