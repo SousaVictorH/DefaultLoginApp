@@ -35,12 +35,11 @@ const DrawerNavigation = () => {
           drawerStyle={[{ backgroundColor: transparent }, styles.drawer]}
         >
 
-            <Drawer.Screen name={HOME_SCREEN} component={Home} />
+            <Drawer.Screen name={HOME_SCREEN} component={auth.logged ? Home : Welcome} />
             <Drawer.Screen name={LOGIN_SCREEN} component={Login} />
             <Drawer.Screen name={WELCOME_SCREEN} component={Welcome} />
 
             <Drawer.Screen name={SIGN_UP_SCREEN} component={SignUpNavigation} />
-
 
         </Drawer.Navigator>
     );
