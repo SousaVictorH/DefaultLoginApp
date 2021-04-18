@@ -1,10 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 
 import ImageIcon from '../icons/ImageIcon';
 import Button from './Button';
 
-import { DRAWER_BUTTON_ICON as drawerButtonWhite } from '../../resources/icons';
+import { icons } from '../../resources/icons';
 
 const DrawerButton = ({ size, navigation }) => {
   const defaultSize = 20;
@@ -14,7 +13,7 @@ const DrawerButton = ({ size, navigation }) => {
       action={() => navigation.toggleDrawer()}
       content={
         <ImageIcon
-          icon={drawerButtonWhite}
+          icon={icons.DRAWER.path}
           _width={size ? size : defaultSize}
         />
       }
@@ -23,5 +22,3 @@ const DrawerButton = ({ size, navigation }) => {
 };
 
 export default DrawerButton;
-
-const styles = StyleSheet.create({});

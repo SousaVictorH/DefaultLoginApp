@@ -63,13 +63,8 @@ const styles = StyleSheet.create({
       flex: 1,
       alignItems: 'center',
       justifyContent: 'center',
-      height: '100%',
-      width: '100%',
-      
-    },
-    formContainer: {
-      display: 'flex',
-      alignItems: 'center',
+      minHeight: '100%',
+      minWidth: '100%',
     },
     title: {
       color: darkBlue,

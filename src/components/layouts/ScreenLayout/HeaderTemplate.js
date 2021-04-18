@@ -10,7 +10,7 @@ export default Header = ({ hideHeader, navigation }) => {
     return !hideHeader && (
         <BarBox>
             <SafeAreaView style={styles.container}>
-                <Logo height={28} width={28} />
+                <Logo height={28} width={28} white/>
                 <Drawer height={28} width={28} navigation={navigation} />
             </SafeAreaView>
         </BarBox>

@@ -3,11 +3,14 @@ import { KeyboardAvoidingView } from 'react-native';
 
 import Input from '../../../layouts/Inputs/InputTextGradient';
 
+import {
+    inputs
+} from '../../../../resources/icons';
+
 import { white } from '../../../../resources/colors';
 
 import {
-    TYPE_YOUR_EMAIL,
-    TYPE_YOUR_PASSWORD
+    TYPE_YOUR_EMAIL
 } from '../../../../constants/texts';
 
 export default function Login({
@@ -30,19 +33,7 @@ export default function Login({
                 onBlur={handleBlur('email')}
                 touched={touched.email}
                 error={errors.email}
-            />
-    
-            <Input
-                backgroundColor={white}
-                placeholder={TYPE_YOUR_PASSWORD}
-                secureTextEntry={true}
-                autoCapitalize={'none'}
-                allowFontScaling={true}
-                value={values.password}
-                onChangeText={handleChange('password')}
-                onBlur={handleBlur('password')}
-                touched={touched.password}
-                error={errors.password}
+                icon={inputs.EMAIL}
             />
       </KeyboardAvoidingView>
     );

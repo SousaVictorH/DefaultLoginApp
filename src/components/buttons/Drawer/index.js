@@ -16,8 +16,8 @@ export default function Logo({
     };
 
   return (
-    <Button style={styles.container} action={toggleDrawer} >
-      <ImageIcon icon={icons.drawer} _width={width || 150} _height={height || 150} />
+    <Button style={styles.container} action={toggleDrawer}>
+      <ImageIcon icon={icons.DRAWER.path} _width={width || 150} _height={height || 150} />
     </Button>
   );
 }

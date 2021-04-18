@@ -16,6 +16,10 @@ export const ACCEPT_THE_TERMS = 'Aceite os termos de uso!';
 
 export const NEW_HERE = 'Novo aqui?';
 export const FORGOT_PASSWORD = 'Esqueceu sua senha?'
+export const RECOVER_PASSWORD = 'Recuperar Senha';
+export const HOW_RECOVER = `
+Um token de confirmação será enviado para o seu email. Digite seu email e clique em avançar.
+`;
 
 // FIELDS
 export const NAME_FIELD = 'Nome';

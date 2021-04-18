@@ -8,7 +8,7 @@ import validations from '../../../../resources/validations/loginSchema';
 
 import { ENTER } from '../../../../constants/texts';
 
-import Login from '../../Forms/Login/Login';
+import Login from '../../Forms/Login';
 
 const FormLogin = ({ handleLogin }) => {
     return(

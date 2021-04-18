@@ -15,7 +15,8 @@ import Loading from '../../components/layouts/Loading';
 
 import Button from '../../components/buttons/Button';
 import Logo from '../../components/layouts/Logo';
-import Form from '../../components/Forms/Formiks/Login/FormLogin';
+
+import Form from '../../components/Forms/Formiks/Login';
 
 import {
     NEW_HERE,
@@ -111,7 +112,7 @@ export default function Login({ navigation }) {
           </KeyboardAvoidingView>
 
         </View>
-      );
+    );
 
     if (auth.loading) {
         return (
@@ -137,7 +138,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: 132,
+        marginTop: 165,
         backgroundColor: white,
     },
     logoContainer: {

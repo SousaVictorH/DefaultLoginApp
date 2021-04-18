@@ -1,6 +1,6 @@
 import api from '../services/api';
 
-import { LOGIN, SIGN_UP } from '../../core/url';
+import { LOGIN, SIGN_UP, RECOVER } from '../../core/url';
 
 export const requestLogin = async (email, password) => {
     try {
@@ -33,6 +33,18 @@ export const requestSignUp = async (values) => {
         }
 
         return await api.post(SIGN_UP, data);
+    } catch (error) {
+        return { error };
+    }
+};
+
+export const requestAccountRecover = async (email) => {
+    try {
+        const data = {
+            email
+        };
+
+        await api.post(RECOVER, data);
     } catch (error) {
         return { error };
     }

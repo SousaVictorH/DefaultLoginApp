@@ -3,9 +3,12 @@ import { StyleSheet, Text } from 'react-native';
 
 import globalStyles from '../../../styles/globalStyles';
 
-const showMessageError = ({ error }) => {
+const showMessageError = ({
+  error,
+  style
+}) => {
   return error ? (
-    <Text style={[globalStyles.messageError, styles.message]}>{error}</Text>
+    <Text style={[globalStyles.messageError, styles.message, style]}>{error}</Text>
   ) : null;
 };
 

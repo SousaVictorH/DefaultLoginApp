@@ -1,5 +1,11 @@
 import React from 'react';
-import { View, TextInput, StyleSheet } from 'react-native';
+
+import { 
+  View, 
+  TextInput, 
+  StyleSheet, 
+  Image
+} from 'react-native';
 
 import BorderRadius from '../../boxes/BorderRadiusGradient';
 import globalStyles from '../../styles/globalStyles';
@@ -17,16 +23,18 @@ const InputTextGradient = ({
   multiline,
   style,
   label,
-  messageError,
   onFocus,
   error,
   backgroundColor,
+  icon,
+  errorStyle
 }) => {
   return (
     <View>
       <View style={[globalStyles.input, style]}>
         <BorderRadius backgroundColor={backgroundColor}>
           <View style={styles.container}>
+            {icon && <Image source={icon.path} style={styles.image} />}
             <TextInput
               onFocus={onFocus}
               multiline={multiline}
@@ -41,13 +49,13 @@ const InputTextGradient = ({
               onBlur={onBlur}
               value={value}
               inputContainerStyle={{}}
-              style={styles.input}
+              style={{ paddingLeft: icon ? 38 : 8 }}
             />
           </View>
         </BorderRadius>
       </View>
 
-      <ShowMessageError error={error} message={messageError} />
+      <ShowMessageError error={error} style={errorStyle} />
     </View>
   );
 };
@@ -58,9 +66,6 @@ const styles = StyleSheet.create({
   container: {
     width: '100%',
     height: '100%',
-  },
-  input: {
-    paddingLeft: 8
   },
   image: {
     position: 'absolute',
