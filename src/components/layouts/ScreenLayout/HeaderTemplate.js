@@ -1,10 +1,10 @@
 import React from 'react';
-import { View, Text, SafeAreaView, StyleSheet } from 'react-native';
+import { SafeAreaView, StyleSheet } from 'react-native';
 
 import BarBox from '../../boxes/BarBox';
 
 import Logo from '../Logo';
-import Drawer from '../Drawer';
+import Drawer from '../../buttons/Drawer';
 
 export default Header = ({ hideHeader, navigation }) => {
     return !hideHeader && (

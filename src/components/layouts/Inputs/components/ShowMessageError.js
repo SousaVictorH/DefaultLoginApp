@@ -16,6 +16,6 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
     textAlign: 'left',
     marginVertical: 5,
-    marginLeft: 8,
+    marginLeft: 14,
   },
 });

@@ -11,6 +11,7 @@ import {
     LOGIN_SCREEN,
     SIGN_UP_SCREEN,
     WELCOME_SCREEN,
+    PASSWORD_RECOVER
 } from '../constants/screens';
 
 import { transparent } from '../resources/colors';
@@ -18,7 +19,8 @@ import { transparent } from '../resources/colors';
 import CustomDrawer from '../components/layouts/CustomDrawer';
 
 import {
-    SignUpNavigation
+    SignUpNavigation,
+    PasswordRecoverNavigation
 } from './stackNavigation';
 
 import Home from '../screens/Home';
@@ -40,6 +42,7 @@ const DrawerNavigation = () => {
             <Drawer.Screen name={WELCOME_SCREEN} component={Welcome} />
 
             <Drawer.Screen name={SIGN_UP_SCREEN} component={SignUpNavigation} />
+            <Drawer.Screen name={PASSWORD_RECOVER} component={PasswordRecoverNavigation} />
 
         </Drawer.Navigator>
     );

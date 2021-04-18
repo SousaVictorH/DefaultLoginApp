@@ -1,7 +1,7 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet, View } from 'react-native';
 
-import GoBackIcon from '../GoBack/index';
+import GoBackIcon from '../../buttons/GoBack';
 
 export default Header = ({ hideHeader, navigation }) => {
     return !hideHeader && (

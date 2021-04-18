@@ -27,7 +27,7 @@ import * as ReduxActions from '../../store/actions/auth';
 
 import { requestLogin } from '../../interfaces/api';
 
-import { SIGN_UP_SCREEN, HOME_SCREEN } from '../../constants/screens';
+import { SIGN_UP_SCREEN, HOME_SCREEN, PASSWORD_RECOVER } from '../../constants/screens';
 import { goToScreen } from '../../interfaces/navigations';
 
 import { white, lightDarkBlue, darkGray, gray } from '../../resources/colors';
@@ -70,7 +70,7 @@ export default function Login({ navigation }) {
     };
 
     const goToPasswordRecovery = () => {
-        console.log('GO TO RECOVER');
+        goToScreen(navigation, PASSWORD_RECOVER);
     };
 
     const handleLogin = async (email, password) => {
@@ -126,6 +126,7 @@ export default function Login({ navigation }) {
             <FormLayout
                 content={renderContent()}
                 navigation={navigation}
+                hideHeader
             />
         </BarBoxGradient>
     )
@@ -136,7 +137,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: 120,
+        marginTop: 132,
         backgroundColor: white,
     },
     logoContainer: {
@@ -173,7 +174,8 @@ const styles = StyleSheet.create({
         marginTop: 25,
     },
     newHereText: {
-        fontSize: 12,
+        fontSize: 13,
+        fontWeight: '500',
         color: lightDarkBlue,
     },
     loading: {
