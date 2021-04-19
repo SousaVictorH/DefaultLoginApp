@@ -30,7 +30,7 @@ export default function Login({
                 onBlur={handleBlur('email')}
                 touched={touched.email}
                 error={errors.email}
-                errorStyle={{ marginLeft: 32 }}
+                errorStyle={{ marginLeft: 28 }}
             />
     
             <Input
@@ -44,7 +44,7 @@ export default function Login({
                 onBlur={handleBlur('password')}
                 touched={touched.password}
                 error={errors.password}
-                errorStyle={{ marginLeft: 32 }}
+                errorStyle={{ marginLeft: 28 }}
             />
       </KeyboardAvoidingView>
     );

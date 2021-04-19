@@ -60,8 +60,6 @@ export default function Login({ navigation }) {
     // State
     const state = useSelector(state => state.signUp);
 
-    console.log(state);
-
     const goToSignUp = () => {
         goToScreen(navigation, SIGN_UP_SCREEN);
     };
@@ -88,6 +86,7 @@ export default function Login({ navigation }) {
 
             goToHome();
         } catch (error) {
+            alert('Erro ao realizar login!');
             failureLogin();
         }
     };

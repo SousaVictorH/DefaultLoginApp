@@ -8,16 +8,12 @@ import { icons } from '../../../resources/icons';
 export default function Logo({
   height,
   width,
-  white = false
 }) {
-
-  const logo = icons.LOGO.path;
-  const logoWhite = icons.WHITE_LOGO.path;
 
   return (
     <View style={styles.container}>
       <ImageIcon 
-          icon={white ? logoWhite : logo} 
+          icon={icons.LOGO.path} 
           _width={width || 150} 
           _height={height || 150} 
       />

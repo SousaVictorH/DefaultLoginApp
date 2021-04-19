@@ -1,9 +1,5 @@
 export const icons = {
   ['LOGO']: {
-    path: require("../../assets/icons/home/gradient_ok.png"),
-  },
-
-  ['WHITE_LOGO']: {
     path: require("../../assets/icons/home/logo.png"),
   },
 

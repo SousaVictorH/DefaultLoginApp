@@ -34,6 +34,7 @@ export default function Login({
                 touched={touched.email}
                 error={errors.email}
                 icon={inputs.EMAIL}
+                errorStyle={{ marginLeft: 28 }}
             />
       </KeyboardAvoidingView>
     );

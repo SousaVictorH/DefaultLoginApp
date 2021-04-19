@@ -13,7 +13,7 @@ export function sucessLogin(userData = {}) {
 
 export function failureLogin() {
     return {
-      type: 'REQUEST_LOGIN',
+      type: 'FAILURE_LOGIN',
     };
 }
   
