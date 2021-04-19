@@ -14,6 +14,10 @@ export const icons = {
   ['NEXT']: {
     path: require('../../assets/icons/utils/nextButton.png'),
   },
+
+  ['OK']: {
+    path: require('../../assets/icons/home/gradient_ok.png'),
+  },
 };
 
 export const inputs = {

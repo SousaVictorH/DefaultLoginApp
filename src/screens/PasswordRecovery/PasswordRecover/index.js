@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import {
     StyleSheet,
@@ -11,17 +11,27 @@ import { requestAccountRecover } from '../../../interfaces/api';
 import { goToScreen } from '../../../interfaces/navigations';
 import { PASSWORD_SWITCH } from '../../../constants/screens';
 
+import Loading from '../../../components/layouts/Loading';
 import Form from '../../../components/Forms/Formiks/AccountRecover/Recover';
 
 import BarBoxGradient from '../../../components/boxes/BorderRadiusGradient';
 import FormLayout from '../../../components/layouts/FormLayout';
 
 const PasswordRecover = ({ navigation }) => {
+    const [loading, setLoading] = useState(false);
 
     const handleRequestRecover = async (email) => {
-        await requestAccountRecover(email);
+        try {
+            setLoading(true);
+            await requestAccountRecover(email);
+            setLoading(false);
 
-        goToScreen(navigation, PASSWORD_SWITCH);
+            goToScreen(navigation, PASSWORD_SWITCH, { email });
+        } catch (error) {
+            setLoading(false);
+            console.log(error);
+            alert('Error');
+        }
     };
   
       const renderContent = () => (
@@ -35,15 +45,23 @@ const PasswordRecover = ({ navigation }) => {
             </KeyboardAvoidingView>
         </View>
     );
+
+    if (loading) {
+        return (
+          <View style={styles.loading}>
+            <Loading />
+          </View>
+        );
+    }
   
-      return (
-          <BarBoxGradient>
-                <FormLayout 
-                    content={renderContent()}
-                    navigation={navigation}
-                />
-          </BarBoxGradient>
-      )
+    return (
+        <BarBoxGradient>
+            <FormLayout 
+                content={renderContent()}
+                navigation={navigation}
+            />
+        </BarBoxGradient>
+    )
 };
 
 export default PasswordRecover;
@@ -64,4 +82,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         marginBottom: 100,
     },
+    loading: {
+        marginTop: 300,
+    }
 });

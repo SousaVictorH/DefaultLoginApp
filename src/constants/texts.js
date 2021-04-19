@@ -15,11 +15,16 @@ export const USE_TEMRS = 'Termos de uso';
 export const ACCEPT_THE_TERMS = 'Aceite os termos de uso!';
 
 export const NEW_HERE = 'Novo aqui?';
+
 export const FORGOT_PASSWORD = 'Esqueceu sua senha?'
 export const RECOVER_PASSWORD = 'Recuperar Senha';
 export const HOW_RECOVER = `
 Um token de confirmação será enviado para o seu email. Digite seu email e clique em avançar.
 `;
+
+export const RECOVERED = 'Recuperação de senha concluída!';
+
+export const GO_TO_LOGIN = 'Fazer Login';
 
 // FIELDS
 export const NAME_FIELD = 'Nome';
@@ -53,6 +58,7 @@ export const TYPE_YOUR_STREET = 'Digite sua rua';
 export const TYPE_YOUR_DISTRICT = 'Digite seu bairro';
 export const TYPE_YOUR_NUMBER = 'Número';
 export const TYPE_YOUR_COMPLEMENT = 'Complemento';
+export const TYPE_YOUR_TOKEN = 'Token';
 
 export const SINGUP_USE_TERMS = `
 What is Lorem Ipsum?

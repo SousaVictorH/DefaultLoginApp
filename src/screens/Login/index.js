@@ -7,17 +7,6 @@ import {
     KeyboardAvoidingView
 } from 'react-native';
 
-import BarBoxGradient from '../../components/boxes/BorderRadiusGradient';
-
-import FormLayout from '../../components/layouts/FormLayout';
-
-import Loading from '../../components/layouts/Loading';
-
-import Button from '../../components/buttons/Button';
-import Logo from '../../components/layouts/Logo';
-
-import Form from '../../components/Forms/Formiks/Login';
-
 import {
     NEW_HERE,
     FORGOT_PASSWORD
@@ -32,6 +21,16 @@ import { SIGN_UP_SCREEN, HOME_SCREEN, PASSWORD_RECOVER } from '../../constants/s
 import { goToScreen } from '../../interfaces/navigations';
 
 import { white, lightDarkBlue, darkGray, gray } from '../../resources/colors';
+
+import BarBoxGradient from '../../components/boxes/BorderRadiusGradient';
+
+import FormLayout from '../../components/layouts/FormLayout';
+import Form from '../../components/Forms/Formiks/Login';
+
+import Loading from '../../components/layouts/Loading';
+import Button from '../../components/buttons/Button';
+
+import Logo from '../../components/layouts/Logo';
 
 // ACTIONS
 
@@ -57,8 +56,6 @@ export default function Login({ navigation }) {
 
     // AUTH
     const auth = useSelector(state => state.auth);
-    // State
-    const state = useSelector(state => state.signUp);
 
     const goToSignUp = () => {
         goToScreen(navigation, SIGN_UP_SCREEN);
@@ -86,7 +83,7 @@ export default function Login({ navigation }) {
 
             goToHome();
         } catch (error) {
-            alert('Erro ao realizar login!');
+            alert('Error');
             failureLogin();
         }
     };

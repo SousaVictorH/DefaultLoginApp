@@ -1,37 +1,70 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import {
     StyleSheet,
-    Text,
-    View
+    View,
+    KeyboardAvoidingView,
 } from 'react-native';
+
+import { requestSwitch } from '../../../interfaces/api';
+
+import { goToScreen } from '../../../interfaces/navigations';
+import { PASSWORD_RECOVERED } from '../../../constants/screens';
+
+import Form from '../../../components/Forms/Formiks/AccountRecover/Switch';
+import Loading from '../../../components/layouts/Loading';
 
 import BarBoxGradient from '../../../components/boxes/BorderRadiusGradient';
 import FormLayout from '../../../components/layouts/FormLayout';
 
-import { black } from '../../../resources/colors';
+const PasswordRecover = ({ navigation, route }) => {
+    const [loading, setLoading] = useState(false);
 
-const PasswordRecover = ({ navigation }) => {
+    const email = route.params.email
 
-    const renderForm = () => (
-        <Text>SWITCH</Text>
-    );
+    const handleRequestSwitch = async (values) => {
+        try {
+            values.email = email;
+        
+            setLoading(true);
+            await requestSwitch(values);
+            setLoading(false);
+    
+            goToScreen(navigation, PASSWORD_RECOVERED);   
+        } catch (error) {
+            setLoading(false);
+            alert('Error');
+        }
+    };
   
       const renderContent = () => (
         <View style={styles.container}>
-  
-            <FormLayout 
-                content={renderForm()}
-                scroll
-                navigation={navigation}
-            />
-  
+            <KeyboardAvoidingView style={styles.formContainer}>
+
+                <Form 
+                    handleRequestSwitch={handleRequestSwitch}
+                />
+
+            </KeyboardAvoidingView>
         </View>
     );
+
+    if (loading) {
+        return (
+          <View style={styles.loading}>
+            <Loading />
+          </View>
+        );
+    }
   
-      return (
-          <BarBoxGradient content={renderContent()} scroll={true} />
-      )
+    return (
+        <BarBoxGradient>
+            <FormLayout 
+                content={renderContent()}
+                navigation={navigation}
+            />
+        </BarBoxGradient>
+    )
 };
 
 export default PasswordRecover;
@@ -43,5 +76,16 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         minHeight: '100%',
         minWidth: '100%',
+    },
+    formContainer: {
+        display: 'flex',
+        justifyContent: 'center',
+        width: 300,
+        height: 600,
+        alignSelf: 'center',
+        marginBottom: 100,
+    },
+    loading: {
+        marginTop: 300,
     }
 });

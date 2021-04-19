@@ -6,32 +6,57 @@ import {
     View
 } from 'react-native';
 
+import {
+    RECOVERED,
+    GO_TO_LOGIN
+} from '../../../constants/texts';
+
+import { LOGIN_SCREEN } from '../../../constants/screens';
+
+import { goToScreen } from '../../../interfaces/navigations';
+
+import { icons } from '../../../resources/icons';
+
+import { lightDarkBlue } from '../../../resources/colors';
+
+import Logo from '../../../components/layouts/Logo';
+import ImageIcon from '../../../components/icons/ImageIcon';
+import Button from '../../../components/buttons/ButtonGradient';
+
 import BarBoxGradient from '../../../components/boxes/BorderRadiusGradient';
 import FormLayout from '../../../components/layouts/FormLayout';
 
-import { black } from '../../../resources/colors';
-
 const PasswordRecover = ({ navigation }) => {
-
-    const renderForm = () => (
-        <Text>RECOVERED</Text>
-    );
+    const goTOLogin = () => {
+        goToScreen(navigation, LOGIN_SCREEN);
+    };
   
-      const renderContent = () => (
+    const renderContent = () => (
         <View style={styles.container}>
-  
-            <FormLayout 
-                content={renderForm()}
-                scroll
-                navigation={navigation}
-            />
-  
+            <Logo />
+
+            <Text style={styles.title}>{RECOVERED}</Text>
+
+            <View style={styles.iconContainer}>
+                <ImageIcon 
+                    icon={icons.OK.path}
+                />
+            </View>
+
+            <View style={styles.button}>
+                <Button 
+                    onPress={goTOLogin} 
+                    title={GO_TO_LOGIN} 
+                />
+            </View>
         </View>
     );
   
-      return (
-          <BarBoxGradient content={renderContent()} scroll={true} />
-      )
+    return (
+        <BarBoxGradient>
+          <FormLayout content={renderContent()} hideHeader />
+        </BarBoxGradient>
+    )
 };
 
 export default PasswordRecover;
@@ -43,5 +68,23 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         minHeight: '100%',
         minWidth: '100%',
+    },
+    title: {
+        color: lightDarkBlue,
+        fontSize: 18,
+        fontWeight: '500',
+        textAlign: 'center',
+        marginTop: 15,
+    },
+    iconContainer: {
+        height: 120,
+        width: 120,
+        marginTop: 20,
+        marginBottom: 10,
+    },
+    button: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: 25,
     }
 });
