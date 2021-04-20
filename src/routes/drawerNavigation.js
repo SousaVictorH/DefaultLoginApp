@@ -12,6 +12,7 @@ import {
     SIGN_UP_SCREEN,
     WELCOME_SCREEN,
     PASSWORD_RECOVER,
+    PROFILE_SCREEN,
     EDIT_USER,
     EDIT_PASSWORD
 } from '../constants/screens';
@@ -29,6 +30,8 @@ import Home from '../screens/Home';
 import Login from '../screens/Login';
 import Welcome from '../screens/Welcome';
 
+import Profile from '../screens/Profile';
+
 import UserEdit from '../screens/UserEdit/User';
 import PasswordEdit from '../screens/UserEdit/Password';
 
@@ -44,7 +47,9 @@ const DrawerNavigation = () => {
 
             <Drawer.Screen name={HOME_SCREEN} component={auth.logged ? Home : Welcome} />
             <Drawer.Screen name={LOGIN_SCREEN} component={Login} />
-            <Drawer.Screen name={WELCOME_SCREEN} component={Welcome} />
+            <Drawer.Screen name={WELCOME_SCREEN} component={auth.logged ? Home : Profile} />
+
+            <Drawer.Screen name={PROFILE_SCREEN} component={Profile} />
 
             <Drawer.Screen name={SIGN_UP_SCREEN} component={SignUpNavigation} />
             <Drawer.Screen name={PASSWORD_RECOVER} component={PasswordRecoverNavigation} />

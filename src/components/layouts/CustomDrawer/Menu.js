@@ -4,15 +4,13 @@ import { StyleSheet, View, Text } from 'react-native';
 import {
     EXIT,
     HOME,
-    EDIT_USER as EDIT_USER_TEXT,
-    CHANGE_PASSWORD,
+    MY_PROFILE
 } from '../../../constants/texts';
 
 import {
     HOME_SCREEN,
     WELCOME_SCREEN,
-    EDIT_USER,
-    EDIT_PASSWORD
+    PROFILE_SCREEN
 } from '../../../constants/screens';
 
 import globalStyles from '../../styles/globalStyles';
@@ -63,8 +61,7 @@ const Menu = ({ navigation }) => {
     return(
         <View style={styles.container}>
             {button(HOME, HOME_SCREEN)}
-            {button(EDIT_USER_TEXT, EDIT_USER)}
-            {button(CHANGE_PASSWORD, EDIT_PASSWORD)}
+            {button(MY_PROFILE, PROFILE_SCREEN)}
             {button(EXIT, EXIT)}
         </View>
     );

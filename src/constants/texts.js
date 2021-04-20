@@ -2,10 +2,13 @@ export const LOGIN = "Login";
 export const REGISTER = "Registre-se";
 export const ENTER = "Entrar";
 export const EXIT = "Sair";
+export const EDIT = "Editar";
 export const SUBMIT = "Enviar";
 export const ADVANCE = "Avançar";
 
+// MENU
 export const HOME = 'Home';
+export const MY_PROFILE = 'Meu perfil';
 
 export const DO_YOU_HAVE_ACCOUNT = "Olá, ja possui um conta?";
 export const I_DONT_HAVE_ACCOUNT = "Não possuo uma conta";

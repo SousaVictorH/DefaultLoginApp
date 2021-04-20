@@ -20,6 +20,12 @@ export const icons = {
   },
 };
 
+export const socialNetwork = {
+  ['PHOTO']: {
+    path: require('../../assets/icons/utils/photo.png'),
+  },
+}
+
 export const inputs = {
   ['USER']: {
     path: require('../../assets/icons/inputs/user.png'),
