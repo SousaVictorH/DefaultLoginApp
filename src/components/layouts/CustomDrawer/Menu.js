@@ -2,18 +2,21 @@ import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
 import {
-    EXIT
+    EXIT,
+    HOME,
+    EDIT_USER as EDIT_USER_TEXT,
+    CHANGE_PASSWORD,
 } from '../../../constants/texts';
 
 import {
     HOME_SCREEN,
-    LOGIN_SCREEN,
-    SIGN_UP_SCREEN,
-    WELCOME_SCREEN
+    WELCOME_SCREEN,
+    EDIT_USER,
+    EDIT_PASSWORD
 } from '../../../constants/screens';
 
 import globalStyles from '../../styles/globalStyles';
-import { white, black } from '../../../resources/colors';
+import { black } from '../../../resources/colors';
 
 import Button from '../../buttons/Button';
 
@@ -59,9 +62,9 @@ const Menu = ({ navigation }) => {
 
     return(
         <View style={styles.container}>
-            {button('Home', HOME_SCREEN)}
-            {button('Login', LOGIN_SCREEN)}
-            {button('Sign Up', SIGN_UP_SCREEN)}
+            {button(HOME, HOME_SCREEN)}
+            {button(EDIT_USER_TEXT, EDIT_USER)}
+            {button(CHANGE_PASSWORD, EDIT_PASSWORD)}
             {button(EXIT, EXIT)}
         </View>
     );

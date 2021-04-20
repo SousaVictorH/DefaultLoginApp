@@ -11,7 +11,9 @@ import {
     LOGIN_SCREEN,
     SIGN_UP_SCREEN,
     WELCOME_SCREEN,
-    PASSWORD_RECOVER
+    PASSWORD_RECOVER,
+    EDIT_USER,
+    EDIT_PASSWORD
 } from '../constants/screens';
 
 import { transparent } from '../resources/colors';
@@ -26,6 +28,9 @@ import {
 import Home from '../screens/Home';
 import Login from '../screens/Login';
 import Welcome from '../screens/Welcome';
+
+import UserEdit from '../screens/UserEdit/User';
+import PasswordEdit from '../screens/UserEdit/Password';
 
 const DrawerNavigation = () => {
     const auth = useSelector(state => state.auth);
@@ -43,6 +48,9 @@ const DrawerNavigation = () => {
 
             <Drawer.Screen name={SIGN_UP_SCREEN} component={SignUpNavigation} />
             <Drawer.Screen name={PASSWORD_RECOVER} component={PasswordRecoverNavigation} />
+
+            <Drawer.Screen name={EDIT_USER} component={UserEdit} />
+            <Drawer.Screen name={EDIT_PASSWORD} component={PasswordEdit} />
 
         </Drawer.Navigator>
     );

@@ -5,8 +5,13 @@ export const EXIT = "Sair";
 export const SUBMIT = "Enviar";
 export const ADVANCE = "Avançar";
 
+export const HOME = 'Home';
+
 export const DO_YOU_HAVE_ACCOUNT = "Olá, ja possui um conta?";
 export const I_DONT_HAVE_ACCOUNT = "Não possuo uma conta";
+
+export const EDIT_USER = 'Editar Usuário';
+export const CHANGE_PASSWORD = 'Alterar Senha';
 
 export const PERSONAL_DATA = 'Dados pessoais';
 export const CONTACT_DATA = 'Dados para contato';

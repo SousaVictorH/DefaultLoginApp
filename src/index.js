@@ -16,10 +16,10 @@
  const App = () => {
      return (
          <>
-             <StatusBar hidden={true} />
+             <StatusBar hidden />
              <NavigationContainer>
                  <Provider store={store}>
-                    <PersistGate loading={false} persistor={persistor} >
+                    <PersistGate persistor={persistor} >
                         <Routes />
                     </PersistGate>
                  </Provider>
