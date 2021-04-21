@@ -23,18 +23,21 @@ const PasswordRecover = ({ navigation, route }) => {
     const email = route.params.email
 
     const handleRequestSwitch = async (values) => {
+        setLoading(true);
         try {
             values.email = email;
-        
-            setLoading(true);
-            await requestSwitch(values);
-            setLoading(false);
+
+            const response = await requestSwitch(values);
+
+            if (response.error) {
+                throw response.error;
+            }
     
             goToScreen(navigation, PASSWORD_RECOVERED);   
         } catch (error) {
-            setLoading(false);
             alert('Error');
         }
+        setLoading(false);
     };
   
       const renderContent = () => (

@@ -15,7 +15,8 @@ import Content from './components/Content';
 const Profile = ({ navigation }) => {
     const auth = useSelector(state => state.auth);
 
-    const { name, avatar } = auth.data;
+    const name = auth.data?.name;
+    const avatar = auth.data?.avatar;
     
     const renderScreen = () => (
         <View style={styles.container}>

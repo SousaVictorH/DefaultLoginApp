@@ -84,6 +84,7 @@ export default function Login({ navigation }) {
             goToHome();
         } catch (error) {
             alert('Error');
+            console.log(error);
             failureLogin();
         }
     };

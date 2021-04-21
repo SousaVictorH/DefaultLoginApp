@@ -21,17 +21,20 @@ const PasswordRecover = ({ navigation }) => {
     const [loading, setLoading] = useState(false);
 
     const handleRequestRecover = async (email) => {
+        setLoading(true);
         try {
-            setLoading(true);
-            await requestAccountRecover(email);
-            setLoading(false);
+            const response = await requestAccountRecover(email);
+
+            if (response.error) {
+                throw response.error;
+            }
 
             goToScreen(navigation, PASSWORD_SWITCH, { email });
         } catch (error) {
-            setLoading(false);
             console.log(error);
             alert('Error');
         }
+        setLoading(false);
     };
   
       const renderContent = () => (

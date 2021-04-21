@@ -1,22 +1,74 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import {
-    Text
+    View,
+    StyleSheet,
+    KeyboardAvoidingView
 } from 'react-native';
 
+import { useSelector } from 'react-redux';
+
+import { requestPassUpdate } from '../../../interfaces/api';
+
+import Loading from '../../../components/layouts/Loading';
+
+import Form from '../../../components/Forms/Formiks/UserEdit/Password';
 import ScreenLayout from '../../../components/layouts/ScreenLayout';
 
 const PasswordSwitch = ({ navigation }) => {
+    const [loading, setLoading] = useState(false);
+
+    // AUTH
+    const auth = useSelector(state => state.auth);
+
+    const { token, id } = auth.data;
+
+    const requestUpdate = async (values) => {
+        setLoading(true);
+        try {
+            const response = await requestPassUpdate(id, values.password, token);
+
+            if (response.error) {
+                throw response.error;
+            }
+        } catch (error) {
+            console.log(error);
+            alert('Error')
+        }
+        setLoading(false);
+    };
+
     const renderScreen = () => (
-        <Text>PASS SWITCH</Text>
+        <KeyboardAvoidingView style={styles.container}>
+            <Form requestUpdate={requestUpdate} />
+        </KeyboardAvoidingView>
     );
+
+    if (loading) {
+        return(      
+            <View style={styles.loading}>
+                <Loading />
+            </View>
+        );
+    }
 
     return(
         <ScreenLayout 
             content={renderScreen()}
             navigation={navigation}
+            hideHeader
+            hideFooter
         />
     );
 };
 
 export default PasswordSwitch;
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+    },
+    loading: {
+        marginTop: 300,
+    }
+});

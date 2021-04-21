@@ -4,7 +4,8 @@ import {
     LOGIN,
     SIGN_UP,
     RECOVER,
-    SWITCH
+    SWITCH,
+    PASS_UPDATE
 } from '../../core/url';
 
 export const requestLogin = async (email, password) => {
@@ -55,7 +56,7 @@ export const requestAccountRecover = async (email) => {
     }
 };
 
-export const requestSwitch= async (values) => {
+export const requestSwitch = async (values) => {
     try {
         const data = {
             email: values.email,
@@ -64,6 +65,23 @@ export const requestSwitch= async (values) => {
         };
 
         await api.post(SWITCH, data);
+    } catch (error) {
+        return { error };
+    }
+};
+
+export const requestPassUpdate = async (id, password, token) => {
+    try {
+        const data = {
+            userID: id,
+            password: password,
+        };
+
+        const config = {
+            headers: { auth: token }
+        }
+
+        return await api.patch(PASS_UPDATE, data, config);
     } catch (error) {
         return { error };
     }

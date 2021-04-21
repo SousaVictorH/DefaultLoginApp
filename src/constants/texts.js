@@ -15,6 +15,7 @@ export const I_DONT_HAVE_ACCOUNT = "Não possuo uma conta";
 
 export const EDIT_USER = 'Editar Usuário';
 export const CHANGE_PASSWORD = 'Alterar Senha';
+export const CHANGE_YOUR_PASSWORD = 'Altere sua senha';
 
 export const PERSONAL_DATA = 'Dados pessoais';
 export const CONTACT_DATA = 'Dados para contato';

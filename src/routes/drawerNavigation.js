@@ -49,13 +49,13 @@ const DrawerNavigation = () => {
             <Drawer.Screen name={LOGIN_SCREEN} component={Login} />
             <Drawer.Screen name={WELCOME_SCREEN} component={auth.logged ? Home : Profile} />
 
-            <Drawer.Screen name={PROFILE_SCREEN} component={Profile} />
+            <Drawer.Screen name={PROFILE_SCREEN} component={auth.logged ? Profile : Home} />
 
             <Drawer.Screen name={SIGN_UP_SCREEN} component={SignUpNavigation} />
             <Drawer.Screen name={PASSWORD_RECOVER} component={PasswordRecoverNavigation} />
 
-            <Drawer.Screen name={EDIT_USER} component={UserEdit} />
-            <Drawer.Screen name={EDIT_PASSWORD} component={PasswordEdit} />
+            <Drawer.Screen name={EDIT_USER} component={auth.logged ? UserEdit : Home} />
+            <Drawer.Screen name={EDIT_PASSWORD} component={auth.logged ? PasswordEdit : Home} />
 
         </Drawer.Navigator>
     );
