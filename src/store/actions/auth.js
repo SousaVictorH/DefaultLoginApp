@@ -15,10 +15,17 @@ export function failureLogin() {
     return {
       type: 'FAILURE_LOGIN',
     };
-}
+};
   
 export function requestLogout() {
     return {
         type: 'REQUEST_LOGOUT',
     };
+};
+
+export function updateState(data = {}) {
+    return{
+        type: 'UPDATE_STATE',
+        payload: { ...data },
+    }
 };

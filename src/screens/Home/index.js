@@ -17,6 +17,8 @@ export default function Home({ navigation }) {
     // AUTH
     const auth = useSelector(state => state.auth);
 
+    console.log(auth.data);
+
     const renderContent = () => (
         <View style={styles.container}>
             <Text style={styles.title}>

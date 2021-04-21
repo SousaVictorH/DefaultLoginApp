@@ -9,7 +9,7 @@ import combinedReducers from './reducers';
 const persistConfig = {
     key: 'root',
     storage: AsyncStorage,
-    blacklist: ['navigation'], // navigation will not be persisted
+    blacklist: ['navigation'] // navigation will not be persisted
 };
 
 const persistedReducer = persistReducer(persistConfig, combinedReducers);

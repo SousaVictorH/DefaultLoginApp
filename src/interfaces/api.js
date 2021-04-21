@@ -102,7 +102,7 @@ export const requestUserUpdate = async (values) => {
         const config = {
             headers: { auth: values.token }
         }
-
+        
         return await api.patch(UPDATE, data, config);
     } catch (error) {
         return { error };

@@ -6,7 +6,8 @@ import {
     KeyboardAvoidingView
 } from 'react-native';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import * as ReduxActions from '../../../store/actions/auth';
 
 import { requestUserUpdate } from '../../../interfaces/api';
 
@@ -15,8 +16,15 @@ import Loading from '../../../components/layouts/Loading';
 import Form from '../../../components/Forms/Formiks/UserEdit/Information';
 import ScreenLayout from '../../../components/layouts/ScreenLayout';
 
+const actionDispatch = (dispatch) => ({
+    updateState: (data) => dispatch(ReduxActions.updateState(data))
+});
+
 const AddressSwitch = ({ navigation }) => {
     const [loading, setLoading] = useState(false);
+
+    // UPDATE 
+    const { updateState } = actionDispatch(useDispatch());
 
     // AUTH
     const auth = useSelector(state => state.auth);
@@ -34,7 +42,9 @@ const AddressSwitch = ({ navigation }) => {
             if (response.error) {
                 throw response.error;
             } else {
-                // FAZER UPDATE NO STATE
+                const obj = Object.assign({}, auth.data, values);
+
+                updateState(obj);
             }
         } catch (error) {
             console.log(error);
