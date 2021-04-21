@@ -8,12 +8,14 @@ import {
 
 import {
     EDIT_USER,
-    EDIT_PASSWORD
+    EDIT_PASSWORD,
+    EDIT_ADDRESS
 } from '../../../constants/screens';
 
 import {
     EDIT_USER as EDIT_USER_TEXT,
-    CHANGE_PASSWORD
+    CHANGE_PASSWORD,
+    CHANGE_ADDRESS,
 } from '../../../constants/texts';
 
 import { weightBlue, gray, lightBlue } from '../../../resources/colors';
@@ -33,6 +35,7 @@ export default function Buttons({ navigation }) {
         <View style={styles.container}>
             {renderButton(EDIT_USER_TEXT, () => goToScreen(navigation, EDIT_USER))}
             {renderButton(CHANGE_PASSWORD, () => goToScreen(navigation, EDIT_PASSWORD))}
+            {renderButton(CHANGE_ADDRESS, () => goToScreen(navigation, EDIT_ADDRESS))}
         </View>
     );
 }

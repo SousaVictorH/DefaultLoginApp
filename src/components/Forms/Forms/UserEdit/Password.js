@@ -1,17 +1,13 @@
 import React from 'react';
 import { KeyboardAvoidingView } from 'react-native';
 
-import Input from '../../../layouts/Inputs/InputTextGradient';
-
-import {
-    inputs
-} from '../../../../resources/icons';
-
-import { white } from '../../../../resources/colors';
+import Input from '../../../layouts/Inputs/RoundedInput';
 
 import {
     TYPE_YOUR_PASSWORD,
     CONFIRM_YOUR_PASSWORD,
+    PASSWORD_FIELD,
+    PASSWORD_CONFIRMATION_FIELD
 } from '../../../../constants/texts';
 
 export default function Login({
@@ -24,7 +20,7 @@ export default function Login({
     return(
         <KeyboardAvoidingView>
             <Input
-                backgroundColor={white}
+                fieldName={PASSWORD_FIELD}
                 placeholder={TYPE_YOUR_PASSWORD}
                 secureTextEntry={true}
                 autoCapitalize={'none'}
@@ -34,11 +30,9 @@ export default function Login({
                 onBlur={handleBlur('password')}
                 touched={touched.password}
                 error={errors.password}
-                icon={inputs.PASSWORD}
-                errorStyle={{ marginLeft: 28 }}
             />
             <Input
-                backgroundColor={white}
+                fieldName={PASSWORD_CONFIRMATION_FIELD}
                 placeholder={CONFIRM_YOUR_PASSWORD}
                 secureTextEntry={true}
                 autoCapitalize={'none'}
@@ -48,8 +42,6 @@ export default function Login({
                 onBlur={handleBlur('confirmPassword')}
                 touched={touched.confirmPassword}
                 error={errors.confirmPassword}
-                icon={inputs.PASSWORD}
-                errorStyle={{ marginLeft: 28 }}
             />
         </KeyboardAvoidingView>
     );

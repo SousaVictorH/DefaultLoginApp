@@ -5,7 +5,7 @@ import {
     SIGN_UP,
     RECOVER,
     SWITCH,
-    PASS_UPDATE
+    UPDATE
 } from '../../core/url';
 
 export const requestLogin = async (email, password) => {
@@ -70,6 +70,7 @@ export const requestSwitch = async (values) => {
     }
 };
 
+
 export const requestPassUpdate = async (id, password, token) => {
     try {
         const data = {
@@ -81,7 +82,53 @@ export const requestPassUpdate = async (id, password, token) => {
             headers: { auth: token }
         }
 
-        return await api.patch(PASS_UPDATE, data, config);
+        return await api.patch(UPDATE, data, config);
+    } catch (error) {
+        return { error };
+    }
+};
+
+export const requestUserUpdate = async (values) => {
+    try {
+        const data = {
+            userID: values.id,
+            name: values.name,
+            genre: values.genre,
+            dateOfBirth: values.dateOfBirth,
+            email: values.email,
+            phone: values.phone,
+        };
+
+        const config = {
+            headers: { auth: values.token }
+        }
+
+        return await api.patch(UPDATE, data, config);
+    } catch (error) {
+        return { error };
+    }
+};
+
+export const requestAddressUpdate = async (values) => {
+    try {
+        const data = {
+            userID: values.id,
+            address: {
+                street: values.street,
+                city: values.city,
+                zipCode: values.zipCode,
+                district: values.district,
+                complement: values.complement,
+                uf: values.uf,
+                number: values.number
+            }
+        }
+
+        const config = {
+            headers: { auth: values.token }
+        }
+
+        return await api.patch(UPDATE, data, config);
     } catch (error) {
         return { error };
     }

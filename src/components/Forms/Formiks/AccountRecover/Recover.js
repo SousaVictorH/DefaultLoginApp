@@ -3,7 +3,7 @@ import { StyleSheet, View, Text } from 'react-native';
 
 import { Formik } from 'formik';
 
-import validations from '../../../../resources/validations/recoverSchema';
+import validations from '../../../../resources/validations/Recover/recoverSchema';
 
 import {
     weightBlue,

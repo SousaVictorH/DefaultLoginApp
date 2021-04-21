@@ -1,6 +1,10 @@
-import { INVALID_PASSWORD, PASSWORD_REQUIRED, EMAIL_MALFORMED } from '../../constants/errors';
-
 import * as yup from 'yup';
+
+import {
+  INVALID_PASSWORD,
+  PASSWORD_REQUIRED,
+  EMAIL_MALFORMED
+} from '../../../constants/errors';
 
 const loginSchema = yup.object().shape({
   email: yup.string().trim().email(EMAIL_MALFORMED).required(EMAIL_MALFORMED),

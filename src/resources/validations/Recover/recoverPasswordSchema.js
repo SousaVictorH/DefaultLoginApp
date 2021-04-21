@@ -5,9 +5,13 @@ import {
   INVALID_PASSWORD,
   CONFIRM_PASSWORD_INCORRECT,
   CONFIRM_PASSWORD_REQUIRED,
-} from '../../constants/errors';
+  INVALID_TOKEN,
+  TOKEN_REQUIRED,
+} from '../../../constants/errors';
 
 const validateSwitch = yup.object().shape({
+    token: yup.string().trim().length(6, INVALID_TOKEN).required(TOKEN_REQUIRED),
+
     password: yup
     .string()
     .trim()

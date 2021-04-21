@@ -3,39 +3,43 @@ import { StyleSheet, View, Text } from 'react-native';
 
 import { Formik } from 'formik';
 
-import Button from '../../../buttons/ButtonGradient';
-import validations from '../../../../resources/validations/SignUp/addressSchema';
-
-import { objIsEmpty } from '../../../../utils/object';
-
-import { 
-    ADVANCE,
-    RESIDENTIAL_DATA
-} from '../../../../constants/texts';
+import validations from '../../../../resources/validations/Update/updateInformationSchema';
 
 import {
-    weightBlue
+    weightBlue,
 } from '../../../../resources/colors';
 
-import SignUpAddress from '../../Forms/SignUp/Address';
+import { 
+    SUBMIT,
+    EDIT_USER_TEXT
+} from '../../../../constants/texts';
 
-const FormLogin = ({ handleSignUp }) => {
+import Button from '../../../buttons/ButtonGradient';
+import Form from '../../Forms/UserEdit/Information';
+
+const RecoverForm = ({ requestUpdate, auth }) => {
+
+    const {
+        name,
+        genre,
+        dateOfBirth,
+        email,
+        phone
+    } = auth.data;
 
     return(
         <View>
             <Formik 
                 initialValues={{
-                    zipCode: '',
-                    city: '',
-                    uf: '',
-                    street: '',
-                    district: '',
-                    number: '',
-                    complement: '',
+                    name,
+                    genre,
+                    dateOfBirth,
+                    email,
+                    phone
                 }}
                 validationSchema={validations}
                 onSubmit={values => {
-                    handleSignUp(values);
+                    requestUpdate(values);
                 }}>
                 {({
                     handleChange,
@@ -45,13 +49,14 @@ const FormLogin = ({ handleSignUp }) => {
                     touched,
                     errors,
                     setFieldError,
-                    setFieldValue,
+                    setFieldValue
                 }) => (
                 <View style={styles.container}>
+                    <View style={styles.header}>
+                        <Text style={styles.title}>{EDIT_USER_TEXT}</Text>
+                    </View>
 
-                    <Text style={styles.title}>{RESIDENTIAL_DATA}</Text>
-                    
-                    <SignUpAddress
+                    <Form
                         values={values}
                         handleChange={handleChange}
                         handleBlur={handleBlur}
@@ -64,8 +69,7 @@ const FormLogin = ({ handleSignUp }) => {
                     <View style={styles.button}>
                         <Button 
                             onPress={handleSubmit} 
-                            title={ADVANCE} 
-                            enabled={objIsEmpty(errors)}
+                            title={SUBMIT} 
                         />
                     </View>
                 </View>
@@ -75,22 +79,29 @@ const FormLogin = ({ handleSignUp }) => {
     );
 };
 
-export default FormLogin;
+export default RecoverForm;
 
 const styles = StyleSheet.create({
     container: {
-        width: 300,
-        marginTop: 10,
+        display: 'flex',
+        height: '100%',
+        width: '80%',
+        alignSelf: 'center',
+        marginVertical: 15,
+    },
+    header: {
+        marginVertical: 30,
     },
     title: {
-        fontSize: 22,
-        marginBottom: 28,
-        textAlign: 'center',
         color: weightBlue,
+        fontSize: 21,
+        fontWeight: '500',
+        textAlign: 'center',
+        marginRight: 5,
     },
     button: {
         justifyContent: 'center',
         alignItems: 'center',
-        marginVertical: 25,
-    },
+        marginTop: 25,
+    }
 });

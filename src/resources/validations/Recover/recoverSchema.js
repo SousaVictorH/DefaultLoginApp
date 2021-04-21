@@ -2,7 +2,7 @@ import * as yup from 'yup';
 
 import { 
   EMAIL_MALFORMED,
-} from '../../constants/errors';
+} from '../../../constants/errors';
 
 const recoverSchema = yup.object().shape({
     email: yup

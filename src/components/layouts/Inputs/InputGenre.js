@@ -22,8 +22,8 @@ const GenreInput = ({
     const [options, setOptions] = useState([
         { text: 'Homem Cis', selected: false },
         { text: 'Mulher Cis', selected: false },
-        { text: 'Homem Tras', selected: false },
-        { text: 'Mulher Tras', selected: false },
+        { text: 'Homem Trans', selected: false },
+        { text: 'Mulher Trans', selected: false },
     ]);
 
     function handleSelected(index) {

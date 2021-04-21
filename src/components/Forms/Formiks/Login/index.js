@@ -4,7 +4,7 @@ import { StyleSheet, View } from 'react-native';
 import { Formik } from 'formik';
 
 import Button from '../../../buttons/ButtonGradient';
-import validations from '../../../../resources/validations/loginSchema';
+import validations from '../../../../resources/validations/Login/loginSchema';
 
 import { ENTER } from '../../../../constants/texts';
 

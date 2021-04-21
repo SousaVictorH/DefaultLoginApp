@@ -3,7 +3,7 @@ import { StyleSheet, View, Text } from 'react-native';
 
 import { Formik } from 'formik';
 
-import validations from '../../../../resources/validations/changePassSchema';
+import validations from '../../../../resources/validations/Update/updatePasswordSchema';
 
 import {
     weightBlue,
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
         height: '100%',
         width: '80%',
         alignSelf: 'center',
-        marginTop: 180,
+        marginTop: 145,
     },
     header: {
         marginVertical: 30,

@@ -8,11 +8,11 @@ import {
 
 import { useSelector } from 'react-redux';
 
-import { requestUserUpdate } from '../../../interfaces/api';
+import { requestAddressUpdate } from '../../../interfaces/api';
 
 import Loading from '../../../components/layouts/Loading';
 
-import Form from '../../../components/Forms/Formiks/UserEdit/Information';
+import Form from '../../../components/Forms/Formiks/UserEdit/Address';
 import ScreenLayout from '../../../components/layouts/ScreenLayout';
 
 const AddressSwitch = ({ navigation }) => {
@@ -29,7 +29,7 @@ const AddressSwitch = ({ navigation }) => {
             values.id = id;
             values.token = token;
 
-            const response = await requestUserUpdate(values);
+            const response = await requestAddressUpdate(values);
 
             if (response.error) {
                 throw response.error;

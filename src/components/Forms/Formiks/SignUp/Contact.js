@@ -4,7 +4,7 @@ import { StyleSheet, View, Text } from 'react-native';
 import { Formik } from 'formik';
 
 import Button from '../../../buttons/ButtonGradient';
-import { validateContact as validations } from '../../../../resources/validations/signUpSchema';
+import validations from '../../../../resources/validations/SignUp/contactSchema';
 
 import { objIsEmpty } from '../../../../utils/object';
 
