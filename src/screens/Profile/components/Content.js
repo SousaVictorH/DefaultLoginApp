@@ -40,20 +40,22 @@ export default function Buttons({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 45,
+    marginVertical: 5,
     alignItems: 'center',
+    justifyContent: 'center',
   },
   button: {
     marginBottom: 40,
-    borderBottomColor: gray,
-    borderBottomWidth: 1,
-    width: 105,
+    minWidth: 110,
   },
   text: {
     fontSize: 15,
     fontWeight: '500',
     color: weightBlue,
     textAlign: 'center',
-    marginBottom: 5,
+
+    borderBottomColor: gray,
+    borderBottomWidth: 1,
+    padding: 1,
   }
 });

@@ -4,9 +4,18 @@ import {
     Text
 } from 'react-native';
 
+import ScreenLayout from '../../../components/layouts/ScreenLayout';
+
 const PasswordSwitch = ({ navigation }) => {
-    return(
+    const renderScreen = () => (
         <Text>PASS SWITCH</Text>
+    );
+
+    return(
+        <ScreenLayout 
+            content={renderScreen()}
+            navigation={navigation}
+        />
     );
 };
 

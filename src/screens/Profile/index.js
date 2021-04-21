@@ -28,6 +28,7 @@ const Profile = ({ navigation }) => {
         <ScreenLayout 
             content={renderScreen()}
             navigation={navigation}
+            hideBackButton={false}
         />
     );
 };

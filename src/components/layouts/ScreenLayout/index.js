@@ -10,9 +10,9 @@ import {
 } from 'react-native';
 
 import BarBox from '../../boxes/BarBox';
-
 import Loading from '../Loading';
 
+import globalStyles from '../../styles/globalStyles';
 import { darkBlue, white } from '../../../resources/colors';
 
 import {
@@ -22,6 +22,8 @@ import {
   ANDROID_FOOTER_HEIGHT
 } from '../../styles/constants';
 
+import GoBackButton from '../../buttons/GoBack';
+
 import Header from './HeaderTemplate';
 import Footer from './FooterTemplate';
 
@@ -30,6 +32,7 @@ const ScreenLayout = ({
   scroll,
   hideHeader,
   hideFooter,
+  hideBackButton,
   loading,
   navigation
 }) => {
@@ -39,6 +42,14 @@ const ScreenLayout = ({
     }
     return content;
   };
+
+  const goBackButton = () =>
+    !hideBackButton && 
+    (
+      <View style={[globalStyles.backButtonContainer, styles.backButton]}>
+        <GoBackButton navigation={navigation} height={30} />
+      </View>
+    );
 
   return (
     <View style={{ flex: 1 }}>
@@ -56,6 +67,7 @@ const ScreenLayout = ({
         </View>
 
         <View style={styles.container}>
+          {goBackButton()}
           {loading ? <Loading /> : body()}
         </View>
       </SafeAreaView>
@@ -74,18 +86,20 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: white,
   },
-
   headerContainer: {
     flex: 1,
     maxHeight: Platform.OS === 'ios' ? IOS_HEADER_HEIGHT : ANDROID_HEADER_HEIGHT,
   },
-
   header: {
     flexDirection: 'row',
   },
-
   footerContainer: {
     flex: 1,
     maxHeight: Platform.OS === 'ios' ? IOS_FOOTER_HEIGHT : ANDROID_FOOTER_HEIGHT,
   },
+  backButton: {
+    position: 'absolute',
+    left: -40,
+    top: 15,
+  }
 });

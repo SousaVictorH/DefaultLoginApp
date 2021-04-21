@@ -17,7 +17,7 @@ export default function Home({ navigation }) {
     // AUTH
     const auth = useSelector(state => state.auth);
 
-    console.log(auth);// 58027-190
+    console.log(auth);
 
     const renderContent = () => (
         <View style={styles.container}>
@@ -28,7 +28,11 @@ export default function Home({ navigation }) {
     );
 
     return (
-        <ScreenLayout content={renderContent()} navigation={navigation} />
+        <ScreenLayout 
+            content={renderContent()} 
+            navigation={navigation}
+            hideBackButton
+        />
     )
 };
 
