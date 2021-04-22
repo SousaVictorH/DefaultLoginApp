@@ -6,7 +6,6 @@ import {
     RECOVER,
     SWITCH,
     UPDATE,
-    FILE
 } from '../../core/url';
 
 export const requestLogin = async (email, password) => {
@@ -130,14 +129,6 @@ export const requestAddressUpdate = async (values) => {
         }
 
         return await api.patch(UPDATE, data, config);
-    } catch (error) {
-        return { error };
-    }
-};
-
-export const requestUploadImage = async (data) => {
-    try {
-        return await api.patch(FILE, data);
     } catch (error) {
         return { error };
     }

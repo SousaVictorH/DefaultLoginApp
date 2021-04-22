@@ -13,7 +13,6 @@ import * as ReduxActions from '../../../store/actions/auth';
 
 import globalStyles from '../../../components/styles/globalStyles';
 
-import { requestUploadImage } from '../../../interfaces/api';
 import { socialNetwork } from '../../../resources/icons';
 
 import IconButton from '../../../components/buttons/IconButton';
@@ -56,7 +55,7 @@ const Header = ({ name, avatar, setLoading }) => {
         })
     };
 
-    const uploadImage = async (img) => {
+    const uploadImage = async () => {
         setLoading(true);
         try {
             const data = new FormData();
@@ -67,12 +66,12 @@ const Header = ({ name, avatar, setLoading }) => {
                 type: photo.type,
             });
 
-            const response = await requestUploadImage(data);
-
-            if (response.error) {
-                throw response.error;
+            if (false) {
+                // verify error
             } else {
-                const obj = Object.assign({}, auth.data, values);
+                const values = { avatar: photo.uri }
+
+                const obj = Object.assign({}, auth.data, values );
 
                 updateState(obj);
             }
