@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import {
     StyleSheet,
@@ -6,17 +6,88 @@ import {
     Text
 } from 'react-native';
 
+import * as ImagePicker from 'react-native-image-picker';
+
+import { useSelector, useDispatch } from 'react-redux';
+import * as ReduxActions from '../../../store/actions/auth';
+
 import globalStyles from '../../../components/styles/globalStyles';
 
+import { requestUploadImage } from '../../../interfaces/api';
 import { socialNetwork } from '../../../resources/icons';
 
 import IconButton from '../../../components/buttons/IconButton';
 import Avatar from '../../../components/layouts/Avatar';
 
-const Header = ({ name, avatar }) => {
+const actionDispatch = (dispatch) => ({
+    updateState: (data) => dispatch(ReduxActions.updateState(data))
+});
+
+
+const Header = ({ name, avatar, setLoading }) => {
+    const [photo, setPhoto] = useState('');
+    
+    // AUTH
+    const auth = useSelector(state => state.auth);
+
+    // UPDATE 
+    const { updateState } = actionDispatch(useDispatch());
+
     const AddPhoto = () => {
-        console.log('AddPhoto!');
+        ImagePicker.launchImageLibrary({
+            mediaType: 'photo',
+            includeBase64: false,
+        }, (response) => {
+            
+            if (response.didCancel) {
+                alert('Cancel')
+                return;
+            }
+            if (response.error) {
+                alert('Error')
+                return;
+            }
+            if (!response.uri) {
+                alert('No uri')
+                return;
+            }
+
+            setPhoto(response);
+        })
     };
+
+    const uploadImage = async (img) => {
+        setLoading(true);
+        try {
+            const data = new FormData();
+
+            data.append('avatar', {
+                fileName: photo.fileName,
+                uri: photo.uri,
+                type: photo.type,
+            });
+
+            const response = await requestUploadImage(data);
+
+            if (response.error) {
+                throw response.error;
+            } else {
+                const obj = Object.assign({}, auth.data, values);
+
+                updateState(obj);
+            }
+        } catch (error) {
+            alert('Error');
+            console.log(error);
+        }
+        setLoading(false);
+    };
+
+    useEffect(() => {
+        if (photo) {
+            uploadImage(photo);
+        }
+    }, [photo])
 
     return(
         <View style={styles.container}>
@@ -26,7 +97,7 @@ const Header = ({ name, avatar }) => {
                 icon={socialNetwork.PHOTO.path}
             />
 
-            <Avatar uri={avatar} />
+            <Avatar uri={photo?.uri || avatar} />
 
             <View style={styles.profileContainer}>
                 <Text style={globalStyles.title}>{name}</Text>
