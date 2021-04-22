@@ -24,7 +24,11 @@ const actionDispatch = (dispatch) => ({
 
 
 const Header = ({ name, avatar, setLoading }) => {
-    const [photo, setPhoto] = useState('');
+    const [file, setFile] = useState({
+        fileName: '',
+        uri: '',
+        type: '',
+    });
     
     // AUTH
     const auth = useSelector(state => state.auth);
@@ -51,25 +55,23 @@ const Header = ({ name, avatar, setLoading }) => {
                 return;
             }
 
-            setPhoto(response);
+            setFile({
+                fileName: response.fileName,
+                uri: response.uri,
+                type: response.type,
+            });
         })
     };
 
     const uploadImage = async () => {
         setLoading(true);
         try {
-            const data = new FormData();
-
-            data.append('avatar', {
-                fileName: photo.fileName,
-                uri: photo.uri,
-                type: photo.type,
-            });
+            console.log(file);
 
             if (false) {
                 // verify error
             } else {
-                const values = { avatar: photo.uri }
+                const values = { avatar: file.uri }
 
                 const obj = Object.assign({}, auth.data, values );
 
@@ -83,10 +85,10 @@ const Header = ({ name, avatar, setLoading }) => {
     };
 
     useEffect(() => {
-        if (photo) {
-            uploadImage(photo);
+        if (file.uri) {
+            uploadImage(file);
         }
-    }, [photo])
+    }, [file.uri])
 
     return(
         <View style={styles.container}>
@@ -96,7 +98,7 @@ const Header = ({ name, avatar, setLoading }) => {
                 icon={socialNetwork.PHOTO.path}
             />
 
-            <Avatar uri={photo?.uri || avatar} />
+            <Avatar uri={file.uri || avatar} />
 
             <View style={styles.profileContainer}>
                 <Text style={globalStyles.title}>{name}</Text>
