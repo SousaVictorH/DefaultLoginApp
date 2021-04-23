@@ -6,8 +6,6 @@ import { Formik } from 'formik';
 import Button from '../../../buttons/ButtonGradient';
 import validations from '../../../../resources/validations/SignUp/termsSchema';
 
-import { objIsEmpty } from '../../../../utils/object';
-
 import {
     SUBMIT,
     USE_TEMRS
@@ -72,8 +70,8 @@ export default FormLogin;
 
 const styles = StyleSheet.create({
     container: {
-        width: 300,
-        marginTop: 50,
+        width: 350,
+        marginVertical: 50,
     },
     title: {
         fontSize: 22,

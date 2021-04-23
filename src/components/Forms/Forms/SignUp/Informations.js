@@ -4,12 +4,14 @@ import {
     KeyboardAvoidingView, 
 } from 'react-native';
 
+import { errorColor, midGray } from '../../../../resources/colors';
+
+import { maskDate } from '../../../../resources/date';
+
 import Input from '../../../layouts/Inputs/RoundedInput';
 import GenreInput from '../../../layouts/Inputs/InputGenre';
 
-import { white } from '../../../../resources/colors';
-
-import { maskDate } from '../../../../resources/date';
+import Foundation from 'react-native-vector-icons/Foundation';
 
 import {
     TYPE_YOUR_NAME,
@@ -42,13 +44,6 @@ export default function SignUpInformations({
                 touched={touched.name}
                 error={errors.name}
             />
-    
-            <GenreInput 
-                label={SELECT_YOUR_GENRE}
-                errors={errors}
-                setFieldValue={setFieldValue}
-                value={values.genre}
-            />
 
             <Input
                 fieldName={BIRTH_FIELD}
@@ -60,6 +55,20 @@ export default function SignUpInformations({
                 onBlur={handleBlur('dateOfBirth')}
                 touched={touched.dateOfBirth}
                 error={errors.dateOfBirth}
+                icon={
+                    <Foundation
+                        name="calendar"
+                        size={30}
+                        color={errors.dateOfBirth ? errorColor : midGray}
+                    />
+                }
+            />
+    
+            <GenreInput 
+                label={SELECT_YOUR_GENRE}
+                errors={errors}
+                setFieldValue={setFieldValue}
+                value={values.genre}
             />
       </KeyboardAvoidingView>
     );

@@ -75,5 +75,6 @@ const styles = StyleSheet.create({
     },
     genre: {
       marginVertical: 20,
+      marginLeft: 12,
     },
 });

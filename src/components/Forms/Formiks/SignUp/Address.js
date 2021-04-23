@@ -3,10 +3,10 @@ import { StyleSheet, View, Text } from 'react-native';
 
 import { Formik } from 'formik';
 
-import Button from '../../../buttons/ButtonGradient';
+import GradientButton from '../../../buttons/GradientButton';
 import validations from '../../../../resources/validations/SignUp/addressSchema';
 
-import { objIsEmpty } from '../../../../utils/object';
+import Material from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import { 
     ADVANCE,
@@ -14,7 +14,8 @@ import {
 } from '../../../../constants/texts';
 
 import {
-    weightBlue
+    weightBlue,
+    white
 } from '../../../../resources/colors';
 
 import SignUpAddress from '../../Forms/SignUp/Address';
@@ -46,6 +47,7 @@ const FormLogin = ({ handleSignUp }) => {
                     errors,
                     setFieldError,
                     setFieldValue,
+                    isValid
                 }) => (
                 <View style={styles.container}>
 
@@ -62,10 +64,11 @@ const FormLogin = ({ handleSignUp }) => {
                     />
 
                     <View style={styles.button}>
-                        <Button 
-                            onPress={handleSubmit} 
-                            title={ADVANCE} 
-                            enabled={objIsEmpty(errors)}
+                        <GradientButton
+                            text={ADVANCE}
+                            icon={<Material name="chevron-right" size={26} color={white} />}
+                            onPress={handleSubmit}
+                            disable={!isValid}
                         />
                     </View>
                 </View>
@@ -79,8 +82,8 @@ export default FormLogin;
 
 const styles = StyleSheet.create({
     container: {
-        width: 300,
-        marginTop: 10,
+        width: 350,
+        marginVertical: 30,
     },
     title: {
         fontSize: 22,
@@ -89,8 +92,6 @@ const styles = StyleSheet.create({
         color: weightBlue,
     },
     button: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginVertical: 25,
+        marginTop: 10
     },
 });
