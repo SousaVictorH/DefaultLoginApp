@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import {
     StyleSheet,
@@ -18,11 +18,11 @@ import { darkBlue } from '../../../resources/colors';
 import BarBoxGradient from '../../../components/boxes/BorderRadiusGradient';
 import Form from '../../../components/Forms/Formiks/SignUp/Terms';
 
+import Loading from '../../../components/layouts/Loading';
+
 import { goToScreen } from '../../../interfaces/navigations';
 
 import { useSelector, useDispatch } from 'react-redux';
-
-import {  } from 'react-redux';
 import * as ReduxActions from '../../../store/actions/signUp';
 
 const actionDispatch = (dispatch) => ({
@@ -30,12 +30,15 @@ const actionDispatch = (dispatch) => ({
 });
 
 export default function SignUp({ navigation }) {
+    const [loading, setLoading] = useState(false);
+
     // RESET DATA
     const { reset } = actionDispatch(useDispatch());
 
     const state = useSelector(state => state.signUp);
 
     const handleSignUp = async () => {
+      setLoading(true);
       try {
           const response = requestSignUp(state);
 
@@ -47,13 +50,15 @@ export default function SignUp({ navigation }) {
 
           goToScreen(navigation, LOGIN_SCREEN);
       } catch (error) {
-          console.warn(error);
+          alert('Error');
+          console.log(error);
       }
+      setLoading(false);
     };
 
     const renderForm = () => (
       <Form handleSignUp={handleSignUp} navigation={navigation} />
-    )
+    );
 
     const renderContent = () => (
         <View style={styles.container}>
@@ -65,7 +70,15 @@ export default function SignUp({ navigation }) {
           />
 
         </View>
-      );
+    );
+
+    if (loading) {
+        return(
+            <View style={styles.loading}>
+                <Loading />
+            </View>
+        );
+    }
 
     return (
         <BarBoxGradient content={renderContent()} scroll={true} />
