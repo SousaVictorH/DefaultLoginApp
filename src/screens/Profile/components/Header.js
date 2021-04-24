@@ -13,6 +13,8 @@ import * as ReduxActions from '../../../store/actions/auth';
 
 import globalStyles from '../../../components/styles/globalStyles';
 
+import { requestAvatarUpdate } from '../../../interfaces/api';
+
 import { socialNetwork } from '../../../resources/icons';
 
 import IconButton from '../../../components/buttons/IconButton';
@@ -32,6 +34,8 @@ const Header = ({ name, avatar, setLoading }) => {
     
     // AUTH
     const auth = useSelector(state => state.auth);
+
+    const { token, id } = auth.data;
 
     // UPDATE 
     const { updateState } = actionDispatch(useDispatch());
@@ -66,10 +70,13 @@ const Header = ({ name, avatar, setLoading }) => {
     const uploadImage = async () => {
         setLoading(true);
         try {
-            console.log(file);
+            file.id = id;
+            file.token = token;
 
-            if (false) {
-                // verify error
+            const response = await requestAvatarUpdate(file);
+
+            if (response?.error) {
+                throw response.error;
             } else {
                 const values = { avatar: file.uri }
 
