@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
         height: '100%',
         width: '80%',
         alignSelf: 'center',
-        marginTop: 145,
+        marginTop: 130,
     },
     header: {
         marginVertical: 30,

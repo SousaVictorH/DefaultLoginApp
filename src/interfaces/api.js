@@ -51,7 +51,7 @@ export const requestAccountRecover = async (email) => {
             email
         };
 
-        await api.post(RECOVER, data);
+        return await api.post(RECOVER, data);
     } catch (error) {
         return { error };
     }
@@ -65,7 +65,7 @@ export const requestSwitch = async (values) => {
             password: values.password
         };
 
-        await api.post(SWITCH, data);
+        return await api.post(SWITCH, data);
     } catch (error) {
         return { error };
     }
@@ -148,7 +148,7 @@ export const requestAvatarUpdate = async (values) => {
             headers: { auth: values.token }
         };
 
-        await api.post(FILE, data, config);
+        return await api.post(FILE, data, config);
     } catch (error) {
         return { error };
     }

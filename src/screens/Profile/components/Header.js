@@ -47,15 +47,15 @@ const Header = ({ name, avatar, setLoading }) => {
         }, (response) => {
             
             if (response.didCancel) {
-                alert('Cancel')
+                console.log('Cancel')
                 return;
             }
             if (response.error) {
-                alert('Error')
+                console.log('Error')
                 return;
             }
             if (!response.uri) {
-                alert('No uri')
+                console.log('No uri')
                 return;
             }
 
@@ -85,8 +85,11 @@ const Header = ({ name, avatar, setLoading }) => {
                 updateState(obj);
             }
         } catch (error) {
-            alert('Error');
-            console.log(error);
+            if (error.toJSON().message === 'Request failed with status code 500') {
+                alert('SEU LOGIN EXPIROU')
+            } else {
+                alert('LAMENTO UM ERRO OCORREU');
+            }
         }
         setLoading(false);
     };

@@ -47,8 +47,12 @@ const AddressSwitch = ({ navigation }) => {
                 updateState(obj);
             }
         } catch (error) {
-            console.log(error);
-            alert('Error')
+            console.log(error.toJSON().message)
+            if (error.toJSON().message === 'Request failed with status code 500') {
+                alert('SEU LOGIN EXPIROU')
+            } else {
+                alert('LAMENTO UM ERRO OCORREU');
+            }
         }
         setLoading(false);
     };

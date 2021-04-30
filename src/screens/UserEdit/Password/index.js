@@ -32,8 +32,11 @@ const PasswordSwitch = ({ navigation }) => {
                 throw response.error;
             }
         } catch (error) {
-            console.log(error);
-            alert('Error')
+            if (error.toJSON().message === 'Request failed with status code 500') {
+                alert('SEU LOGIN EXPIROU')
+            } else {
+                alert('LAMENTO UM ERRO OCORREU');
+            }
         }
         setLoading(false);
     };
@@ -58,6 +61,7 @@ const PasswordSwitch = ({ navigation }) => {
             navigation={navigation}
             hideHeader
             hideFooter
+            scroll
         />
     );
 };
