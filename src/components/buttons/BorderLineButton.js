@@ -7,7 +7,7 @@ import { white } from '../../resources/colors';
 const BorderlineButton = ({
   text,
   textColor = white,
-  action,
+  action = () => {},
   buttonStyle = {},
   textStyle = {},
 }) => {

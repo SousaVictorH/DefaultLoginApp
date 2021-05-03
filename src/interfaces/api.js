@@ -72,15 +72,15 @@ export const requestSwitch = async (values) => {
 };
 
 
-export const requestPassUpdate = async (id, password, token) => {
+export const requestPassUpdate = async (values) => {
     try {
         const data = {
-            userID: id,
-            password: password,
+            userID: values.id,
+            password: values.password,
         };
 
         const config = {
-            headers: { auth: token }
+            headers: { auth: values.token }
         }
 
         return await api.patch(UPDATE, data, config);

@@ -42,7 +42,7 @@ const AddressSwitch = ({ navigation }) => {
         setLoading(true);
         try {
             values.id = id;
-            // values.token = token;
+            values.token = token;
 
             const response = await requestUserUpdate(values);
 
@@ -54,8 +54,9 @@ const AddressSwitch = ({ navigation }) => {
                 updateState(obj);
             }
         } catch (error) {
-            console.log(error.toJSON().message)
-            if (error.toJSON().message === 'Request failed with status code 500') {
+            const statusCode = error.toJSON().message.split(' ')[5];
+
+            if (statusCode === '401' || statusCode === '500') {
                 setShowLoginModal(true);
             } else {
                 setShowErrorModal(true);

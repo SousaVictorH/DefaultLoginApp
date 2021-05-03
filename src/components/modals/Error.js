@@ -7,6 +7,10 @@ import {
     StyleSheet
 } from 'react-native';
 
+import {
+    modalBackground
+} from '../../resources/colors';
+
 const ModalError = ({
     isVisible
 }) => {
@@ -26,6 +30,6 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        backgroundColor: modalBackground,
     }
 });

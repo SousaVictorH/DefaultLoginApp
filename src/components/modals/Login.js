@@ -4,12 +4,24 @@ import {
     View,
     Text,
     Modal,
-    StyleSheet
+    StyleSheet,
+    TouchableOpacity
 } from 'react-native';
+
+import { LOGIN_SCREEN } from '../../constants/screens';
+
+import { goToScreen } from '../../interfaces/navigations';
+
+import {
+    GO_TO_LOGIN,
+    EXPIRED_LOGIN
+} from '../../constants/texts';
 
 import {
     white,
-    black
+    black,
+    weightBlue,
+    modalBackground
 } from '../../resources/colors';
 
 import BorderLineButton from '../../components/buttons/BorderLineButton';
@@ -20,18 +32,24 @@ const ModalError = ({
     navigation
 }) => {
     const goToLogin = () => {
-        console.log('GO TO LOGIN');
+        goToScreen(navigation, LOGIN_SCREEN);
         setIsVisible(false);
     };
 
     return (
         <Modal animationType="fade" visible={isVisible} transparent>
             <View style={styles.modalContainer}>
+                <View style={styles.content}>
 
-                <View style={styles.buttonLogin}>
-                    <BorderLineButton text={'Go to login'} textStyle={styles.textStyle} action={goToLogin} />
+                    <Text style={styles.title}>{EXPIRED_LOGIN}</Text>
+
+                    <TouchableOpacity onPress={goToLogin} >
+                        <View style={styles.buttonLogin}>
+                            <BorderLineButton text={GO_TO_LOGIN} textStyle={styles.textStyle} />
+                        </View>
+                    </TouchableOpacity>
+
                 </View>
-
             </View>
         </Modal>
     )
@@ -41,12 +59,29 @@ export default ModalError;
 
 const styles = StyleSheet.create({
     modalContainer: {
-        height: 200,
-        width: 350,
-        alignSelf: 'center',
+        flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'rgba(0, 255, 255, 0.5)',
+        backgroundColor: modalBackground,
+    },
+    content: {
+        height: 220,
+        width: 350,
+
+        justifyContent: 'center',
+        alignItems: 'center',
+
+        backgroundColor: white,
+        borderColor: weightBlue,
+        borderWidth: 1,
+        borderRadius: 35,
+    },
+    title: {
+        color: weightBlue,
+        fontSize: 22,
+        fontWeight: '400',
+        textAlign: 'center',
+        marginTop: 30,
     },
     buttonLogin: {
         width: 250,

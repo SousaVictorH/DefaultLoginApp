@@ -35,8 +35,8 @@ Um token de confirmação será enviado para o seu email. Digite seu email e cli
 `;
 
 export const RECOVERED = 'Recuperação de senha concluída!';
-
 export const GO_TO_LOGIN = 'Fazer Login';
+export const EXPIRED_LOGIN = 'Seu login expirou, faça o login novamente!';
 
 // FIELDS
 export const NAME_FIELD = 'Nome';

@@ -16,12 +16,18 @@ import Loading from '../../../components/layouts/Loading';
 import Form from '../../../components/Forms/Formiks/UserEdit/Address';
 import ScreenLayout from '../../../components/layouts/ScreenLayout';
 
+import ErrorModal from '../../../components/modals/Error';
+import LoginModal from '../../../components/modals/Login';
+
 const actionDispatch = (dispatch) => ({
     updateState: (data) => dispatch(ReduxActions.updateState(data))
 });
 
 const AddressSwitch = ({ navigation }) => {
     const [loading, setLoading] = useState(false);
+
+    const [showErrorModal, setShowErrorModal] = useState(false);
+    const [showLoginModal, setShowLoginModal] = useState(false);
 
     // UPDATE 
     const { updateState } = actionDispatch(useDispatch());
@@ -57,10 +63,12 @@ const AddressSwitch = ({ navigation }) => {
                 updateState(obj);
             }
         } catch (error) {
-            if (error.toJSON().message === 'Request failed with status code 500') {
-                alert('SEU LOGIN EXPIROU')
+            const statusCode = error.toJSON().message.split(' ')[5];
+
+            if (statusCode === '401' || statusCode === '500') {
+                setShowLoginModal(true);
             } else {
-                alert('LAMENTO UM ERRO OCORREU');
+                setShowErrorModal(true);
             }
         }
         setLoading(false);
@@ -68,6 +76,14 @@ const AddressSwitch = ({ navigation }) => {
 
     const renderScreen = () => (
         <KeyboardAvoidingView style={styles.container}>
+            <ErrorModal isVisible={showErrorModal} />
+
+            <LoginModal
+                isVisible={showLoginModal}
+                setIsVisible={setShowLoginModal}
+                navigation={navigation}
+            />
+
             <Form requestUpdate={requestUpdate} auth={auth} />
         </KeyboardAvoidingView>
     );

@@ -22,3 +22,5 @@ export const lightBlue = "#254E81";
 export const errorColor = '#EE2619';
 export const heather = '#BFC1C3';
 export const midGray = '#646C73';
+
+export const modalBackground = 'rgba(0, 0, 0, 0.5)';
