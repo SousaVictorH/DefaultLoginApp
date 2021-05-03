@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 import {
     View,
     StyleSheet,
-    KeyboardAvoidingView
+    KeyboardAvoidingView,
+    Modal
 } from 'react-native';
 
 import { useSelector, useDispatch } from 'react-redux';
@@ -11,10 +12,13 @@ import * as ReduxActions from '../../../store/actions/auth';
 
 import { requestUserUpdate } from '../../../interfaces/api';
 
-import Loading from '../../../components/layouts/Loading';
-
 import Form from '../../../components/Forms/Formiks/UserEdit/Information';
 import ScreenLayout from '../../../components/layouts/ScreenLayout';
+
+import Loading from '../../../components/layouts/Loading';
+
+import ErrorModal from '../../../components/modals/Error';
+import LoginModal from '../../../components/modals/Login';
 
 const actionDispatch = (dispatch) => ({
     updateState: (data) => dispatch(ReduxActions.updateState(data))
@@ -22,6 +26,9 @@ const actionDispatch = (dispatch) => ({
 
 const AddressSwitch = ({ navigation }) => {
     const [loading, setLoading] = useState(false);
+
+    const [showErrorModal, setShowErrorModal] = useState(false);
+    const [showLoginModal, setShowLoginModal] = useState(false);
 
     // UPDATE 
     const { updateState } = actionDispatch(useDispatch());
@@ -35,7 +42,7 @@ const AddressSwitch = ({ navigation }) => {
         setLoading(true);
         try {
             values.id = id;
-            values.token = token;
+            // values.token = token;
 
             const response = await requestUserUpdate(values);
 
@@ -49,9 +56,9 @@ const AddressSwitch = ({ navigation }) => {
         } catch (error) {
             console.log(error.toJSON().message)
             if (error.toJSON().message === 'Request failed with status code 500') {
-                alert('SEU LOGIN EXPIROU')
+                setShowLoginModal(true);
             } else {
-                alert('LAMENTO UM ERRO OCORREU');
+                setShowErrorModal(true);
             }
         }
         setLoading(false);
@@ -59,6 +66,14 @@ const AddressSwitch = ({ navigation }) => {
 
     const renderScreen = () => (
         <KeyboardAvoidingView style={styles.container}>
+            <ErrorModal isVisible={showErrorModal} />
+
+            <LoginModal
+                isVisible={showLoginModal}
+                setIsVisible={setShowLoginModal}
+                navigation={navigation}
+            />
+
             <Form requestUpdate={requestUpdate} auth={auth} />
         </KeyboardAvoidingView>
     );
@@ -90,5 +105,5 @@ const styles = StyleSheet.create({
     },
     loading: {
         marginTop: 300,
-    }
+    },
 });

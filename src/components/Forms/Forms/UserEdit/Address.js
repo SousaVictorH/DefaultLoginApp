@@ -4,11 +4,10 @@ import {
     KeyboardAvoidingView,
     StyleSheet,
     View,
-    Modal
 } from 'react-native';
 
 import Input from '../../../layouts/Inputs/RoundedInput';
-import Loading from '../../../layouts/Loading';
+import ModalLoading from '../../../modals/Loading';
 
 import { maskCep } from '../../../../resources/zipCode';
 
@@ -63,12 +62,7 @@ export default function SignUpInformations({
 
     return(
         <KeyboardAvoidingView>
-
-            <Modal animationType="fade" visible={loading} transparent>
-                <View style={styles.modal}>
-                    <Loading />
-                </View>
-            </Modal>
+            <ModalLoading isVisible={loading} />
 
             <Input
                 fieldName={ZIP_CODE_FIELD}

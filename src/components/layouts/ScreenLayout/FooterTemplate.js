@@ -1,5 +1,12 @@
 import React from 'react';
-import { View, Text, SafeAreaView, StyleSheet } from 'react-native';
+
+import {
+    Text,
+    SafeAreaView,
+    StyleSheet
+} from 'react-native';
+
+import { white } from '../../../resources/colors';
 
 import BarBox from '../../boxes/BarBox';
 
@@ -7,7 +14,7 @@ export default Footer = ({ hideFooter }) => {
     return !hideFooter && (
         <BarBox>
             <SafeAreaView style={styles.container}>
-                <Text>
+                <Text style={styles.text}>
                     Footer
                 </Text>
             </SafeAreaView>
@@ -20,5 +27,8 @@ const styles = StyleSheet.create({
         display: 'flex',
         alignItems: 'center',
         padding: 20,
+    },
+    text: {
+        color: white,
     }
 });

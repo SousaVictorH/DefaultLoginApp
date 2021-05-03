@@ -45,13 +45,6 @@ export default function SignUpInformations({
                 touched={touched.name}
                 error={errors.name}
             />
-    
-            <GenreInput 
-                label={SELECT_YOUR_GENRE}
-                errors={errors}
-                setFieldValue={setFieldValue}
-                value={values.genre}
-            />
 
             <Input
                 fieldName={BIRTH_FIELD}
@@ -63,6 +56,13 @@ export default function SignUpInformations({
                 onBlur={handleBlur('dateOfBirth')}
                 touched={touched.dateOfBirth}
                 error={errors.dateOfBirth}
+            />
+
+            <GenreInput 
+                label={SELECT_YOUR_GENRE}
+                errors={errors}
+                setFieldValue={setFieldValue}
+                value={values.genre}
             />
 
             <Input
