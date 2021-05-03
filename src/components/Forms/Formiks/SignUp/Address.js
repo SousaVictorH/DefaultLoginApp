@@ -20,20 +20,21 @@ import {
 
 import SignUpAddress from '../../Forms/SignUp/Address';
 
-const FormLogin = ({ handleSignUp }) => {
+const FormLogin = ({ handleSignUp, state }) => {
+    const initialValues = {
+        zipCode: state.address.zipCode,
+        city: state.address.city,
+        uf: state.address.uf,
+        street: state.address.street,
+        district: state.address.district,
+        number: state.address.number,
+        complement: state.address.complement,
+    };
 
     return(
         <View>
             <Formik 
-                initialValues={{
-                    zipCode: '',
-                    city: '',
-                    uf: '',
-                    street: '',
-                    district: '',
-                    number: '',
-                    complement: '',
-                }}
+                initialValues={initialValues}
                 validationSchema={validations}
                 onSubmit={values => {
                     handleSignUp(values);
@@ -82,8 +83,9 @@ export default FormLogin;
 
 const styles = StyleSheet.create({
     container: {
-        width: 350,
+        minWidth: 400,
         marginVertical: 30,
+        paddingHorizontal: 30,
     },
     title: {
         fontSize: 22,

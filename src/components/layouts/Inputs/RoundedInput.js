@@ -38,6 +38,7 @@ const InputTextGradient = ({
         style={[
           styles.inputBox,
           error ? { borderColor: errorColor } : {},
+          icon ? { paddingRight: 10 } : {}
         ]}>
           <TextInput
             placeholder={placeholder}
@@ -46,7 +47,7 @@ const InputTextGradient = ({
             onChangeText={onChangeText}
             value={value}
             placeholderTextColor={errorMessage ? errorColor : heather}
-            style={[styles.inputStyle, inputStyles]}
+            style={[styles.inputStyle, inputStyles, ]}
             {...inputProps}
           />
           {icon}

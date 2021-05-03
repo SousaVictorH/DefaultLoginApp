@@ -16,7 +16,7 @@ import Form from '../../../components/Forms/Formiks/SignUp/Informations';
 
 import { goToScreen } from '../../../interfaces/navigations';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as ReduxActions from '../../../store/actions/signUp';
 
 const actionDispatch = (dispatch) => ({
@@ -26,6 +26,8 @@ const actionDispatch = (dispatch) => ({
 export default function SignUp({ navigation }) {
     // SEND DATA
     const { sendData } = actionDispatch(useDispatch());
+
+    const state = useSelector(state => state.signUp);
 
     const handleSignUp = async (values) => {
       try {
@@ -38,7 +40,7 @@ export default function SignUp({ navigation }) {
     };
 
     const renderForm = () => (
-      <Form handleSignUp={handleSignUp} navigation={navigation} />
+      <Form handleSignUp={handleSignUp} state={state} />
     )
 
     const renderContent = () => (
@@ -54,7 +56,7 @@ export default function SignUp({ navigation }) {
       );
 
     return (
-        <BarBoxGradient content={renderContent()} scroll={true} />
+        <BarBoxGradient state={state} content={renderContent()} scroll={true} />
     )
 };
 

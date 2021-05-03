@@ -70,8 +70,9 @@ export default FormLogin;
 
 const styles = StyleSheet.create({
     container: {
-        width: 350,
+        minWidth: 400,
         marginVertical: 50,
+        paddingHorizontal: 30,
     },
     title: {
         fontSize: 22,

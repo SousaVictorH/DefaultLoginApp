@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { 
     KeyboardAvoidingView, 
 } from 'react-native';
 
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Input from '../../../layouts/Inputs/RoundedInput';
 
-import { white } from '../../../../resources/colors';
+import {
+    heather
+} from '../../../../resources/colors';
 
 import { maskPhone } from '../../../../resources/phone';
 
@@ -21,7 +24,7 @@ import {
     PHONE_FIELD
 } from '../../../../constants/texts';
 
-export default function SignUpInformations({
+const SignUpInformations = ({
     values,
     handleChange,
     handleBlur,
@@ -29,7 +32,9 @@ export default function SignUpInformations({
     errors,
     setFieldError,
     setFieldValue
-}) {
+}) => {
+    const [seePassword, setSeePassword] = useState(true);
+    const [seeConfirmPassword, setSeeConfirmPassword] = useState(true);  
 
     return(
         <KeyboardAvoidingView>
@@ -62,7 +67,7 @@ export default function SignUpInformations({
             <Input
                 fieldName={PASSWORD_FIELD}
                 placeholder={TYPE_YOUR_PASSWORD}
-                isSecured={true}
+                isSecured={seePassword}
                 autoCapitalize={'none'}
                 allowFontScaling={true}
                 value={values.password}
@@ -70,12 +75,20 @@ export default function SignUpInformations({
                 onBlur={handleBlur('password')}
                 touched={touched.password}
                 error={errors.password}
+                icon={
+                    <Icon
+                        name={seePassword ? 'eye' : 'eye-off'}
+                        color={heather}
+                        size={25}
+                        onPress={() => setSeePassword(!seePassword)}
+                    />
+                }
             />
 
             <Input
                 fieldName={PASSWORD_CONFIRMATION_FIELD}
                 placeholder={CONFIRM_YOUR_PASSWORD}
-                isSecured={true}
+                isSecured={seeConfirmPassword}
                 autoCapitalize={'none'}
                 allowFontScaling={true}
                 value={values.confirmPassword}
@@ -83,7 +96,17 @@ export default function SignUpInformations({
                 onBlur={handleBlur('confirmPassword')}
                 touched={touched.confirmPassword}
                 error={errors.confirmPassword}
+                icon={
+                    <Icon
+                        name={seeConfirmPassword ? 'eye' : 'eye-off'}
+                        color={heather}
+                        size={25}
+                        onPress={() => setSeeConfirmPassword(!seeConfirmPassword)}
+                    />
+                }
             />
       </KeyboardAvoidingView>
     );
 };
+
+export default SignUpInformations;

@@ -121,6 +121,18 @@ export default function SignUpInformations({
                 touched={touched.district}
                 error={errors.district}
             />
+
+            <Input
+                fieldName={COMPLEMENT_FIELD}
+                placeholder={TYPE_YOUR_COMPLEMENT}
+                autoCapitalize={'none'}
+                allowFontScaling={true}
+                value={values.complement}
+                onChangeText={handleChange('complement')}
+                onBlur={handleBlur('complement')}
+                touched={touched.complement}
+                error={errors.complement}
+            />
             
             <View style={styles.inLine}>
                 <Input
@@ -146,18 +158,6 @@ export default function SignUpInformations({
                     keyboardType="numeric"
                 />
             </View>
-
-            <Input
-                fieldName={COMPLEMENT_FIELD}
-                placeholder={TYPE_YOUR_COMPLEMENT}
-                autoCapitalize={'none'}
-                allowFontScaling={true}
-                value={values.complement}
-                onChangeText={handleChange('complement')}
-                onBlur={handleBlur('complement')}
-                touched={touched.complement}
-                error={errors.complement}
-            />
       </KeyboardAvoidingView>
     );
 };
@@ -165,6 +165,7 @@ export default function SignUpInformations({
 const styles = StyleSheet.create({
     inLine: {
         marginVertical: 10,
+        marginHorizontal: 3,
         flexDirection: 'row',
         justifyContent: 'space-around',
     },

@@ -20,15 +20,17 @@ import {
 
 import SignUpInformations from '../../Forms/SignUp/Informations';
 
-const FormLogin = ({ handleSignUp }) => {
+const FormLogin = ({ handleSignUp, state }) => {
+    const initialValues = {
+        name: state.name,
+        genre: state.genre,
+        dateOfBirth: state.dateOfBirth,
+    };
+
     return(
         <View>
             <Formik 
-                initialValues={{
-                    name: '',
-                    genre: '',
-                    dateOfBirth: '',
-                }}
+                initialValues={initialValues}
                 validationSchema={validations}
                 onSubmit={values => {
                     handleSignUp(values);
@@ -77,8 +79,9 @@ export default FormLogin;
 
 const styles = StyleSheet.create({
     container: {
-        width: 350,
+        minWidth: 400,
         marginVertical: 30,
+        paddingHorizontal: 30,
     },
     title: {
         fontSize: 22,
