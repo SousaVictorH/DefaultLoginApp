@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { KeyboardAvoidingView } from 'react-native';
 
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Input from '../../../layouts/Inputs/RoundedInput';
+
+import {
+    heather
+} from '../../../../resources/colors';
 
 import {
     TYPE_YOUR_PASSWORD,
@@ -10,19 +15,22 @@ import {
     PASSWORD_CONFIRMATION_FIELD
 } from '../../../../constants/texts';
 
-export default function Login({
+const Login = ({
     values,
     handleChange,
     handleBlur,
     touched,
     errors,
-}) {
+}) => {
+    const [seePassword, setSeePassword] = useState(true);
+    const [seeConfirmPassword, setSeeConfirmPassword] = useState(true);  
+
     return(
         <KeyboardAvoidingView>
             <Input
                 fieldName={PASSWORD_FIELD}
                 placeholder={TYPE_YOUR_PASSWORD}
-                secureTextEntry={true}
+                isSecured={seePassword}
                 autoCapitalize={'none'}
                 allowFontScaling={true}
                 value={values.password}
@@ -30,11 +38,19 @@ export default function Login({
                 onBlur={handleBlur('password')}
                 touched={touched.password}
                 error={errors.password}
+                icon={
+                    <Icon
+                        name={seePassword ? 'eye' : 'eye-off'}
+                        color={heather}
+                        size={25}
+                        onPress={() => setSeePassword(!seePassword)}
+                    />
+                }
             />
             <Input
                 fieldName={PASSWORD_CONFIRMATION_FIELD}
                 placeholder={CONFIRM_YOUR_PASSWORD}
-                secureTextEntry={true}
+                isSecured={seeConfirmPassword}
                 autoCapitalize={'none'}
                 allowFontScaling={true}
                 value={values.confirmPassword}
@@ -42,7 +58,17 @@ export default function Login({
                 onBlur={handleBlur('confirmPassword')}
                 touched={touched.confirmPassword}
                 error={errors.confirmPassword}
+                icon={
+                    <Icon
+                        name={seeConfirmPassword ? 'eye' : 'eye-off'}
+                        color={heather}
+                        size={25}
+                        onPress={() => setSeeConfirmPassword(!seeConfirmPassword)}
+                    />
+                }
             />
         </KeyboardAvoidingView>
     );
 };
+
+export default Login;

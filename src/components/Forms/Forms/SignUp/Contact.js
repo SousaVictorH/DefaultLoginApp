@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
-
-import { 
-    KeyboardAvoidingView, 
-} from 'react-native';
+import { KeyboardAvoidingView } from 'react-native';
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Input from '../../../layouts/Inputs/RoundedInput';
