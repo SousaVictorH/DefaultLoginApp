@@ -6,11 +6,15 @@ import { Formik } from 'formik';
 import Button from '../../../buttons/ButtonGradient';
 import validations from '../../../../resources/validations/Login/loginSchema';
 
+import ShowMessageError from '../../../layouts/Inputs/components/ShowMessageError';
+
+import { LOGIN_MAFORMED } from '../../../../constants/errors';
+
 import { ENTER } from '../../../../constants/texts';
 
 import Login from '../../Forms/Login';
 
-const FormLogin = ({ handleLogin }) => {
+const FormLogin = ({ handleLogin, error }) => {
     return(
         <View>
             <Formik 
@@ -35,6 +39,8 @@ const FormLogin = ({ handleLogin }) => {
                         touched={touched}
                         errors={errors}
                     />
+
+                    {error && <ShowMessageError error={LOGIN_MAFORMED} />}
 
                     <View style={styles.button}>
                         <Button 

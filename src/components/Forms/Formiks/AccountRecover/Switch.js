@@ -15,12 +15,16 @@ import {
     RECOVER_PASSWORD
 } from '../../../../constants/texts';
 
+import ShowMessageError from '../../../layouts/Inputs/components/ShowMessageError';
+
+import { CHECK_YOUR_DATA } from '../../../../constants/errors';
+
 import Logo from '../../../layouts/Logo';
 
 import Button from '../../../buttons/ButtonGradient';
 import Switch from '../../Forms/AccountRecover/Switch';
 
-const RecoverForm = ({ handleRequestSwitch }) => {
+const RecoverForm = ({ handleRequestSwitch, error }) => {
     return(
         <View>
             <Formik 
@@ -51,6 +55,8 @@ const RecoverForm = ({ handleRequestSwitch }) => {
                         touched={touched}
                         errors={errors}
                     />
+
+                    {error && <ShowMessageError error={CHECK_YOUR_DATA} style={styles.error} />}
 
                     <View style={styles.button}>
                         <Button 
@@ -85,5 +91,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         marginTop: 25,
+    },
+    error: {
+        marginLeft: 35,
     }
 });

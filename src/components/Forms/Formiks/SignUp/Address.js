@@ -22,13 +22,13 @@ import SignUpAddress from '../../Forms/SignUp/Address';
 
 const FormLogin = ({ handleSignUp, state }) => {
     const initialValues = {
-        zipCode: state.address.zipCode,
-        city: state.address.city,
-        uf: state.address.uf,
-        street: state.address.street,
-        district: state.address.district,
-        number: state.address.number,
-        complement: state.address.complement,
+        zipCode: state.zipCode,
+        city: state.city,
+        uf: state.uf,
+        street: state.street,
+        district: state.district,
+        number: state.number,
+        complement: state.complement,
     };
 
     return(

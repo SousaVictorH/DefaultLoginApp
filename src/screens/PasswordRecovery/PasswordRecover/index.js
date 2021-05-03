@@ -19,6 +19,7 @@ import FormLayout from '../../../components/layouts/FormLayout';
 
 const PasswordRecover = ({ navigation }) => {
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false);
 
     const handleRequestRecover = async (email) => {
         setLoading(true);
@@ -29,10 +30,11 @@ const PasswordRecover = ({ navigation }) => {
                 throw response.error;
             }
 
+            setError(false);
+
             goToScreen(navigation, PASSWORD_SWITCH, { email });
         } catch (error) {
-            console.log(error);
-            alert('Error');
+            setError(true);
         }
         setLoading(false);
     };
@@ -41,9 +43,7 @@ const PasswordRecover = ({ navigation }) => {
         <View style={styles.container}>
             <KeyboardAvoidingView style={styles.formContainer}>
 
-                <Form 
-                    handleRequestRecover={handleRequestRecover}
-                />
+                <Form handleRequestRecover={handleRequestRecover} error={error} />
 
             </KeyboardAvoidingView>
         </View>

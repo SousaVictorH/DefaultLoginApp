@@ -11,13 +11,17 @@ import {
     USE_TEMRS
 } from '../../../../constants/texts';
 
+import ShowMessageError from '../../../layouts/Inputs/components/ShowMessageError';
+
+import { LOGIN_MAFORMED } from '../../../../constants/errors';
+
 import {
     weightBlue
 } from '../../../../resources/colors';
 
 import SignUpTerms from '../../Forms/SignUp/Terms';
 
-const FormLogin = ({ handleSignUp }) => {
+const FormLogin = ({ handleSignUp, error, errorMessage }) => {
     return(
         <View>
             <Formik 
@@ -52,6 +56,8 @@ const FormLogin = ({ handleSignUp }) => {
                         setFieldValue={setFieldValue}
                     />
 
+                    {error && <ShowMessageError error={errorMessage} style={styles.error} />}
+
                     <View style={styles.button}>
                         <Button
                             onPress={handleSubmit}
@@ -84,5 +90,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         marginVertical: 25,
+    },
+    error: {
+        marginLeft: 35,
     }
 });

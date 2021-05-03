@@ -55,7 +55,7 @@ const PasswordSwitch = ({ navigation }) => {
 
     const renderScreen = () => (
         <KeyboardAvoidingView style={styles.container}>
-            <ErrorModal isVisible={showErrorModal} />
+            <ErrorModal isVisible={showErrorModal} setIsVisible={setShowErrorModal} />
 
             <LoginModal
                 isVisible={showLoginModal}

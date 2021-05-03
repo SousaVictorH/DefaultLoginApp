@@ -16,12 +16,16 @@ import {
     HOW_RECOVER
 } from '../../../../constants/texts';
 
+import ShowMessageError from '../../../layouts/Inputs/components/ShowMessageError';
+
+import { NO_USER_FOUND } from '../../../../constants/errors';
+
 import Logo from '../../../layouts/Logo';
 
 import Button from '../../../buttons/ButtonGradient';
 import Recover from '../../Forms/AccountRecover/Recover';
 
-const RecoverForm = ({ handleRequestRecover }) => {
+const RecoverForm = ({ handleRequestRecover, error }) => {
     return(
         <View>
             <Formik 
@@ -53,6 +57,8 @@ const RecoverForm = ({ handleRequestRecover }) => {
                         touched={touched}
                         errors={errors}
                     />
+
+                    {error && <ShowMessageError error={NO_USER_FOUND} style={styles.error} />}
 
                     <View style={styles.button}>
                         <Button 
@@ -87,5 +93,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         marginTop: 25,
+    },
+    error: {
+        marginLeft: 35,
     }
 });

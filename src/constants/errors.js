@@ -37,9 +37,15 @@ export const FUTURE_DATE = 'A data de aniversário é inválida!';
 export const INVALID_TOKEN = 'O token deve ter 6 caracteres';
 export const TOKEN_REQUIRED = 'Digite um token';
 
+// USER
+
+export const NO_USER_FOUND = 'Usuário não encontrado!';
+export const USER_ALREADY_EXIST = 'Usuário já existe!';
+
 // OTHER
 
 export const REQUIRED = 'Este campo é de preenchimento obrigatório';
 export const LOGIN_MAFORMED = 'Por favor verifique o seu Email e Senha';
+export const SORRY_AN_ERROR_OCCURED = 'Desculpe, um erro ocorreu, tente novamente!';
 export const NETWORK_ERROR = 'Por favor verifique sua conexão com a internet';
 export const CHECK_YOUR_DATA = 'Confira seus dados';

@@ -27,7 +27,7 @@ const actionDispatch = (dispatch) => ({
 const AddressSwitch = ({ navigation }) => {
     const [loading, setLoading] = useState(false);
 
-    const [showErrorModal, setShowErrorModal] = useState(false);
+    const [showErrorModal, setShowErrorModal] = useState(true);
     const [showLoginModal, setShowLoginModal] = useState(false);
 
     // UPDATE 
@@ -67,7 +67,7 @@ const AddressSwitch = ({ navigation }) => {
 
     const renderScreen = () => (
         <KeyboardAvoidingView style={styles.container}>
-            <ErrorModal isVisible={showErrorModal} />
+            <ErrorModal isVisible={showErrorModal} setIsVisible={setShowErrorModal} />
 
             <LoginModal
                 isVisible={showLoginModal}

@@ -7,6 +7,11 @@ import {
 
 import { LOGIN_SCREEN } from '../../../constants/screens';
 
+import {
+    CHECK_YOUR_DATA,
+    USER_ALREADY_EXIST
+} from '../../../constants/errors';
+
 import FormLayout from '../../../components/layouts/FormLayout';
 
 import {
@@ -32,6 +37,9 @@ const actionDispatch = (dispatch) => ({
 export default function SignUp({ navigation }) {
     const [loading, setLoading] = useState(false);
 
+    const [error, setError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
+
     // RESET DATA
     const { reset } = actionDispatch(useDispatch());
 
@@ -40,24 +48,34 @@ export default function SignUp({ navigation }) {
     const handleSignUp = async () => {
       setLoading(true);
       try {
-          const response = requestSignUp(state);
+          const response = await requestSignUp(state);
+
+          console.log(response);
 
           if (response?.error) {
             throw response.error;
           }
 
+          setError(false);
+
           reset();
 
           goToScreen(navigation, LOGIN_SCREEN);
       } catch (error) {
-          alert('Error');
-          console.log(error);
+          setError(true);
+          const statusCode = error.toJSON().message.split(' ')[5];
+
+          if (statusCode === '400') {
+              setErrorMessage(USER_ALREADY_EXIST);
+          } else {
+              setErrorMessage(CHECK_YOUR_DATA);
+          }
       }
       setLoading(false);
     };
 
     const renderForm = () => (
-      <Form handleSignUp={handleSignUp} navigation={navigation} />
+      <Form handleSignUp={handleSignUp} error={error} errorMessage={errorMessage} />
     );
 
     const renderContent = () => (

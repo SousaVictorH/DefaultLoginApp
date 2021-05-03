@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import {
     Text,
@@ -47,6 +47,8 @@ const actionDispatchFailureLogin = (dispatch) => ({
 });
 
 export default function Login({ navigation }) {
+    const [error, setError] = useState(false);
+
     // LOADING 
     const { loadingLogin } = actionDispatchLoading(useDispatch());
     // SUCCESS
@@ -79,12 +81,13 @@ export default function Login({ navigation }) {
                 throw response.error;
             }
 
+            setError(false);
+
             successLogin(response.data);
 
             goToHome();
         } catch (error) {
-            alert('Error');
-            console.log(error);
+            setError(true);
             failureLogin();
         }
     };
@@ -97,7 +100,7 @@ export default function Login({ navigation }) {
                 <Logo />
             </View>
   
-            <Form handleLogin={handleLogin} navigation={navigation} />
+            <Form handleLogin={handleLogin} navigation={navigation} error={error} />
 
             <Button style={styles.forgotPassword} action={goToPasswordRecovery}>
                 <Text style={styles.forgotPasswordText}>{FORGOT_PASSWORD}</Text>
