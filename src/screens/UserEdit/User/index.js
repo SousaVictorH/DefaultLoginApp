@@ -4,13 +4,16 @@ import {
     View,
     StyleSheet,
     KeyboardAvoidingView,
-    Modal
 } from 'react-native';
 
 import { useSelector, useDispatch } from 'react-redux';
 import * as ReduxActions from '../../../store/actions/auth';
 
 import { requestUserUpdate } from '../../../interfaces/api';
+
+import {
+    PROFILE_SCREEN
+} from '../../../constants/screens';
 
 import Form from '../../../components/Forms/Formiks/UserEdit/Information';
 import ScreenLayout from '../../../components/layouts/ScreenLayout';
@@ -27,7 +30,7 @@ const actionDispatch = (dispatch) => ({
 const AddressSwitch = ({ navigation }) => {
     const [loading, setLoading] = useState(false);
 
-    const [showErrorModal, setShowErrorModal] = useState(true);
+    const [showErrorModal, setShowErrorModal] = useState(false);
     const [showLoginModal, setShowLoginModal] = useState(false);
 
     // UPDATE 
@@ -73,6 +76,7 @@ const AddressSwitch = ({ navigation }) => {
                 isVisible={showLoginModal}
                 setIsVisible={setShowLoginModal}
                 navigation={navigation}
+                screen={PROFILE_SCREEN}
             />
 
             <Form requestUpdate={requestUpdate} auth={auth} />

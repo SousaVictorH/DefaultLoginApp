@@ -11,6 +11,10 @@ import * as ReduxActions from '../../../store/actions/auth';
 
 import { requestAddressUpdate } from '../../../interfaces/api';
 
+import {
+    PROFILE_SCREEN
+} from '../../../constants/screens';
+
 import Loading from '../../../components/layouts/Loading';
 
 import Form from '../../../components/Forms/Formiks/UserEdit/Address';
@@ -82,6 +86,7 @@ const AddressSwitch = ({ navigation }) => {
                 isVisible={showLoginModal}
                 setIsVisible={setShowLoginModal}
                 navigation={navigation}
+                screen={PROFILE_SCREEN}
             />
 
             <Form requestUpdate={requestUpdate} auth={auth} />

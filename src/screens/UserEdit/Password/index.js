@@ -10,6 +10,10 @@ import { useSelector } from 'react-redux';
 
 import { requestPassUpdate } from '../../../interfaces/api';
 
+import {
+    PROFILE_SCREEN
+} from '../../../constants/screens';
+
 import Loading from '../../../components/layouts/Loading';
 
 import Form from '../../../components/Forms/Formiks/UserEdit/Password';
@@ -61,6 +65,7 @@ const PasswordSwitch = ({ navigation }) => {
                 isVisible={showLoginModal}
                 setIsVisible={setShowLoginModal}
                 navigation={navigation}
+                screen={PROFILE_SCREEN}
             />
 
             <Form requestUpdate={requestUpdate} />

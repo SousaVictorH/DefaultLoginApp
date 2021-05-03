@@ -46,7 +46,7 @@ const actionDispatchFailureLogin = (dispatch) => ({
     failureLogin: () => dispatch(ReduxActions.failureLogin())
 });
 
-export default function Login({ navigation }) {
+export default function Login({ navigation, route }) {
     const [error, setError] = useState(false);
 
     // LOADING 
@@ -64,7 +64,11 @@ export default function Login({ navigation }) {
     };
 
     const goToHome = () => {
-        goToScreen(navigation, HOME_SCREEN);
+        if (route.params?.screen) {
+            goToScreen(navigation, route.params.screen);
+        } else {
+            goToScreen(navigation, HOME_SCREEN);
+        }
     };
 
     const goToPasswordRecovery = () => {

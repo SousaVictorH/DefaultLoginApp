@@ -13,9 +13,6 @@ import {
     WELCOME_SCREEN,
     PASSWORD_RECOVER,
     PROFILE_SCREEN,
-    EDIT_USER,
-    EDIT_PASSWORD,
-    EDIT_ADDRESS
 } from '../constants/screens';
 
 import { transparent } from '../resources/colors';
@@ -24,18 +21,13 @@ import CustomDrawer from '../components/layouts/CustomDrawer';
 
 import {
     SignUpNavigation,
-    PasswordRecoverNavigation
+    PasswordRecoverNavigation,
+    ProfileNavigation
 } from './stackNavigation';
 
 import Home from '../screens/Home';
 import Login from '../screens/Login';
 import Welcome from '../screens/Welcome';
-
-import Profile from '../screens/Profile';
-
-import UserEdit from '../screens/UserEdit/User';
-import PasswordEdit from '../screens/UserEdit/Password';
-import AddressEdit from '../screens/UserEdit/Address';
 
 const DrawerNavigation = () => {
     const auth = useSelector(state => state.auth);
@@ -51,14 +43,10 @@ const DrawerNavigation = () => {
             <Drawer.Screen name={LOGIN_SCREEN} component={Login} />
             <Drawer.Screen name={WELCOME_SCREEN} component={Welcome} />
 
-            <Drawer.Screen name={PROFILE_SCREEN} component={auth.logged ? Profile : Welcome} />
+            <Drawer.Screen name={PROFILE_SCREEN} component={auth.logged ? ProfileNavigation : Welcome} />
 
             <Drawer.Screen name={SIGN_UP_SCREEN} component={SignUpNavigation} />
             <Drawer.Screen name={PASSWORD_RECOVER} component={PasswordRecoverNavigation} />
-
-            <Drawer.Screen name={EDIT_USER} component={auth.logged ? UserEdit : Welcome} />
-            <Drawer.Screen name={EDIT_PASSWORD} component={auth.logged ? PasswordEdit : Welcome} />
-            <Drawer.Screen name={EDIT_ADDRESS} component={auth.logged ? AddressEdit : Welcome} />
 
         </Drawer.Navigator>
     );

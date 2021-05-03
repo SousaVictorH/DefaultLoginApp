@@ -29,10 +29,11 @@ import BorderLineButton from '../../components/buttons/BorderLineButton';
 const ModalError = ({
     isVisible,
     setIsVisible,
-    navigation
+    navigation,
+    screen
 }) => {
     const goToLogin = () => {
-        goToScreen(navigation, LOGIN_SCREEN);
+        goToScreen(navigation, LOGIN_SCREEN, { screen });
         setIsVisible(false);
     };
 
