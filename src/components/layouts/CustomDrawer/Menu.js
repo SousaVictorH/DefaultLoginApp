@@ -24,7 +24,6 @@ import { useDispatch } from 'react-redux';
 import * as ReduxActions from '../../../store/actions/auth';
 
 // ACTIONS
-
 const actionDispatchLogOut = (dispatch) => ({
     logOut: () => dispatch(ReduxActions.requestLogout())
 });

@@ -24,6 +24,15 @@ import {
     modalBackground
 } from '../../resources/colors';
 
+
+import { useDispatch } from 'react-redux';
+import * as ReduxActions from '../../store/actions/auth';
+
+// ACTIONS
+const actionDispatchLogOut = (dispatch) => ({
+    logOut: () => dispatch(ReduxActions.requestLogout())
+});
+
 import BorderLineButton from '../../components/buttons/BorderLineButton';
 
 const ModalError = ({
@@ -32,7 +41,11 @@ const ModalError = ({
     navigation,
     screen
 }) => {
+    // LOGOUT
+    const { logOut } = actionDispatchLogOut(useDispatch());
+    
     const goToLogin = () => {
+        logOut();
         goToScreen(navigation, LOGIN_SCREEN, { screen });
         setIsVisible(false);
     };
