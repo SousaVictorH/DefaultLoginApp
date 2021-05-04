@@ -18,9 +18,6 @@ const Profile = ({ navigation }) => {
     const [loading, setLoading] = useState(false);
 
     const auth = useSelector(state => state.auth);
-
-    const name = auth.data?.name;
-    const avatar = auth.data?.avatar;
     
     const renderScreen = () => {
 
@@ -34,7 +31,7 @@ const Profile = ({ navigation }) => {
 
         return(
             <View style={styles.container}>
-                <Header name={name} avatar={avatar} setLoading={setLoading} />
+                <Header auth={auth} setLoading={setLoading} navigation={navigation} />
                 <Content navigation={navigation}/>
             </View>
         );

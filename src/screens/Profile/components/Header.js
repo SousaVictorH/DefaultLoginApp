@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import {
     StyleSheet,
@@ -6,9 +6,13 @@ import {
     Text
 } from 'react-native';
 
+import {
+    PROFILE_SCREEN
+} from '../../../constants/screens';
+
 import * as ImagePicker from 'react-native-image-picker';
 
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import * as ReduxActions from '../../../store/actions/auth';
 
 import globalStyles from '../../../components/styles/globalStyles';
@@ -20,22 +24,27 @@ import { socialNetwork } from '../../../resources/icons';
 import IconButton from '../../../components/buttons/IconButton';
 import Avatar from '../../../components/layouts/Avatar';
 
+import ErrorModal from '../../../components/modals/Error';
+import LoginModal from '../../../components/modals/Login';
+import LoadingModal from '../../../components/modals/Loading';
+
 const actionDispatch = (dispatch) => ({
     updateState: (data) => dispatch(ReduxActions.updateState(data))
 });
 
-
-const Header = ({ name, avatar, setLoading }) => {
+const Header = ({ auth, navigation }) => {
     const [file, setFile] = useState({
         fileName: '',
         uri: '',
         type: '',
     });
-    
-    // AUTH
-    const auth = useSelector(state => state.auth);
 
-    const { token, id } = auth.data;
+    const [loading, setLoading] = useState(false);
+
+    const [showErrorModal, setShowErrorModal] = useState(false);
+    const [showLoginModal, setShowLoginModal] = useState(false);
+
+    const { name, avatar, token, id } = auth.data;
 
     // UPDATE 
     const { updateState } = actionDispatch(useDispatch());
@@ -46,18 +55,7 @@ const Header = ({ name, avatar, setLoading }) => {
             includeBase64: false,
         }, (response) => {
             
-            if (response.didCancel) {
-                console.log('Cancel')
-                return;
-            }
-            if (response.error) {
-                console.log('Error')
-                return;
-            }
-            if (!response.uri) {
-                console.log('No uri')
-                return;
-            }
+            if (response.didCancel || response.error || !response.uri) return;
 
             setFile({
                 fileName: response.fileName,
@@ -67,48 +65,61 @@ const Header = ({ name, avatar, setLoading }) => {
         })
     };
 
-    const uploadImage = async () => {
-        setLoading(true);
-        try {
-            file.id = id;
-            file.token = token;
-
-            const response = await requestAvatarUpdate(file);
-
-            if (response?.error) {
-                throw response.error;
-            } else {
-                const values = { avatar: file.uri }
-
-                const obj = Object.assign({}, auth.data, values );
-
-                updateState(obj);
-            }
-        } catch (error) {
-            if (error.toJSON().message === 'Request failed with status code 500') {
-                alert('SEU LOGIN EXPIROU')
-            } else {
-                alert('LAMENTO UM ERRO OCORREU');
-            }
-        }
-        setLoading(false);
-    };
-
     useEffect(() => {
-        if (file.uri) {
-            uploadImage(file);
+        const uploadImage = async () => {
+            setLoading(true);
+            try {
+                file.id = id;
+                file.token = token;
+
+                const response = await requestAvatarUpdate(file);
+
+                if (response.error) {
+                    throw response.error;
+                }
+    
+                const values = { avatar: file.uri }
+                const obj = Object.assign({}, auth.data, values );
+    
+                updateState(obj);
+                
+            } catch (error) {              
+                const statusCode = error.toJSON().message.split(' ')[5];
+    
+                if (statusCode === '401' || statusCode === '500') {
+                    setShowLoginModal(true);
+                } else {
+                    setShowErrorModal(true);
+                }
+            }
+            setLoading(false);
+        };
+
+        if (file.uri && file.uri != avatar) {
+            uploadImage();
         }
     }, [file.uri])
 
     return(
         <View style={styles.container}>
+            <ErrorModal isVisible={showErrorModal} setIsVisible={setShowErrorModal} />
+
+            <LoginModal
+                isVisible={showLoginModal}
+                setIsVisible={setShowLoginModal}
+                navigation={navigation}
+                screen={PROFILE_SCREEN}
+            />
+
+            <LoadingModal isVisible={loading} />
+
             <IconButton 
                 style={styles.photo}
                 action={AddPhoto}
                 icon={socialNetwork.PHOTO.path}
             />
 
-            <Avatar uri={file.uri || avatar} />
+            <Avatar uri={avatar} />
 
             <View style={styles.profileContainer}>
                 <Text style={globalStyles.title}>{name}</Text>

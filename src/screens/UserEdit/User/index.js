@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 import {
-    View,
     StyleSheet,
     KeyboardAvoidingView,
 } from 'react-native';
@@ -18,10 +17,9 @@ import {
 import Form from '../../../components/Forms/Formiks/UserEdit/Information';
 import ScreenLayout from '../../../components/layouts/ScreenLayout';
 
-import Loading from '../../../components/layouts/Loading';
-
 import ErrorModal from '../../../components/modals/Error';
 import LoginModal from '../../../components/modals/Login';
+import LoadingModal from '../../../components/modals/Loading';
 
 const actionDispatch = (dispatch) => ({
     updateState: (data) => dispatch(ReduxActions.updateState(data))
@@ -79,17 +77,11 @@ const AddressSwitch = ({ navigation }) => {
                 screen={PROFILE_SCREEN}
             />
 
+            <LoadingModal isVisible={loading} />
+
             <Form requestUpdate={requestUpdate} auth={auth} />
         </KeyboardAvoidingView>
     );
-
-    if (loading) {
-        return(      
-            <View style={styles.loading}>
-                <Loading />
-            </View>
-        );
-    }
 
     return(
         <ScreenLayout 

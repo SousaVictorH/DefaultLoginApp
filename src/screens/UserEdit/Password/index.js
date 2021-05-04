@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 import {
-    View,
     StyleSheet,
     KeyboardAvoidingView
 } from 'react-native';
@@ -14,13 +13,12 @@ import {
     PROFILE_SCREEN
 } from '../../../constants/screens';
 
-import Loading from '../../../components/layouts/Loading';
-
 import Form from '../../../components/Forms/Formiks/UserEdit/Password';
 import ScreenLayout from '../../../components/layouts/ScreenLayout';
 
 import ErrorModal from '../../../components/modals/Error';
 import LoginModal from '../../../components/modals/Login';
+import LoadingModal from '../../../components/modals/Loading';
 
 const PasswordSwitch = ({ navigation }) => {
     const [loading, setLoading] = useState(false);
@@ -68,17 +66,11 @@ const PasswordSwitch = ({ navigation }) => {
                 screen={PROFILE_SCREEN}
             />
 
+            <LoadingModal isVisible={loading} />
+
             <Form requestUpdate={requestUpdate} />
         </KeyboardAvoidingView>
     );
-
-    if (loading) {
-        return(      
-            <View style={styles.loading}>
-                <Loading />
-            </View>
-        );
-    }
 
     return(
         <ScreenLayout 
