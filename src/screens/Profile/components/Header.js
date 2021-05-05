@@ -19,6 +19,7 @@ import globalStyles from '../../../components/styles/globalStyles';
 
 import { requestAvatarUpdate } from '../../../interfaces/api';
 
+import { heather } from '../../../resources/colors';
 import { socialNetwork } from '../../../resources/icons';
 
 import IconButton from '../../../components/buttons/IconButton';
@@ -122,7 +123,7 @@ const Header = ({ auth, navigation }) => {
             <Avatar uri={avatar} />
 
             <View style={styles.profileContainer}>
-                <Text style={globalStyles.title}>{name}</Text>
+                <Text style={[globalStyles.title, styles.title]}>{name}</Text>
             </View>
         </View>
     );
@@ -149,5 +150,9 @@ const styles = StyleSheet.create({
         maxWidth: 250,
         width: '100%',
         marginTop: 26,
+    },
+    title: {
+        width: 180,
+        alignSelf: 'center',
     }
 });

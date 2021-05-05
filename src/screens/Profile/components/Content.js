@@ -34,8 +34,8 @@ export default function Buttons({ navigation }) {
     return (
         <View style={styles.container}>
             {renderButton(EDIT_USER_TEXT, () => goToScreen(navigation, EDIT_USER))}
-            {renderButton(CHANGE_PASSWORD, () => goToScreen(navigation, EDIT_PASSWORD))}
             {renderButton(CHANGE_ADDRESS, () => goToScreen(navigation, EDIT_ADDRESS))}
+            {renderButton(CHANGE_PASSWORD, () => goToScreen(navigation, EDIT_PASSWORD))}
         </View>
     );
 }

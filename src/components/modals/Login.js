@@ -21,9 +21,9 @@ import {
     white,
     black,
     weightBlue,
-    modalBackground
+    modalBackground,
+    heather
 } from '../../resources/colors';
-
 
 import { useDispatch } from 'react-redux';
 import * as ReduxActions from '../../store/actions/auth';
@@ -92,13 +92,14 @@ const styles = StyleSheet.create({
     },
     title: {
         color: weightBlue,
+        maxWidth: 260,
         fontSize: 22,
         fontWeight: '400',
         textAlign: 'center',
-        marginTop: 30,
+        marginTop: 40,
     },
     buttonLogin: {
-        width: 250,
+        width: 220,
         marginTop: 65,
         marginBottom: 45,
     },
