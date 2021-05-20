@@ -16,6 +16,14 @@ The main goal of this project is to improve my skills with React Native, Redux a
   <img src="https://i.imgur.com/BPsvVxn.gif" width=170 height=343 alt="SignUpApp" />
 </div>
 
+<div>
+  <h3>Some features for now without gifs: </h3>
+
+  1. Password Recovery by Email
+  2. Edit User Data
+  3. Insert Profile Image
+</div>
+  
 ###  :hammer: Made with
 
 - [React Native](https://reactnative.dev/)
