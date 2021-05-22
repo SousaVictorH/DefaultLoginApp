@@ -5,15 +5,30 @@
 The main goal of this project is to improve my skills with React Native, Redux and Persistor
   
 ### :iphone: Here's a few snapshots / gifs of the app:
-  
+
 <div>
   <h3>Login</h3>
-  <img src="https://i.imgur.com/cJIbxiL.gif" width=170 height=343 alt="LoginApp" />
+  <img src="https://github.com/SousaVictorH/DefaultLoginApp/blob/master/videos/login.gif" alt="Login">
 </div>
 
 <div>
   <h3>Sign Up</h3>
-  <img src="https://i.imgur.com/BPsvVxn.gif" width=170 height=343 alt="SignUpApp" />
+  <img src="https://github.com/SousaVictorH/DefaultLoginApp/blob/master/videos/signUp.gif" alt="SignUp" />
+</div>
+
+<div>
+  <h3>Password Recovery by Email</h3>
+  <img src="https://github.com/SousaVictorH/DefaultLoginApp/blob/master/videos/passwordRecovery.gif" alt="PasswordUpdate" />
+</div>
+
+<div>
+  <h3>Edit User Data</h3>
+  <img src="https://github.com/SousaVictorH/DefaultLoginApp/blob/master/videos/userUpdate.gif" alt="EditUserData" />
+</div>
+
+<div>
+  <h3>Insert Profile Image</h3>
+  <img src="https://github.com/SousaVictorH/DefaultLoginApp/blob/master/videos/profileImage.gif" alt="ProfileImage" />
 </div>
 
 <div>
